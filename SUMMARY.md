@@ -1,19 +1,32 @@
 # Summary
 
 * [Introduction](README.md)
+  * [Motivation](README.md#motivation)
+  * [Why Clojure](README.md#why-clojure)
+  * [Abstractions](README.md#abstractions)
 
-### Basics
+# Basics
 
 * [Setup](basics/README.md)
   * [Perquisites](basics/README.md#prerequisites)
-  * [Re-core](basics/README.md#re-core)
-    * [Configuration](basics/README.md#re-core/Configuration)
-    * [Templates](basics/README.md#re-core/Templates)
-  * [Re-mote](basics/README.md#re-mote)
-    * [Configuration](basics/README.md#re-mote/Configuration)
-    * [Keys](basics/README.md#re-mote/Keys)
+  * [Re-core](basics/re-core.adoc)
+    * [Setup](basics/re-core.adoc#_setup)
+    * [Templates](basics/re-core.adoc#_templates)
+    * [Configuration](basics/re-core.adoc#_configuration)
+  * [Re-mote](basics/re-mote.md)
+    * [Setup](basics/re-mote.md#Setup)
+    * [Configuration](basics/re-mote.md#Configuration)
+    * [Keys](basics/re-mote.md#Keys)
   * [Re-gent](basics/README.md#re-gent)
     * [Building](basics/README.md#re-gent/Building)
     * [Deploy](basics/README.md#re-gent/Deploy)
   * [Re-dock](basics/README.md#re-dock)
-     * [Setup](basics/README.md#re-dock/setup)
+    * [Compose](basics/README.md#re-dock/Compose)
+
+
+# In deapth
+
+* [Architecture](architecture/README.md)
+    * [Components](architecture/README.md#components)
+    * [Networking](architecture/README.md#networking)
+    * [Security](architecture/README.md#security)
