@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Setup · GitBook</title>
+        <title>Re-mote · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="./" />
+    <link rel="next" href="re-mote.html" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="re-core.html" />
     
 
     </head>
@@ -154,7 +154,7 @@
         
         
     
-        <li class="chapter active" data-level="2.1" data-path="./">
+        <li class="chapter " data-level="2.1" data-path="./">
             
                 <a href="./">
             
@@ -239,7 +239,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3" data-path="re-mote.html">
+        <li class="chapter active" data-level="2.1.3" data-path="re-mote.html">
             
                 <a href="re-mote.html">
             
@@ -474,7 +474,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Setup</a>
+        <a href=".." >Re-mote</a>
     </h1>
 </div>
 
@@ -489,21 +489,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="prerequisites">Prerequisites</h1>
-<p>Re-ops is pretty easy to get started with (its main requirements are Java and Lein) still for the full feature set make sure to have:</p>
-<ul>
-<li>OpenJDK 8 with JCE enabled.</li>
-<li><a href="https://leiningen.org/" target="_blank">lein</a>.</li>
-<li>rng-tools package for increased entropy under Linux (Ubuntu).</li>
-</ul>
-<p>Re-ops uses the ELK stack for persistent storage and visualization of data:</p>
-<ul>
-<li>Elasticsearch 5.6.x for persisting results and metrics</li>
-<li>Grafana for viewing metrics</li>
-<li>Kibana for viewing results and failures</li>
-</ul>
-<p>While its not a hard requirement (Re-ops can work fine without it) the two complement each other very well.</p>
-<p>Check <a href="basics/README.md#re-gent">Re-dock</a> for a quick docker setup of the ELK stack.</p>
+                                <h2 id="setup">Setup</h2>
+<p>Cloning the git repo and launching the repl gets us done with the setup part:</p>
+<pre><code class="lang-clojure">$ git clone git@github.com:re-ops/re-mote.git
+$ cd re-mote
+$ lein repl
+[re-mote]&#x3BB;: (go)
+nil
+[re-mote]&#x3BB;: (def sandbox (Hosts. {:user &quot;vagrant&quot;} [&quot;192.168.2.28&quot; &quot;192.168.2.26&quot; &quot;192.168.2.27&quot;]))
+
+[re-mote]&#x3BB;: (listing sandbox)
+
+Run summary:
+
+   &#x2714; 192.168.2.28
+   &#x2714; 192.168.2.27
+   &#x2714; 192.168.2.26
+</code></pre>
+<h2 id="configuration">Configuration</h2>
+<pre><code class="lang-bash">$ cp config/re-mote.edn ~/.re-mote.edn
+</code></pre>
+<p>The configuration file is pretty much self explanatory:</p>
+<pre><code class="lang-clojure">{
+  <span class="hljs-symbol">:smtp</span> {
+     <span class="hljs-symbol">:host</span> <span class="hljs-string">&quot;smtp.gmail.com&quot;</span>
+     <span class="hljs-symbol">:user</span> <span class="hljs-string">&quot;&quot;</span>
+     <span class="hljs-symbol">:pass</span> <span class="hljs-string">&quot;&quot;</span>
+     <span class="hljs-symbol">:ssl</span> <span class="hljs-symbol">:yes!!!11</span>
+  }
+
+  <span class="hljs-symbol">:es</span> {
+    <span class="hljs-symbol">:server</span> <span class="hljs-string">&quot;http://127.0.0.1:9200&quot;</span>
+    <span class="hljs-symbol">:index</span> <span class="hljs-string">&quot;re-mote&quot;</span>
+    <span class="hljs-symbol">:user</span> <span class="hljs-string">&quot;elastic&quot;</span>
+    <span class="hljs-symbol">:pass</span> <span class="hljs-string">&quot;changeme&quot;</span>
+  }
+}
+</code></pre>
+<h2 id="keys">Keys</h2>
+<p>Re-mote uses SSH as the base band for performing remote operations, deploying Re-gent and distributing CurveMQ keys.</p>
+<p>In order to deploy the ssh-keys to a single machine:</p>
+<pre><code class="lang-bash">$ ssh-copy-id user@host
+</code></pre>
+<p>If you are using a configuration management tool (like Puppet) you can add your key to the /home/re-ops/.ssh/authorized_keys file.</p>
+<p>Once last option is to bake in the key into the image that will be used by Re-core so that each new VM instance will have the key.</p>
 
                                 
                                 </section>
@@ -531,12 +560,12 @@
 
             
                 
-                <a href="../#abstractions" class="navigation navigation-prev " aria-label="Previous page: Abstractions">
+                <a href="re-core.html#_configuration" class="navigation navigation-prev " aria-label="Previous page: Configuration">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="./#prerequisites" class="navigation navigation-next " aria-label="Next page: Perquisites">
+                <a href="re-mote.html#setup" class="navigation navigation-next " aria-label="Next page: Setup">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -547,7 +576,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Setup","level":"2.1","depth":1,"next":{"title":"Perquisites","level":"2.1.1","depth":2,"anchor":"#prerequisites","path":"basics/README.md","ref":"basics/README.md#prerequisites","articles":[]},"previous":{"title":"Abstractions","level":"1.1.3","depth":2,"anchor":"#abstractions","path":"README.md","ref":"README.md#abstractions","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"basics/README.md","mtime":"2018-02-28T21:18:04.425Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-01T22:58:05.843Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Re-mote","level":"2.1.3","depth":2,"next":{"title":"Setup","level":"2.1.3.1","depth":3,"anchor":"#setup","path":"basics/re-mote.md","ref":"basics/re-mote.md#setup","articles":[]},"previous":{"title":"Configuration","level":"2.1.2.3","depth":3,"anchor":"#_configuration","path":"basics/re-core.adoc","ref":"basics/re-core.adoc#_configuration","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"basics/re-mote.md","mtime":"2018-03-01T23:01:37.703Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-01T22:58:05.843Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
