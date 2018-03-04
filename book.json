@@ -1,0 +1,13 @@
+{
+  "root": ".",
+  "plugins": ["editlink", "github", "highlight"],
+  "pluginsConfig": {
+    "editlink": {
+      "base": "https://github.com/re-ops/re-dock/tree/master",
+      "label": "Edit This Page"
+    },
+    "github": {
+      "url": "https://github.com/re-ops/re-dock"
+    }
+  }
+}
