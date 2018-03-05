@@ -14,9 +14,9 @@ Most (if not all) configuration management tools currently are static in nature,
 
 ## Why Clojure
 
-Re-ops mixes a number of tools, from configuration management (Puppet/Chef) to remote automation (Ansible/Fabric/Capistrano/Mcollective) to data collection systems (promteus, collectd etc..) to orchestration (Forman).
+Re-ops enables the functionality of multiple tools, from configuration management and remote automation to data collection and VM orchestration.
 
-The downside to this approach is that they need to re-invent:
+In most cases existing tools need to re-invent:
 
 * Namespaces, a way of dividing the code into components.
 * Composition, how you compose reusable code.
@@ -26,7 +26,11 @@ The downside to this approach is that they need to re-invent:
 By using Clojure we gain a lot those things for free:
 
 * Namespace packaging come for free.
-* Composotion is first class (using functional composition, protocols etc..)
+* Composition is first class (using functional composition, protocols etc..)
+* Packaging is granted by using the JVM.
+* We can use any JVM library (or write our own) to integrate with other components.
+
+But the biggest advantage is the that Clojure is really geared toward processing, transforming and analysing data, which is abundant available when dealing with systems.
 
 ## Abstractions
 

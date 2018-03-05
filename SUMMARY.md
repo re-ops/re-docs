@@ -17,14 +17,15 @@
     * [Setup](basics/re-mote.md#setup)
     * [Configuration](basics/re-mote.md#configuration)
     * [Keys](basics/re-mote.md#keys)
-  * [Re-gent](basics/README.md#re-gent)
-    * [Building](basics/re-gent.md/building)
-    * [Deploy](basics/re-gent.md/deploy)
-  * [Re-dock](basics/README.md#re-dock)
-    * [Compose](basics/README.md#re-dock/Compose)
+  * [Re-gent](basics/re-gent.md)
+    * [Build](basics/re-gent.md#build)
+    * [Deploy](basics/re-gent.md#deploy)
+  * [Re-dock](basics/re-dock.md)
+    * [Run](basics/re-dock.md#run)
+    * [Dashboards](basics/re-dock.md#dashboards)
 
 
-# In deapth
+# In depth
 
 * [Architecture](architecture/README.md)
     * [Components](architecture/README.md#components)
