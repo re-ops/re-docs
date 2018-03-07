@@ -6,18 +6,18 @@ Just like the abstractions that we use the components that Re-ops is made out of
 
 # Networking
 
-Re-mote and Re-gent are the main components that utilize the network due to their role, two network protocols are used:
+Re-mote and Re-gent use two network protocols:
 
 * SSH, the secure shell protocol, usually using port 22
 * ZeroMQ, a socket protocol on top of TCP that include PUB/SUB, Mesh and other patterns built in.
 
-The ZeroMQ server port is dynamically picked (from the 8080-9000 range) on Re-mote side and agents connect back to that port (the deploy workflow places that in so you don't need to track it).
+The ZeroMQ server port is dynamically picked (from the 8080-9000 range) on Re-mote side and agents connect back to that port (the deploy workflow sets it automatically on the agent).
 
-One has to make sure that the firewall port is open, still in most environments the port is mostly constant.
+Note: make sure that on the server firewall the incoming port is open.
 
 ## Security
 
-Re-mote makes use of SSH RSA keys and CurveMQ keys (for Re-gent), SSH is considered the secure base band on which both Re-gent and its CurveMQ keys are distributed.
+Re-mote makes use of SSH RSA keys and ZeroMQ CurveMQ keys (for Re-gent), SSH is considered the secure base band on which both Re-gent and its CurveMQ keys are distributed.
 
 
 ```clojure
@@ -34,8 +34,8 @@ Re-mote makes use of SSH RSA keys and CurveMQ keys (for Re-gent), SSH is conside
 
 ```
 
-This scheme relies heavily on the security of SSH and that of CurveMQ, no external security auditing was taken place on the implementation.
+This scheme relies heavily on the security of SSH and that of CurveMQ, no external security auditing has taken place on Re-ops but the use of existing and vetted protocols should provide reasonable guarantees.
 
-Still under LAN use or remotely over a VPN its believed to be secure enough, any reported security issue will be given high priority in fixing and support time, please submit those under the project github page.
+Any reported security issue will be given high priority in fixing and support time, please submit those under the project [Re-mote](https://github.com/re-ops/re-mote) page.
 
 

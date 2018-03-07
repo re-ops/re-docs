@@ -45,6 +45,11 @@ Run summary:
 [#re_mote.repl.base.Hosts {:auth {:user "vagrant"} :hosts ("re-a" "re-e")}
  {:failure {} :hosts ("re-a" "re-e") :success [{:code 0 :host "re-a" :uuid "d2687d896054430ea84df44ae54d5b92"} {:code 0 :host "re-e" :uuid "d52e9260043c4eb787526eaebba16c11"}]}]
 
+```
+
+Once the agents have started and registered successfuly you can list them by running:
+
+```clojure
 [re-mote]λ: (registered-hosts)
                 re-a   000A-0019
                 re-e   0000-001B
@@ -52,8 +57,11 @@ nil
 
 ```
 
-Once the agents have started and registered successfuly you can list them by running:
+Using the automated method should result with .curve folder that contains the server and client public keys and the client secret key:
 
-```clojure
-
+```bash
+$ ls ~/.curve
+ client-private.key  client-public.key  server-public.key
 ```
+
+Note: You should never copy or expose server-private.key to your clients.

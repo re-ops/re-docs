@@ -4,8 +4,8 @@ Re-ops is a Clojure based live REPL environment for performing VM orchestration 
 
 Its main components include:
 
-1. Re-core, for orchestration of VM's.
-2. Re-mote, for performing remote operations.
+1. Re-core, orchestration of Virtual and Physical machines.
+2. Re-mote, performing remote operations over SSH and ZeroMQ.
 3. Re-gent, an agent for running distributed Clojure functions.
 
 ## Motivation
@@ -14,7 +14,7 @@ Most (if not all) configuration management tools currently are static in nature,
 
 ## Why Clojure
 
-Re-ops enables the functionality of multiple tools, from configuration management and remote automation to data collection and VM orchestration.
+Re-ops encompasses the functionality of multiple tools, from configuration management and remote automation to data collection and VM orchestration.
 
 In most cases existing tools need to re-invent:
 

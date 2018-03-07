@@ -27,6 +27,12 @@
 
 # In depth
 
+* [Operation](operation/README.md)
+    * [Reloaded](operation/README.md#reloaded)
+    * [Re-core](operation/README.md#re-core)
+    * [Re-mote](operation/README.md#re-mote)
+      * [Functions](operation/README.md#functions)
+    * [Scheduling](operation/README.md#schdeule)
 * [Architecture](architecture/README.md)
     * [Components](architecture/README.md#components)
     * [Networking](architecture/README.md#networking)
