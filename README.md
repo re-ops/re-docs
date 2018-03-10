@@ -10,7 +10,7 @@ Its main components include:
 
 ## Motivation
 
-Most (if not all) configuration management tools currently are static in nature, you write you code deploy it and apply (rinse and repeat),still our live environments change rapidly and having this cycle in place really slows our reaction time down, Re-ops is a re-take on how remote operations would look like when using a live REPL to drive them, Re-ops main abstractions include pipelines and operations that are easy to compose since they are plain functions.
+Most (if not all) configuration management tools currently are static in nature, you write you code deploy it and apply (rinse and repeat), still our live environments change rapidly and having this cycle in place really slows our reaction time down, Re-ops is a re-take on how remote operations would look like when using a live REPL to drive them, Re-ops main abstractions include pipelines and operations that are easy to compose since they are plain functions.
 
 ## Why Clojure
 

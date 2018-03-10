@@ -23,16 +23,20 @@
   * [Re-dock](basics/re-dock.md)
     * [Run](basics/re-dock.md#run)
     * [Dashboards](basics/re-dock.md#dashboards)
+  * [Re-pack](basics/re-pack.md)
+    * [Build](basics/re-pack.md#build)
+    * [Deploy](basics/re-pack.md#deploy)
 
 
 # In depth
 
-* [Operation](operation/README.md)
-    * [Reloaded](operation/README.md#reloaded)
-    * [Re-core](operation/README.md#re-core)
-    * [Re-mote](operation/README.md#re-mote)
-      * [Functions](operation/README.md#functions)
-    * [Scheduling](operation/README.md#schdeule)
+* [Usage](usage/README.md)
+    * [Reloaded](usage/README.md#reloaded)
+    * [Re-core](usage/README.md#re-core)
+    * [Re-mote](usage/README.md#re-mote)
+      * [Functions](usage/README.md#functions)
+    * [Scheduling](usage/README.md#schdeule)
+
 * [Architecture](architecture/README.md)
     * [Components](architecture/README.md#components)
     * [Networking](architecture/README.md#networking)

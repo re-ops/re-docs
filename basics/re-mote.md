@@ -1,3 +1,7 @@
+# Intro
+
+Setting up Re-mote does not take much, most of the work is making sure that an SSH key is deployed to your remote machines ([Re-pack](re-pack.md) is one easy way of doing so for VM's).
+
 ## Setup
 
 Cloning the git repo and launching the repl gets us done with the setup part:

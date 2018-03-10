@@ -1,3 +1,7 @@
+= Intro
+
+Setting up Re-core is pretty easy, most of the work is making sure you have VM templates it can use, check Re-pack on how to do just that.
+
 == Setup
 
 Is easy to get going by cloning the code and launching the REPL:
@@ -13,7 +17,7 @@ nil
 
 == Templates
 
-Re-core clones templates in order to create new VM instances, we use [Re-pack](https://github.com/re-ops/re-pack) to create our templates, which contain the minimal setup for perfuming initial configuration and data collection.
+Re-core clones templates in order to create new VM instances, we use [Re-pack](re-pack.html) to create our templates, which contain the minimal setup for perfuming initial configuration and data collection.
 
 * re-ops user for remote access management.
 * An authorized ssh-key (for automated access)

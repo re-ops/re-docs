@@ -1,13 +1,13 @@
-# Operation
+# Usage
 
 In this section we will cover the basic workflows when using Re-mote and Re-core, you will find that there is a clear convention to both of them and the follow similar guidelines:
 
 * Use simple functions and protocols where possible (also nice for auto completion and composability).
 * Create separate REPL instance for Re-mote and one for Re-core.
-* Use an editor attached to each REPL, when making changes use the [reloaded](operating/README.md#reloading) workflow or re-eval code (when possible).
+* Use an editor attached to each REPL, when making changes use the [Reloaded](operating/README.md#reloading) workflow or re-eval code (when possible).
 
 ## Reloaded
-One of the nicest things the REPL gives us is immediate feedback, we enter a command and get feedback, but the REPL is also a live environment meaning that we can also change our code on the fly.
+One of the nicest things that the REPL provides us is immediate feedback, we enter a command and get feedback, but the REPL is also a live environment meaning that we can also change our code on the fly.
 
 Each time we start our session we run:
 
@@ -203,3 +203,4 @@ Adding new libraries is pretty simple:
 * Build the re-gent binary using bin/binary.sh
 * Deploy re-gent to the machines using the deploy workflow
 
+# Scheduling
