@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Re-mote · GitBook</title>
+        <title>Re-pack · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="re-mote.html" />
+    <link rel="next" href="re-pack.html" />
     
     
-    <link rel="prev" href="re-core.html" />
+    <link rel="prev" href="re-dock.html" />
     
 
     </head>
@@ -239,7 +239,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.1.3" data-path="re-mote.html">
+        <li class="chapter " data-level="2.1.3" data-path="re-mote.html">
             
                 <a href="re-mote.html">
             
@@ -387,7 +387,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.6" data-path="re-pack.html">
+        <li class="chapter active" data-level="2.1.6" data-path="re-pack.html">
             
                 <a href="re-pack.html">
             
@@ -622,7 +622,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Re-mote</a>
+        <a href=".." >Re-pack</a>
     </h1>
 </div>
 
@@ -638,51 +638,35 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="intro">Intro</h1>
-<p>Setting up Re-mote does not take much, most of the work is making sure that an SSH key is deployed to your remote machines (<a href="re-pack.html">Re-pack</a> is one easy way of doing so for VM&apos;s).</p>
-<h2 id="setup">Setup</h2>
-<p>Cloning the git repo and launching the repl gets us done with the setup part:</p>
-<pre><code class="lang-clojure">$ git clone git@github.com:re-ops/re-mote.git
-$ cd re-mote
-$ lein repl
-[re-mote]&#x3BB;: (go)
-nil
-[re-mote]&#x3BB;: (def sandbox (Hosts. {:user &quot;vagrant&quot;} [&quot;192.168.2.28&quot; &quot;192.168.2.26&quot; &quot;192.168.2.27&quot;]))
+<p>Re-pack contains a collection of packer templates for creating Re-core ready images under AWS, Digitalocean and KVM.</p>
+<h2 id="build">Build</h2>
+<p>Make sure to install the latest <a href="packer.com">Packer</a> and run:</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># build Ubuntu 15.04 AMI</span>
+$ <span class="hljs-built_in">cd</span> src/aws/ubuntu-16.04
+$ packer build  -var <span class="hljs-string">&apos;aws_access_key=&lt;access-key&gt;&apos;</span> -var <span class="hljs-string">&apos;aws_secret_key=&lt;secret-key&gt;&apos;</span> template.json
 
-[re-mote]&#x3BB;: (listing sandbox)
+<span class="hljs-comment"># build Ubuntu 16.04 Digitalocean image</span>
+$ <span class="hljs-built_in">cd</span> src/digital/ubuntu-16.04
+$ packer build -only=digitalocean -var <span class="hljs-string">&apos;api_token=&lt;your token&gt;&apos;</span> template.json
 
-Run summary:
-
-   &#x2714; 192.168.2.28
-   &#x2714; 192.168.2.27
-   &#x2714; 192.168.2.26
+<span class="hljs-comment"># build Ubuntu 16.04 KVM image</span>
+$ <span class="hljs-built_in">cd</span> src/kvm
+$ packer build -var <span class="hljs-string">&apos;user=&lt;your user&gt;&apos;</span> -var <span class="hljs-string">&apos;password=&lt;your pass&gt;&apos;</span> ubuntu-16.04-server-amd64.json
+<span class="hljs-comment"># or Ubuntu 16.04 desktop</span>
+$ packer build -var <span class="hljs-string">&apos;user=&lt;your user&gt;&apos;</span> -var <span class="hljs-string">&apos;password=&lt;your pass&gt;&apos;</span> ubuntu-16.04-desktop-amd64.json
 </code></pre>
-<h2 id="configuration">Configuration</h2>
-<pre><code class="lang-bash">$ cp config/re-mote.edn ~/.re-mote.edn
+<h2 id="deploy">Deploy</h2>
+<p>We need to deploy our templates only when creating KVM images, we do so by:</p>
+<pre><code class="lang-bash">$ cp output/ubuntu-16.04.3_puppet-4.10.8.img /var/lib/libvirt/images/
 </code></pre>
-<p>The configuration file is pretty much self explanatory:</p>
-<pre><code class="lang-clojure">{
-  <span class="hljs-symbol">:smtp</span> {
-     <span class="hljs-symbol">:host</span> <span class="hljs-string">&quot;smtp.gmail.com&quot;</span>
-     <span class="hljs-symbol">:user</span> <span class="hljs-string">&quot;&quot;</span>
-     <span class="hljs-symbol">:pass</span> <span class="hljs-string">&quot;&quot;</span>
-     <span class="hljs-symbol">:ssl</span> <span class="hljs-symbol">:yes!!!11</span>
-  }
-
-  <span class="hljs-symbol">:es</span> {
-    <span class="hljs-symbol">:server</span> <span class="hljs-string">&quot;http://127.0.0.1:9200&quot;</span>
-    <span class="hljs-symbol">:index</span> <span class="hljs-string">&quot;re-mote&quot;</span>
-    <span class="hljs-symbol">:user</span> <span class="hljs-string">&quot;elastic&quot;</span>
-    <span class="hljs-symbol">:pass</span> <span class="hljs-string">&quot;changeme&quot;</span>
-  }
-}
-</code></pre>
-<h2 id="keys">Keys</h2>
-<p>Re-mote uses SSH as the base band for performing remote operations, deploying Re-gent and distributing CurveMQ keys.</p>
-<p>In order to deploy the ssh-keys to a single machine:</p>
-<pre><code class="lang-bash">$ ssh-copy-id user@host
-</code></pre>
-<p>If you are using a configuration management tool (like Puppet) you can add your key to the /home/re-ops/.ssh/authorized_keys file.</p>
-<p>Once last option is to bake in the key into the image that will be used by Re-core so that each new VM instance will have the key.</p>
+<p>Once that done create a new VM instance from the IMG file we just copied:</p>
+<p> <img src="../img/template.png" alt="kvm-template"></p>
+<p>This VM instance will be the source template from which new VM instances are created.</p>
+<p>Notes:</p>
+<ul>
+<li>Make sure to add a bridged networking interface in addition to the NAT interface it already has.</li>
+<li>Re-core uses the following naming convention for images/templates {os-name}-{os-version}_puppet-{puppet-version}.</li>
+</ul>
 
                                 
                                 </section>
@@ -710,12 +694,12 @@ Run summary:
 
             
                 
-                <a href="re-core.html#_configuration" class="navigation navigation-prev " aria-label="Previous page: Configuration">
+                <a href="re-dock.html#dashboards" class="navigation navigation-prev " aria-label="Previous page: Dashboards">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="re-mote.html#setup" class="navigation navigation-next " aria-label="Next page: Setup">
+                <a href="re-pack.html#build" class="navigation navigation-next " aria-label="Next page: Build">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -726,7 +710,7 @@ Run summary:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Re-mote","level":"2.1.3","depth":2,"next":{"title":"Setup","level":"2.1.3.1","depth":3,"anchor":"#setup","path":"basics/re-mote.md","ref":"basics/re-mote.md#setup","articles":[]},"previous":{"title":"Configuration","level":"2.1.2.3","depth":3,"anchor":"#_configuration","path":"basics/re-core.adoc","ref":"basics/re-core.adoc#_configuration","articles":[]},"dir":"ltr"},"config":{"plugins":["editlink","github","highlight","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/re-ops/re-dock"},"editlink":{"label":"Edit This Page","multilingual":false,"base":"https://github.com/re-ops/re-dock/tree/master"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"basics/re-mote.md","mtime":"2018-03-07T21:39:13.289Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-09T06:57:33.419Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Re-pack","level":"2.1.6","depth":2,"next":{"title":"Build","level":"2.1.6.1","depth":3,"anchor":"#build","path":"basics/re-pack.md","ref":"basics/re-pack.md#build","articles":[]},"previous":{"title":"Dashboards","level":"2.1.5.2","depth":3,"anchor":"#dashboards","path":"basics/re-dock.md","ref":"basics/re-dock.md#dashboards","articles":[]},"dir":"ltr"},"config":{"plugins":["editlink","github","highlight","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/re-ops/re-dock"},"editlink":{"label":"Edit This Page","multilingual":false,"base":"https://github.com/re-ops/re-dock/tree/master"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"basics/re-pack.md","mtime":"2018-03-09T07:00:20.175Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-09T06:57:33.419Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

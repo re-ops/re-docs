@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Architecture · GitBook</title>
+        <title>Usage · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -60,7 +60,7 @@
     <link rel="next" href="./" />
     
     
-    <link rel="prev" href="../usage/" />
+    <link rel="prev" href="../basics/re-pack.html" />
     
 
     </head>
@@ -444,9 +444,9 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="../usage/">
+        <li class="chapter active" data-level="3.1" data-path="./">
             
-                <a href="../usage/">
+                <a href="./">
             
                     
                     Usage
@@ -458,9 +458,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.1.1" data-path="../usage/">
+        <li class="chapter " data-level="3.1.1" data-path="./">
             
-                <a href="../usage/#reloaded">
+                <a href="./#reloaded">
             
                     
                     Reloaded
@@ -471,9 +471,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.2" data-path="../usage/">
+        <li class="chapter " data-level="3.1.2" data-path="./">
             
-                <a href="../usage/#re-core">
+                <a href="./#re-core">
             
                     
                     Re-core
@@ -484,9 +484,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.3" data-path="../usage/">
+        <li class="chapter " data-level="3.1.3" data-path="./">
             
-                <a href="../usage/#re-mote">
+                <a href="./#re-mote">
             
                     
                     Re-mote
@@ -498,9 +498,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.1.3.1" data-path="../usage/">
+        <li class="chapter " data-level="3.1.3.1" data-path="./">
             
-                <a href="../usage/#functions">
+                <a href="./#functions">
             
                     
                     Functions
@@ -516,9 +516,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.4" data-path="../usage/">
+        <li class="chapter " data-level="3.1.4" data-path="./">
             
-                <a href="../usage/#schdeule">
+                <a href="./#schdeule">
             
                     
                     Scheduling
@@ -534,9 +534,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.2" data-path="./">
+        <li class="chapter " data-level="3.2" data-path="../architecture/">
             
-                <a href="./">
+                <a href="../architecture/">
             
                     
                     Architecture
@@ -548,9 +548,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.2.1" data-path="./">
+        <li class="chapter " data-level="3.2.1" data-path="../architecture/">
             
-                <a href="./#components">
+                <a href="../architecture/#components">
             
                     
                     Components
@@ -561,9 +561,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.2" data-path="./">
+        <li class="chapter " data-level="3.2.2" data-path="../architecture/">
             
-                <a href="./#networking">
+                <a href="../architecture/#networking">
             
                     
                     Networking
@@ -574,9 +574,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.3" data-path="./">
+        <li class="chapter " data-level="3.2.3" data-path="../architecture/">
             
-                <a href="./#security">
+                <a href="../architecture/#security">
             
                     
                     Security
@@ -622,7 +622,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Architecture</a>
+        <a href=".." >Usage</a>
     </h1>
 </div>
 
@@ -637,30 +637,157 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="components">Components</h1>
-<p>Just like the abstractions that we use the components that Re-ops is made out of are composable and detachable, you can use Re-core or Re-mote or both, you can add Re-gent or not, depending on your requirements.</p>
-<h1 id="networking">Networking</h1>
-<p>Re-mote and Re-gent use two network protocols:</p>
+                                <h1 id="usage">Usage</h1>
+<p>In this section we will cover the basic workflows when using Re-mote and Re-core, you will find that there is a clear convention to both of them and the follow similar guidelines:</p>
 <ul>
-<li>SSH, the secure shell protocol, usually using port 22</li>
-<li>ZeroMQ, a socket protocol on top of TCP that include PUB/SUB, Mesh and other patterns built in.</li>
+<li>Use simple functions and protocols where possible (also nice for auto completion and composability).</li>
+<li>Create separate REPL instance for Re-mote and one for Re-core.</li>
+<li>Use an editor attached to each REPL, when making changes use the <a href="operating/README.md#reloading">Reloaded</a> workflow or re-eval code (when possible).</li>
 </ul>
-<p>The ZeroMQ server port is dynamically picked (from the 8080-9000 range) on Re-mote side and agents connect back to that port (the deploy workflow sets it automatically on the agent).</p>
-<p>Note: make sure that on the server firewall the incoming port is open.</p>
-<h2 id="security">Security</h2>
-<p>Re-mote makes use of SSH RSA keys and ZeroMQ CurveMQ keys (for Re-gent), SSH is considered the secure base band on which both Re-gent and its CurveMQ keys are distributed.</p>
-<pre><code class="lang-clojure"><span class="hljs-comment">; re-gent</span>
-(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> #<span class="hljs-comment">^{:category :re-gent}</span> deploy
-  <span class="hljs-string">&quot;deploy re-gent and setup .curve remotely:
-     (deploy sandbox \&quot;path/to/re-gent\&quot;)&quot;</span>
-  [{<span class="hljs-symbol">:keys</span> [auth] <span class="hljs-symbol">:as</span> hs} bin]
-  (<span class="hljs-name"><span class="hljs-builtin-name">let</span></span> [{<span class="hljs-symbol">:keys</span> [user]} auth home (<span class="hljs-name">&lt;&lt;</span> <span class="hljs-string">&quot;/home/~{user}&quot;</span>) dest (<span class="hljs-name">&lt;&lt;</span> <span class="hljs-string">&quot;~{home}/.curve&quot;</span>)]
-    (<span class="hljs-name">run</span> (<span class="hljs-name">mkdir</span> hs dest <span class="hljs-string">&quot;-p&quot;</span>) | (<span class="hljs-name">scp</span> <span class="hljs-string">&quot;.curve/server-public.key&quot;</span> dest) | (<span class="hljs-name">pretty</span> <span class="hljs-string">&quot;curve copy&quot;</span>))
-    (<span class="hljs-name">run</span> (<span class="hljs-name">kill-agent</span> hs) | (<span class="hljs-name">pretty</span> <span class="hljs-string">&quot;kill agent&quot;</span>))
-    (<span class="hljs-name">run</span> (<span class="hljs-name">scp</span> hs bin home) | (<span class="hljs-name">pick</span> successful) | (<span class="hljs-name">start-agent</span> home) | (<span class="hljs-name">pretty</span> <span class="hljs-string">&quot;scp&quot;</span>))))
+<h2 id="reloaded">Reloaded</h2>
+<p>One of the nicest things that the REPL provides us is immediate feedback, we enter a command and get feedback, but the REPL is also a live environment meaning that we can also change our code on the fly.</p>
+<p>Each time we start our session we run:</p>
+<pre><code class="lang-bash">$ lein repl
+[re-mote]&#x3BB;: (go)
+nil
 </code></pre>
-<p>This scheme relies heavily on the security of SSH and that of CurveMQ, no external security auditing has taken place on Re-ops but the use of existing and vetted protocols should provide reasonable guarantees.</p>
-<p>Any reported security issue will be given high priority in fixing and support time, please submit those under the project <a href="https://github.com/re-ops/re-mote" target="_blank">Re-mote</a> page.</p>
+<p>The go function is defined in dev/user.clj file, it starts up all of our components by running setup and start:</p>
+<pre><code class="lang-clojure"><span class="hljs-comment">; Re-mote setup and start procedure</span>
+(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> setup []
+  (<span class="hljs-name">k/create-server-keys</span> <span class="hljs-string">&quot;.curve&quot;</span>)
+  (<span class="hljs-name">repl/setup</span>)
+  (<span class="hljs-name">es/setup</span>))
+
+(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> start [_]
+  (<span class="hljs-name">es/start</span>)
+  (<span class="hljs-name">web/start</span>)
+  (<span class="hljs-name">zero/start</span>))
+</code></pre>
+<p>We can also stop our components by running:</p>
+<pre><code class="lang-clojure">[re-mote]&#x3BB;: (stop)
+</code></pre>
+<p>When making rapid changes its easier to stop and start in once go:</p>
+<pre><code class="lang-clojure">[re-mote]&#x3BB;: (reset)
+</code></pre>
+<p>Note: When changing a single function its better to re-eval it before running reset (reloading a broken ns will fail and you will need to restart the REPL).</p>
+<h2 id="re-core">Re-core</h2>
+<p>In Re-core we create and manage systems (VM&apos;s, pyhsical hosts etc..), in order to create them we use a fluent functional interface that includes presets like instance size, volumes and types:</p>
+<pre><code class="lang-clojure">
+[re-core]&#x3BB;: (create kvm-small vol-128G :redis 5) ; Create 5 small redis instances with a 128G Volume
+
+Running create summary:
+
+  &#x2714; redis-a12af7a0d2
+  &#x2714; redis-d55950759f
+  &#x2714; redis-a9347f072f
+  &#x2714; redis-42bd6672e3
+  &#x2714; redis-7165e5c87b
+</code></pre>
+<p>Once we have instances running we can list them:</p>
+<pre><code class="lang-clojure">[re-core]&#x3BB;: (list)
+              redis-d55950759f  AWF_17ZSdVoDKuXB7mtt       redis     ubuntu-16.04  192.168.122.142
+              redis-7165e5c87b  AWF_17bgdVoDKuXB7mt9       redis     ubuntu-16.04  192.168.122.209
+              redis-a12af7a0d2  AWF_17X2dVoDKuXB7mtl       redis     ubuntu-16.04  192.168.122.147
+              redis-42bd6672e3  AWF_17asdVoDKuXB7mt4       redis     ubuntu-16.04  192.168.122.196
+              redis-a9347f072f  AWF_17aCdVoDKuXB7mt0       redis     ubuntu-16.04  192.168.122.14
+</code></pre>
+<p>Note: the second column contains unique auto generated ids (AWF_17..).</p>
+<p>The main workflows on VM&apos;s (systems in Re-core lingo) are found under src/re_core/repl.clj, we can operate on all running instances by running:</p>
+<pre><code class="lang-clojure">[re-core]&#x3BB;: (halt)
+
+Running halt summary:
+
+  &#x2714; redis-d55950759f
+  &#x2714; redis-7165e5c87b
+  &#x2714; redis-a12af7a0d2
+  &#x2714; redis-42bd6672e3
+  &#x2714; redis-a9347f072f
+
+[re-core]&#x3BB;: (start) ; start all
+
+Running start summary:
+
+  &#x2714; redis-d55950759f
+  &#x2714; redis-7165e5c87b
+  &#x2714; redis-a12af7a0d2
+  &#x2714; redis-42bd6672e3
+  &#x2714; redis-a9347f072f
+</code></pre>
+<p>Wofkflows take a filtering function, making it real easy to select the instances we operate on:</p>
+<pre><code class="lang-clojure">[re-core]&#x3BB;: (halt (by-type :redis))
+
+Running halt summary:
+
+  &#x2714; redis-d55950759f
+  &#x2714; redis-7165e5c87b
+  &#x2714; redis-a12af7a0d2
+  &#x2714; redis-42bd6672e3
+  &#x2714; redis-a9347f072f
+
+[re-core]&#x3BB;: (start (matching &quot;B7mtt&quot;)) ; select instance by SHA partial matching (git style)
+
+Running halt summary:
+
+  &#x2714; redis-d55950759f
+</code></pre>
+<p>Note: The default filtering function is ip which selects all the running instances (they have an ip addresset).</p>
+<h2 id="re-mote">Re-mote</h2>
+<p>Re-mote main abstraction is the Hosts type:</p>
+<pre><code class="lang-clojure">(<span class="hljs-name"><span class="hljs-builtin-name">def</span></span> sandbox (<span class="hljs-name">Hosts.</span> {<span class="hljs-symbol">:user</span> <span class="hljs-string">&quot;re-ops&quot;</span> <span class="hljs-symbol">:ssh-key</span> <span class="hljs-string">&quot;/home/foo/.ssh/id_rsa} [&quot;</span><span class="hljs-number">192.168</span>.2.28<span class="hljs-string">&quot; &quot;</span><span class="hljs-number">192.168</span>.2.26<span class="hljs-string">&quot; &quot;</span><span class="hljs-number">192.168</span>.2.27<span class="hljs-string">&quot;]))
+</span></code></pre>
+<p>It includes an authentication map (user and ssh key) and a list of hosts, protocols with different operations extend the Hosts type:</p>
+<pre><code class="lang-clojure"><span class="hljs-comment">; re-mote.repl.base</span>
+(<span class="hljs-name"><span class="hljs-builtin-name">defrecord</span></span> Hosts [auth hosts]
+  Shell
+  (<span class="hljs-name">ls</span> [this target flags]
+    [this (<span class="hljs-name">run-hosts</span> this (<span class="hljs-name">script</span> (<span class="hljs-string">&quot;ls&quot;</span> ~target ~flags)))])
+</code></pre>
+<p>Bundled operations range from package management to zfs operations like scrub and nmap port scanning.</p>
+<p>The operations are used within pipelines:</p>
+<pre><code class="lang-clojure">(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> listing [hs]
+  (<span class="hljs-name">run</span> (<span class="hljs-name">ls</span> hs <span class="hljs-string">&quot;/&quot;</span> <span class="hljs-string">&quot;-la&quot;</span>) | (<span class="hljs-name">pretty</span>)))
+</code></pre>
+<p>Running a workflow is simple as calling a functions:</p>
+<pre><code class="lang-clojure">[re-mote]&#x3BB;: (listing sandbox)
+
+Run summary:
+
+   &#x2714; 192.168.2.28
+   &#x2714; 192.168.2.27
+   &#x2714; 192.168.2.26
+</code></pre>
+<p>For a complete listing of workflows check the <a href="">cheatsheet</a>.</p>
+<h3 id="functions">Functions</h3>
+<p>Re-mote can send Clojure functions to Re-gent processes across our machine cluster, the functions are defined under re_mote/zero/functions.clj: </p>
+<pre><code class="lang-clojure">(<span class="hljs-name"><span class="hljs-builtin-name">ns</span></span> re-mote.zero.functions
+  (<span class="hljs-symbol">:require</span>
+   [clojure.java.shell <span class="hljs-symbol">:refer</span> [sh]]
+   [serializable.fn <span class="hljs-symbol">:as</span> s]
+   [me.raynes.fs <span class="hljs-symbol">:refer</span> (<span class="hljs-name">list-dir</span> tmpdir exists? file)]))
+
+
+<span class="hljs-comment">; Package manager</span>
+(<span class="hljs-name"><span class="hljs-builtin-name">def</span></span> <span class="hljs-comment">^{:doc &quot;update package manager&quot;}</span> pkg-update
+  (<span class="hljs-name">s/fn</span> []
+    (<span class="hljs-name"><span class="hljs-builtin-name">case</span></span> (<span class="hljs-name">os</span>)
+      <span class="hljs-symbol">:Ubuntu</span> (<span class="hljs-name">sh</span> <span class="hljs-string">&quot;sudo&quot;</span> <span class="hljs-string">&quot;apt&quot;</span> <span class="hljs-string">&quot;update&quot;</span>)
+      <span class="hljs-symbol">:FreeBSD</span> (<span class="hljs-name">sh</span> <span class="hljs-string">&quot;sudo&quot;</span> <span class="hljs-string">&quot;pkg&quot;</span> <span class="hljs-string">&quot;update&quot;</span>)
+      (<span class="hljs-name"><span class="hljs-builtin-name">throw</span></span> (<span class="hljs-name">ex-info</span> <span class="hljs-string">&quot;not supported&quot;</span> {<span class="hljs-symbol">:os</span> (<span class="hljs-name">os</span>)})))))
+</code></pre>
+<p>Functions may use any bundled Clojure and Java libraries like:</p>
+<ul>
+<li>me.raynes.fs for file system manipulation</li>
+<li>com.github.oshi for collecting OS/Hardware information.</li>
+<li>re-scan for running Nmap scanner.</li>
+</ul>
+<p>Adding new libraries is pretty simple:</p>
+<ul>
+<li>Add the library to both re-gent/project.clj and re-mote/project.clj.</li>
+<li>Import the required ns/classes into re-mote.zero.functions and re-gent.zero.functions </li>
+<li>Build the re-gent binary using bin/binary.sh</li>
+<li>Deploy re-gent to the machines using the deploy workflow</li>
+</ul>
+<h1 id="scheduling">Scheduling</h1>
 
                                 
                                 </section>
@@ -688,12 +815,12 @@
 
             
                 
-                <a href="../usage/#schdeule" class="navigation navigation-prev " aria-label="Previous page: Scheduling">
+                <a href="../basics/re-pack.html#deploy" class="navigation navigation-prev " aria-label="Previous page: Deploy">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="./#components" class="navigation navigation-next " aria-label="Next page: Components">
+                <a href="./#reloaded" class="navigation navigation-next " aria-label="Next page: Reloaded">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -704,7 +831,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Architecture","level":"3.2","depth":1,"next":{"title":"Components","level":"3.2.1","depth":2,"anchor":"#components","path":"architecture/README.md","ref":"architecture/README.md#components","articles":[]},"previous":{"title":"Scheduling","level":"3.1.4","depth":2,"anchor":"#schdeule","path":"usage/README.md","ref":"usage/README.md#schdeule","articles":[]},"dir":"ltr"},"config":{"plugins":["editlink","github","highlight","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/re-ops/re-dock"},"editlink":{"label":"Edit This Page","multilingual":false,"base":"https://github.com/re-ops/re-dock/tree/master"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"architecture/README.md","mtime":"2018-03-05T21:33:05.231Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-09T06:57:33.419Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Usage","level":"3.1","depth":1,"next":{"title":"Reloaded","level":"3.1.1","depth":2,"anchor":"#reloaded","path":"usage/README.md","ref":"usage/README.md#reloaded","articles":[]},"previous":{"title":"Deploy","level":"2.1.6.2","depth":3,"anchor":"#deploy","path":"basics/re-pack.md","ref":"basics/re-pack.md#deploy","articles":[]},"dir":"ltr"},"config":{"plugins":["editlink","github","highlight","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/re-ops/re-dock"},"editlink":{"label":"Edit This Page","multilingual":false,"base":"https://github.com/re-ops/re-dock/tree/master"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"usage/README.md","mtime":"2018-03-09T07:01:48.947Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-09T06:57:33.419Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
