@@ -1,10 +1,10 @@
 = Intro
 
-Setting up Re-core is pretty easy, most of the work is making sure you have VM templates it can use, check Re-pack on how to do just that.
+Setting up Re-core is pretty easy, most of the work is making sure you have VM templates that it can use, check link:re-pack.html[Re-pack] on how to do just that.
 
 == Setup
 
-Is easy to get going by cloning the code and launching the REPL:
+Its easy to get going just clone the repo and launch the REPL:
 
 ```clojure
 $ git clone git@github.com:re-ops/re-core.git
@@ -15,15 +15,17 @@ $ lein repl
 nil
 ```
 
+Now head on to configuration and create VM templates.
+
 == Templates
 
-Re-core clones templates in order to create new VM instances, we use [Re-pack](re-pack.html) to create our templates, which contain the minimal setup for perfuming initial configuration and data collection.
+Re-core clones templates in order to create new VM instances, we use link:re-pack.html[Re-pack] to create our templates, which contain the minimal setup for required for Re-core to manage the instance:
 
 * re-ops user for remote access management.
-* An authorized ssh-key (for automated access)
+* authorized ssh-key (for automated access) under /home/re-ops/.ssh/authorized_keys
 * Configuration management tools (like Puppet 4.x) etc..
 
-Not all templates require the same setup so check the matching template.
+Not all templates require the same setup so check the matching hypervisors section for more info.
 
 
 == Configuration
@@ -34,8 +36,6 @@ The configuration holds the information on how to connect to different hyperviso
 $ cp data/resources/re-core.edn ~/.re-core.edn
 ```
 
-Follow the [guide](CONFIG.adoc) in order to add [KVM](CONFIG.adoc#kvm), [Digitalocean](CONFIG.adoc#digitalocean) and [AWS](CONFIG.adoc#aws).
-
 Any configuration change can be reflected immediately by:
 
 ```clojure
@@ -43,10 +43,10 @@ Any configuration change can be reflected immediately by:
 ```
 The configuration file is divided to the following sections:
 
-*   Re-core properties like: ports, log settings.
-*   Hypervisors where AWS, Openstack , Proxmox properties are set in matching sections.
+*   Re-core properties like: ports, log settings
+*   Hypervisors like AWS, KVM and Digitalocean
 *   Elasticsearch settings
-*   SSH settings, mainly the private key path used to connect to remote instances.
+*   SSH settings (key used to connect to remote instances)
 
 The Re-core section (situated on top) contains the configuration options of the server itself:
 ```clojure
@@ -62,6 +62,9 @@ The Re-core section (situated on top) contains the configuration options of the 
  :elasticsearch {
    :host "localhost"
    :port 9200
+   :user "elastic"
+   :pass "changeme"
+   :index "re-core"
  }
 
  :ssh {
@@ -79,7 +82,7 @@ The Re-core section (situated on top) contains the configuration options of the 
 .1+| ports
 | port
 | Standard http port
-| Used for non secured anonymous operations only
+| Used for endpoint, used reverse proxy to secure
 
 .2+| log
 | level
@@ -90,7 +93,7 @@ The Re-core section (situated on top) contains the configuration options of the 
 | Where the log file is store locally
 |
 
-.2+| elasticsearch
+.5+| elasticsearch
 | host
 | The host Elasticsearch is running on
 |
@@ -99,10 +102,24 @@ The Re-core section (situated on top) contains the configuration options of the 
 | http API port (9200 by default)
 |
 
+
+| user
+| Elasticsearch user name
+|
+
+| pass
+| Elasticsearch password
+|
+
+
+| index
+| The index name that re-core will use
+|
+
 .1+| ssh
 | private-key-path
-|
-| Used by re-core to perform setup tasks on newly created VM's
+| Private ssh key path
+| Used to perform remote tasks over ssh
 
 |===
 
@@ -110,7 +127,7 @@ The Re-core section (situated on top) contains the configuration options of the 
 
 === AWS
 
-AWS configuration goes under the hypervisor/aws section in the link:#overview[configuration] file:
+AWS configuration goes under the hypervisor/aws section in the link:re-core.html/_configuration[configuration] file:
 
 ```clojure
 {
@@ -179,7 +196,7 @@ link:https://www.digitalocean.com/[Digitalocean] is supported with the following
       :token ""
       :ssh-key ""
       :ostemplates {
-         :ubuntu-14.04  {:image "ubuntu-14-04-x64" :flavor :debian}
+         :ubuntu-16.04  {:image "ubuntu-16-04 :flavor :debian}
       }
      }
    }
@@ -196,14 +213,14 @@ link:https://www.digitalocean.com/[Digitalocean] is supported with the following
 |
 
 | ssh-key
-|
-| The ssh key id defined in Digitialocean for passwordless access to droplets.
+| SSH key id in Digitalocean UI
+| Used for password-less access to droplets.
 |
 
 | ostemplates
 |
 | Mapping from OS key to its Digitalocean image
-| Please see link:#re-pack[https://github.com/re-ops/re-pack] on how to create a template
+| Check link:re-pack.html[Re-pack] on how to create a template
 
 |===
 
@@ -226,19 +243,39 @@ link:http://www.linux-kvm.org/page/Main_Page[KVM] is supported with the followin
 }
 ```
 
+Note: we used libvirt over SSH (using key based auth).
+
 .KVM configuration
 |===
 |Section|Property|Description|Comments
 
-| nodes
-|
-| Mapping from id to ssh connection details
+.3+| nodes
+| username 
+| SSH user name
+| Add your ssh key to /home/{user}/.ssh/authorized_keys
+
+| host
+| KVM node host
 |
 
-| ostemplates
+| port
+| SSH port
+|
+
+3+.| ostemplates
 |
 | Mapping from OS key to its KVM template
-| Please see link:#re-pack[https://github.com/re-ops/re-pack] on how to create a template
+| Please see link:#setup#re-pack[Re-pack] on how to create a template
+
+
+| template
+| Template VM name
+| check link:re-pack.html#deploy[Deploy]
+
+| flavor
+| OS flavor of the template 
+| currently only :debian supported
+
 |===
 
 ==== KVM Libvirt
@@ -255,7 +292,7 @@ $ ssh-copy-id user@remote-kvm
 Another issue is that we can't deploy Re-core itself as a VM within an hypervisor that we would like to manage due to link:https://wiki.libvirt.org/page/TroubleshootMacvtapHostFail[networking limitations] imposed by KVM (install Re-core outside any of the managed hosts).
 
 
-=== Matrix
+=== Support Matrix
 
 Currently supported and verified systems that Re-core works with:
 
