@@ -183,7 +183,7 @@
     
         <li class="chapter " data-level="2.1.2" data-path="../setup/re-core.html">
             
-                <a href="../setup/re-core.html">
+                <a href="../setup/re-core.html#intro">
             
                     
                     Re-core
@@ -325,7 +325,7 @@
     
         <li class="chapter " data-level="2.1.3" data-path="../setup/re-mote.html">
             
-                <a href="../setup/re-mote.html">
+                <a href="../setup/re-mote.html#intro">
             
                     
                     Re-mote
@@ -383,7 +383,7 @@
     
         <li class="chapter " data-level="2.1.4" data-path="../setup/re-gent.html">
             
-                <a href="../setup/re-gent.html">
+                <a href="../setup/re-gent.html#intro">
             
                     
                     Re-gent
@@ -428,7 +428,7 @@
     
         <li class="chapter " data-level="2.1.5" data-path="../setup/re-dock.html">
             
-                <a href="../setup/re-dock.html">
+                <a href="../setup/re-dock.html#intro">
             
                     
                     Re-dock
@@ -473,7 +473,7 @@
     
         <li class="chapter " data-level="2.1.6" data-path="../setup/re-pack.html">
             
-                <a href="../setup/re-pack.html">
+                <a href="../setup/re-pack.html#intro">
             
                     
                     Re-pack
@@ -721,15 +721,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="usage">Usage</h1>
-<p>In this section we will cover the basic workflows when using Re-mote and Re-core, you will find that there is a clear convention to both of them and the follow similar guidelines:</p>
+                                <h1 id="intro">Intro</h1>
+<p>In this section we will cover the basic workflows when using Re-mote and Re-core, you will find that there is a clear convention to both and they follow similar principles:</p>
 <ul>
-<li>Use simple functions and protocols where possible (also nice for auto completion and composability).</li>
-<li>Create separate REPL instance for Re-mote and one for Re-core.</li>
-<li>Use an editor attached to each REPL, when making changes use the <a href="operating/README.md#reloading">Reloaded</a> workflow or re-eval code (when possible).</li>
+<li>Prefer the Use simple functions and protocols (also nice for auto completion and composability)</li>
+<li>Separate REPL instance for Re-mote and one for Re-core (tough Re-core uses Re-mote)</li>
+<li>Use an editor attached to each REPL, re-eval changing code if possible</li>
+<li>When making large changes use the <a href="operating/README.md#reloading">Reloaded</a> workflow</li>
 </ul>
 <h2 id="reloaded">Reloaded</h2>
-<p>One of the nicest things that the REPL provides us is immediate feedback, we enter a command and get feedback, but the REPL is also a live environment meaning that we can also change our code on the fly.</p>
+<p>One of the nicest things that the REPL provides is immediate feedback, the REPL is also a live environment that can change on the fly.</p>
 <p>Each time we start our session we run:</p>
 <pre><code class="lang-bash">$ lein repl
 [re-mote]&#x3BB;: (go)
@@ -747,15 +748,19 @@ nil
   (<span class="hljs-name">web/start</span>)
   (<span class="hljs-name">zero/start</span>))
 </code></pre>
-<p>We can also stop our components by running:</p>
+<p>stop components by running:</p>
 <pre><code class="lang-clojure">[re-mote]&#x3BB;: (stop)
 </code></pre>
-<p>When making rapid changes its easier to stop and start in once go:</p>
+<p>resets runs both stop and start in once go:</p>
 <pre><code class="lang-clojure">[re-mote]&#x3BB;: (reset)
 </code></pre>
-<p>Note: When changing a single function its better to re-eval it before running reset (reloading a broken ns will fail and you will need to restart the REPL).</p>
+<p>Note: </p>
+<ul>
+<li>When changing a single function its better to re-eval.</li>
+<li>Resetting a broken ns will fail and you will need to restart the REPL so its a good idea to re-eval first.</li>
+</ul>
 <h2 id="re-core">Re-core</h2>
-<p>In Re-core we create and manage systems (VM&apos;s, pyhsical hosts etc..), in order to create them we use a fluent functional interface that includes presets like instance size, volumes and types:</p>
+<p>Re-core enables us create and manage systems (VMs, physical hosts, containers), in order to create them we use a fluent functional interface that includes presets like instance size, volumes and types:</p>
 <pre><code class="lang-clojure">
 [re-core]&#x3BB;: (create kvm-small vol-128G :redis 5) ; Create 5 small redis instances with a 128G Volume
 
@@ -769,14 +774,14 @@ Running create summary:
 </code></pre>
 <p>Once we have instances running we can list them:</p>
 <pre><code class="lang-clojure">[re-core]&#x3BB;: (list)
-              redis-d55950759f  AWF_17ZSdVoDKuXB7mtt       redis     ubuntu-16.04  192.168.122.142
-              redis-7165e5c87b  AWF_17bgdVoDKuXB7mt9       redis     ubuntu-16.04  192.168.122.209
-              redis-a12af7a0d2  AWF_17X2dVoDKuXB7mtl       redis     ubuntu-16.04  192.168.122.147
-              redis-42bd6672e3  AWF_17asdVoDKuXB7mt4       redis     ubuntu-16.04  192.168.122.196
-              redis-a9347f072f  AWF_17aCdVoDKuXB7mt0       redis     ubuntu-16.04  192.168.122.14
+       redis-d55950759f  AWF_17ZSdVoDKuXB7mtt       redis     ubuntu-16.04  192.168.122.142
+       redis-7165e5c87b  AWF_17bgdVoDKuXB7mt9       redis     ubuntu-16.04  192.168.122.209
+       redis-a12af7a0d2  AWF_17X2dVoDKuXB7mtl       redis     ubuntu-16.04  192.168.122.147
+       redis-42bd6672e3  AWF_17asdVoDKuXB7mt4       redis     ubuntu-16.04  192.168.122.196
+       redis-a9347f072f  AWF_17aCdVoDKuXB7mt0       redis     ubuntu-16.04  192.168.122.14
 </code></pre>
 <p>Note: the second column contains unique auto generated ids (AWF_17..).</p>
-<p>The main workflows on VM&apos;s (systems in Re-core lingo) are found under src/re_core/repl.clj, we can operate on all running instances by running:</p>
+<p>The main workflows on VMs (systems in Re-core lingo) are found under src/re_core/repl.clj, we can operate on all running instances by running:</p>
 <pre><code class="lang-clojure">[re-core]&#x3BB;: (halt)
 
 Running halt summary:
@@ -797,7 +802,7 @@ Running start summary:
   &#x2714; redis-42bd6672e3
   &#x2714; redis-a9347f072f
 </code></pre>
-<p>Wofkflows take a filtering function, making it real easy to select the instances we operate on:</p>
+<p>All workflows take a filtering function, making it real easy to select the instances we operate on:</p>
 <pre><code class="lang-clojure">[re-core]&#x3BB;: (halt (by-type :redis))
 
 Running halt summary:
@@ -808,15 +813,15 @@ Running halt summary:
   &#x2714; redis-42bd6672e3
   &#x2714; redis-a9347f072f
 
-[re-core]&#x3BB;: (start (matching &quot;B7mtt&quot;)) ; select instance by SHA partial matching (git style)
+[re-core]&#x3BB;: (start (matching &quot;B7mtt&quot;)) ; select instance by partial id matching (git style)
 
 Running halt summary:
 
   &#x2714; redis-d55950759f
 </code></pre>
-<p>Note: The default filtering function is ip which selects all the running instances (they have an ip addresset).</p>
+<p>Note: The default filtering function is ip which selects all the running instances (assumed to have an active ip addresset).</p>
 <h2 id="re-mote">Re-mote</h2>
-<p>Re-mote main abstraction is the Hosts type:</p>
+<p>One of Re-mote main abstraction is the Hosts type:</p>
 <pre><code class="lang-clojure">(<span class="hljs-name"><span class="hljs-builtin-name">def</span></span> sandbox (<span class="hljs-name">Hosts.</span> {<span class="hljs-symbol">:user</span> <span class="hljs-string">&quot;re-ops&quot;</span> <span class="hljs-symbol">:ssh-key</span> <span class="hljs-string">&quot;/home/foo/.ssh/id_rsa} [&quot;</span><span class="hljs-number">192.168</span>.2.28<span class="hljs-string">&quot; &quot;</span><span class="hljs-number">192.168</span>.2.26<span class="hljs-string">&quot; &quot;</span><span class="hljs-number">192.168</span>.2.27<span class="hljs-string">&quot;]))
 </span></code></pre>
 <p>It includes an authentication map (user and ssh key) and a list of hosts, protocols with different operations extend the Hosts type:</p>
@@ -826,12 +831,12 @@ Running halt summary:
   (<span class="hljs-name">ls</span> [this target flags]
     [this (<span class="hljs-name">run-hosts</span> this (<span class="hljs-name">script</span> (<span class="hljs-string">&quot;ls&quot;</span> ~target ~flags)))])
 </code></pre>
-<p>Bundled operations range from package management to zfs operations like scrub and nmap port scanning.</p>
-<p>The operations are used within pipelines:</p>
+<p>Bundled operations range from package management to zfs operations like scrub and even nmap port scanning.</p>
+<p>Operations are used within pipelines:</p>
 <pre><code class="lang-clojure">(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> listing [hs]
   (<span class="hljs-name">run</span> (<span class="hljs-name">ls</span> hs <span class="hljs-string">&quot;/&quot;</span> <span class="hljs-string">&quot;-la&quot;</span>) | (<span class="hljs-name">pretty</span>)))
 </code></pre>
-<p>Running a workflow is simple as calling a functions:</p>
+<p>Running a workflow is simple as calling a function:</p>
 <pre><code class="lang-clojure">[re-mote]&#x3BB;: (listing sandbox)
 
 Run summary:
@@ -840,9 +845,9 @@ Run summary:
    &#x2714; 192.168.2.27
    &#x2714; 192.168.2.26
 </code></pre>
-<p>For a complete listing of workflows check the <a href="">cheatsheet</a>.</p>
+<p>For a complete listing of workflows check the <a href="">documentation</a>.</p>
 <h3 id="functions">Functions</h3>
-<p>Re-mote can send Clojure functions to Re-gent processes across our machine cluster, the functions are defined under re_mote/zero/functions.clj: </p>
+<p>Re-mote can invoke distributed Clojure functions using Re-gent processes across the cluster, the functions are defined under re_mote/zero/functions.clj:</p>
 <pre><code class="lang-clojure">(<span class="hljs-name"><span class="hljs-builtin-name">ns</span></span> re-mote.zero.functions
   (<span class="hljs-symbol">:require</span>
    [clojure.java.shell <span class="hljs-symbol">:refer</span> [sh]]
@@ -915,7 +920,7 @@ Run summary:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Usage","level":"3.1","depth":1,"next":{"title":"Reloaded","level":"3.1.1","depth":2,"anchor":"#reloaded","path":"usage/README.md","ref":"usage/README.md#reloaded","articles":[]},"previous":{"title":"Deploy","level":"2.1.6.2","depth":3,"anchor":"#deploy","path":"setup/re-pack.md","ref":"setup/re-pack.md#deploy","articles":[]},"dir":"ltr"},"config":{"plugins":["editlink","github","highlight","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/re-ops/re-dock"},"editlink":{"label":"Edit This Page","multilingual":false,"base":"https://github.com/re-ops/re-dock/tree/master"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"usage/README.md","mtime":"2018-03-09T07:01:48.947Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-12T06:25:12.895Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Usage","level":"3.1","depth":1,"next":{"title":"Reloaded","level":"3.1.1","depth":2,"anchor":"#reloaded","path":"usage/README.md","ref":"usage/README.md#reloaded","articles":[]},"previous":{"title":"Deploy","level":"2.1.6.2","depth":3,"anchor":"#deploy","path":"setup/re-pack.md","ref":"setup/re-pack.md#deploy","articles":[]},"dir":"ltr"},"config":{"plugins":["editlink","github","highlight","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/re-ops/re-dock"},"editlink":{"label":"Edit This Page","multilingual":false,"base":"https://github.com/re-ops/re-dock/tree/master"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"usage/README.md","mtime":"2018-03-13T06:08:17.643Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-13T05:59:49.274Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
