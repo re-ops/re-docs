@@ -250,7 +250,7 @@ Note: we used libvirt over SSH (using key based auth).
 |Section|Property|Description|Comments
 
 .3+| nodes
-| username 
+| username
 | SSH user name
 | Add your ssh key to /home/{user}/.ssh/authorized_keys
 
@@ -262,18 +262,14 @@ Note: we used libvirt over SSH (using key based auth).
 | SSH port
 |
 
-3+.| ostemplates
-|
-| Mapping from OS key to its KVM template
-| Please see link:#setup#re-pack[Re-pack] on how to create a template
-
+.2+| ostemplates
 
 | template
 | Template VM name
 | check link:re-pack.html#deploy[Deploy]
 
 | flavor
-| OS flavor of the template 
+| OS flavor of the template
 | currently only :debian supported
 
 |===
@@ -282,7 +278,7 @@ Note: we used libvirt over SSH (using key based auth).
 
 Re-core uses link:https://libvirt.org/[libvirt] in order to access KVM hypervisor instances.
 
-Libvirt uses the underlying ssh key setup in order to access remote hypervisors, this requires us to ssh-copy-id from the Re-core host into KVM hosts we would like to manage:
+Libvirt uses SSH (with SSH keys) in order to access remote hypervisors, this requires us to ssh-copy-id from the Re-core host into KVM hosts we would like to manage:
 
 ```bash
 $ ssh-copy-id user@remote-kvm
@@ -316,4 +312,5 @@ Currently supported and verified systems that Re-core works with:
 |===
 
 
+Note: more OS and hypervisor support will be added in the future.
 

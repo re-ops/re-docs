@@ -10,9 +10,12 @@ Follow the [Re-mote](re-mote.md), [Re-core](re-core.md) sections to learn more.
 
 Re-ops is pretty easy to get started with (its main requirements are OpenJDK and Lein) still for the full feature set make sure to have:
 
-* OpenJDK 8 with JCE enabled.
-* [lein](https://leiningen.org/).
-* rng-tools package for increased entropy under Linux (Ubuntu).
+* OpenJDK 8 with JCE enabled
+* Clojure build tool [lein](https://leiningen.org/)
+* rng-tools package for increased entropy under Linux (Ubuntu)
+* Good understanding of Clojure
+
+Note: Using Re-ops will require you to use Clojure, check out [why](/#why-clojure).
 
 
 Re-ops uses the ELK stack for persistent storage and visualization of data:

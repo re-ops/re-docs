@@ -1,13 +1,13 @@
 # Intro
 
-Re-pack contains a collection of packer templates for creating Re-core ready images under AWS, Digitalocean and KVM.
+Re-pack contains a collection of packer templates for creating Re-core ready images for AWS, Digitalocean and KVM hypervisors/services.
 
 ## Build
 
-Make sure to install the latest [Packer](packer.com) and run:
+Make sure to install the latest [Packer](packer.com) first and then run:
 
 ```bash
-# build Ubuntu 15.04 AMI
+# build Ubuntu 16.04 AMI
 $ cd src/aws/ubuntu-16.04
 $ packer build  -var 'aws_access_key=<access-key>' -var 'aws_secret_key=<secret-key>' template.json
 
@@ -35,6 +35,6 @@ Once that done create a new VM instance from the IMG file we just copied:
 
 This VM instance will be the source template from which new VM instances are created.
 
-Notes:
+Note:
 * Make sure to add a bridged networking interface in addition to the NAT interface it already has.
 * Re-core uses the following naming convention for images/templates {os-name}-{os-version}_puppet-{puppet-version}.

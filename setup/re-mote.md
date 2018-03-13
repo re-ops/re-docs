@@ -1,10 +1,10 @@
 # Intro
 
-Setting up Re-mote does not take much, most of the work is making sure that an SSH key is deployed to your remote machines ([Re-pack](re-pack.md) is one easy way of doing so for VM's).
+Setting up Re-mote does not take much, most of the work is making sure that an SSH key is deployed to your remote machines (you can pre-package the key using [Re-pack](re-pack.md) for your managed VMs).
 
 ## Setup
 
-Cloning the git repo and launching the repl gets us done with the setup part:
+Cloning the git repo and launching the REPL gets us done with the setup part:
 
 ```clojure
 $ git clone git@github.com:re-ops/re-mote.git
@@ -16,7 +16,7 @@ nil
 
 [re-mote]λ: (listing sandbox)
 
-Run summary:
+Run listing summary:
 
    ✔ 192.168.2.28
    ✔ 192.168.2.27
@@ -43,14 +43,17 @@ The configuration file is pretty much self explanatory:
      :ssl :yes!!!11
   }
 
-  :es {
-    :server "http://127.0.0.1:9200"
+  :elasticsearch {
+    :host "localhost"
+    :port 9200
     :index "re-mote"
     :user "elastic"
     :pass "changeme"
   }
 }
 ```
+
+Note: email setup is required only when sending emails from pipelines the same applies to Elasticsearch (using persist in this case).
 
 ## Keys
 
@@ -62,6 +65,4 @@ In order to deploy the ssh-keys to a single machine:
 $ ssh-copy-id user@host
 ```
 
-If you are using a configuration management tool (like Puppet) you can add your key to the /home/re-ops/.ssh/authorized_keys file.
-
-Once last option is to bake in the key into the image that will be used by Re-core so that each new VM instance will have the key.
+If you are using a configuration management tool (like Puppet) you can add your key to the /home/re-ops/.ssh/authorized_keys file or pre-bake your VM images to include the keys by using [Re-pack](re-pack.md).

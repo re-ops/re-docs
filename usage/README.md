@@ -1,13 +1,14 @@
-# Usage
+# Intro
 
-In this section we will cover the basic workflows when using Re-mote and Re-core, you will find that there is a clear convention to both of them and the follow similar guidelines:
+In this section we will cover the basic workflows when using Re-mote and Re-core, you will find that there is a clear convention to both and they follow similar principles:
 
-* Use simple functions and protocols where possible (also nice for auto completion and composability).
-* Create separate REPL instance for Re-mote and one for Re-core.
-* Use an editor attached to each REPL, when making changes use the [Reloaded](operating/README.md#reloading) workflow or re-eval code (when possible).
+* Prefer the Use simple functions and protocols (also nice for auto completion and composability)
+* Separate REPL instance for Re-mote and one for Re-core (tough Re-core uses Re-mote)
+* Use an editor attached to each REPL, re-eval changing code if possible
+* When making large changes use the [Reloaded](operating/README.md#reloading) workflow
 
 ## Reloaded
-One of the nicest things that the REPL provides us is immediate feedback, we enter a command and get feedback, but the REPL is also a live environment meaning that we can also change our code on the fly.
+One of the nicest things that the REPL provides is immediate feedback, the REPL is also a live environment that can change on the fly.
 
 Each time we start our session we run:
 
@@ -34,23 +35,25 @@ The go function is defined in dev/user.clj file, it starts up all of our compone
 
 ```
 
-We can also stop our components by running:
+stop components by running:
 
 ```clojure
 [re-mote]λ: (stop)
 ```
 
-When making rapid changes its easier to stop and start in once go:
+resets runs both stop and start in once go:
 
 ```clojure
 [re-mote]λ: (reset)
 ```
 
-Note: When changing a single function its better to re-eval it before running reset (reloading a broken ns will fail and you will need to restart the REPL).
+Note: 
+ * When changing a single function its better to re-eval.
+ * Resetting a broken ns will fail and you will need to restart the REPL so its a good idea to re-eval first.
 
 ## Re-core
 
-In Re-core we create and manage systems (VM's, pyhsical hosts etc..), in order to create them we use a fluent functional interface that includes presets like instance size, volumes and types:
+Re-core enables us create and manage systems (VMs, physical hosts, containers), in order to create them we use a fluent functional interface that includes presets like instance size, volumes and types:
 
 ```clojure
 
@@ -69,17 +72,17 @@ Once we have instances running we can list them:
 
 ```clojure
 [re-core]λ: (list)
-              redis-d55950759f  AWF_17ZSdVoDKuXB7mtt       redis     ubuntu-16.04  192.168.122.142
-              redis-7165e5c87b  AWF_17bgdVoDKuXB7mt9       redis     ubuntu-16.04  192.168.122.209
-              redis-a12af7a0d2  AWF_17X2dVoDKuXB7mtl       redis     ubuntu-16.04  192.168.122.147
-              redis-42bd6672e3  AWF_17asdVoDKuXB7mt4       redis     ubuntu-16.04  192.168.122.196
-              redis-a9347f072f  AWF_17aCdVoDKuXB7mt0       redis     ubuntu-16.04  192.168.122.14
+       redis-d55950759f  AWF_17ZSdVoDKuXB7mtt       redis     ubuntu-16.04  192.168.122.142
+       redis-7165e5c87b  AWF_17bgdVoDKuXB7mt9       redis     ubuntu-16.04  192.168.122.209
+       redis-a12af7a0d2  AWF_17X2dVoDKuXB7mtl       redis     ubuntu-16.04  192.168.122.147
+       redis-42bd6672e3  AWF_17asdVoDKuXB7mt4       redis     ubuntu-16.04  192.168.122.196
+       redis-a9347f072f  AWF_17aCdVoDKuXB7mt0       redis     ubuntu-16.04  192.168.122.14
 ```
 
 Note: the second column contains unique auto generated ids (AWF_17..).
 
 
-The main workflows on VM's (systems in Re-core lingo) are found under src/re_core/repl.clj, we can operate on all running instances by running:
+The main workflows on VMs (systems in Re-core lingo) are found under src/re_core/repl.clj, we can operate on all running instances by running:
 
 ```clojure
 [re-core]λ: (halt)
@@ -103,7 +106,7 @@ Running start summary:
   ✔ redis-a9347f072f
 ```
 
-Wofkflows take a filtering function, making it real easy to select the instances we operate on:
+All workflows take a filtering function, making it real easy to select the instances we operate on:
 
 ```clojure
 [re-core]λ: (halt (by-type :redis))
@@ -116,7 +119,7 @@ Running halt summary:
   ✔ redis-42bd6672e3
   ✔ redis-a9347f072f
 
-[re-core]λ: (start (matching "B7mtt")) ; select instance by SHA partial matching (git style)
+[re-core]λ: (start (matching "B7mtt")) ; select instance by partial id matching (git style)
 
 Running halt summary:
 
@@ -125,12 +128,12 @@ Running halt summary:
 ```
 
 
-Note: The default filtering function is ip which selects all the running instances (they have an ip addresset).
+Note: The default filtering function is ip which selects all the running instances (assumed to have an active ip addresset).
 
 
 ## Re-mote
 
-Re-mote main abstraction is the Hosts type:
+One of Re-mote main abstraction is the Hosts type:
 
 ```clojure
 (def sandbox (Hosts. {:user "re-ops" :ssh-key "/home/foo/.ssh/id_rsa} ["192.168.2.28" "192.168.2.26" "192.168.2.27"]))
@@ -146,16 +149,16 @@ It includes an authentication map (user and ssh key) and a list of hosts, protoc
     [this (run-hosts this (script ("ls" ~target ~flags)))])
 ```
 
-Bundled operations range from package management to zfs operations like scrub and nmap port scanning.
+Bundled operations range from package management to zfs operations like scrub and even nmap port scanning.
 
-The operations are used within pipelines:
+Operations are used within pipelines:
 
 ```clojure
 (defn listing [hs]
   (run (ls hs "/" "-la") | (pretty)))
 ```
 
-Running a workflow is simple as calling a functions:
+Running a workflow is simple as calling a function:
 
 ```clojure
 [re-mote]λ: (listing sandbox)
@@ -168,10 +171,10 @@ Run summary:
 
 ```
 
-For a complete listing of workflows check the [cheatsheet]().
+For a complete listing of workflows check the [documentation]().
 
 ### Functions
-Re-mote can send Clojure functions to Re-gent processes across our machine cluster, the functions are defined under re_mote/zero/functions.clj: 
+Re-mote can invoke distributed Clojure functions using Re-gent processes across the cluster, the functions are defined under re_mote/zero/functions.clj:
 
 ```clojure
 (ns re-mote.zero.functions
