@@ -207,3 +207,15 @@ Adding new libraries is pretty simple:
 * Deploy re-gent to the machines using the deploy workflow
 
 # Scheduling
+
+Invoking tasks in the REPL is easy but in some cases we would like to set a task to be executed at repeated intervals (collecting metircs):
+
+```clojure
+(defn stats-jobs [hs]
+  (watch :ram (seconds 1)(fn [] (ram-persist hs)))
+  (watch :net (seconds 2) (fn [] (net-persist hs)))
+  (watch :cpu (seconds 2) (fn [] (cpu-persist hs)))
+  (watch :temp (seconds 2) (fn [] (temperature-persist (pick hs #{"charon" "venus" "rosetta"} ))))
+  (watch :load (seconds 1) (fn [] (load-persist hs)))
+  )
+```

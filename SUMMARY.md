@@ -40,7 +40,7 @@
     * [Re-core](usage/README.md#re-core)
     * [Re-mote](usage/README.md#re-mote)
       * [Functions](usage/README.md#functions)
-    * [Scheduling](usage/README.md#schdeule)
+    * [Scheduling](usage/README.md#scheduling)
 
 * [Architecture](architecture/README.md)
     * [Components](architecture/README.md#components)
