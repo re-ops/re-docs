@@ -285,7 +285,11 @@ $ ssh-copy-id user@remote-kvm
 
 ```
 
-Note: deploying Re-core within as a VM that we would like to manage isn't possible due to link:https://wiki.libvirt.org/page/TroubleshootMacvtapHostFail[networking limitations] imposed by KVM (install Re-core outside any of the managed VMs).
+Note:
+
+* Deploying Re-core within as a VM that we would like to manage isn't possible due to link:https://wiki.libvirt.org/page/TroubleshootMacvtapHostFail[networking limitations] imposed by KVM (install Re-core outside any of the managed VMs).
+
+* KVM uses the SSH binary, this means that .ssh/config have an effect on its connectivity, for example controlmaster (connections re-use) is discouraged it will cause connections issues.
 
 When using Re-core and KVM locally (same host) we must set the node key as localhost so Re-core KVM provider will use hosts NAT addresses and not bridge interface:
 
@@ -298,8 +302,6 @@ When using Re-core and KVM locally (same host) we must set the node key as local
          }
      }
 ```
-
-
 
 === Support Matrix
 
