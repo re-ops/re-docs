@@ -4,7 +4,7 @@ In this section we will cover the requirements and setup procedures for each com
 
 Re-ops was designed with deployment simplicity in mind and should be easy to get running, for the most part you need to clone the source repos and start the REPL.
 
-Follow the [Re-mote](re-mote.md), [Re-core](re-core.md) sections to learn more.
+Follow the [Re-mote](re-mote.html), [Re-core](re-core.html) sections to learn more.
 
 ## Prerequisites
 
