@@ -285,7 +285,20 @@ $ ssh-copy-id user@remote-kvm
 
 ```
 
-Another issue is that we can't deploy Re-core itself as a VM within an hypervisor that we would like to manage due to link:https://wiki.libvirt.org/page/TroubleshootMacvtapHostFail[networking limitations] imposed by KVM (install Re-core outside any of the managed hosts).
+Note: deploying Re-core within as a VM that we would like to manage isn't possible due to link:https://wiki.libvirt.org/page/TroubleshootMacvtapHostFail[networking limitations] imposed by KVM (install Re-core outside any of the managed VMs).
+
+When using Re-core and KVM locally (same host) we must set the node key as localhost so Re-core KVM provider will use hosts NAT addresses and not bridge interface:
+
+```clojure
+    :kvm  {
+        :nodes {
+           :localhost {
+              ...
+           }
+         }
+     }
+```
+
 
 
 === Support Matrix
