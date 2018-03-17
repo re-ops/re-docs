@@ -602,7 +602,7 @@
     
         <li class="chapter " data-level="3.1.4" data-path="./">
             
-                <a href="./#schdeule">
+                <a href="./#scheduling">
             
                     
                     Scheduling
@@ -877,6 +877,15 @@ Run summary:
 <li>Deploy re-gent to the machines using the deploy workflow</li>
 </ul>
 <h1 id="scheduling">Scheduling</h1>
+<p>Invoking tasks in the REPL is easy but in some cases we would like to set a task to be executed at repeated intervals (collecting metircs):</p>
+<pre><code class="lang-clojure">(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> stats-jobs [hs]
+  (<span class="hljs-name">watch</span> <span class="hljs-symbol">:ram</span> (<span class="hljs-name">seconds</span> <span class="hljs-number">1</span>)(<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">ram-persist</span> hs)))
+  (<span class="hljs-name">watch</span> <span class="hljs-symbol">:net</span> (<span class="hljs-name">seconds</span> <span class="hljs-number">2</span>) (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">net-persist</span> hs)))
+  (<span class="hljs-name">watch</span> <span class="hljs-symbol">:cpu</span> (<span class="hljs-name">seconds</span> <span class="hljs-number">2</span>) (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">cpu-persist</span> hs)))
+  (<span class="hljs-name">watch</span> <span class="hljs-symbol">:temp</span> (<span class="hljs-name">seconds</span> <span class="hljs-number">2</span>) (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">temperature-persist</span> (<span class="hljs-name">pick</span> hs #{<span class="hljs-string">&quot;charon&quot;</span> <span class="hljs-string">&quot;venus&quot;</span> <span class="hljs-string">&quot;rosetta&quot;</span>} ))))
+  (<span class="hljs-name">watch</span> <span class="hljs-symbol">:load</span> (<span class="hljs-name">seconds</span> <span class="hljs-number">1</span>) (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">load-persist</span> hs)))
+  )
+</code></pre>
 
                                 
                                 </section>
@@ -920,7 +929,7 @@ Run summary:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Usage","level":"3.1","depth":1,"next":{"title":"Reloaded","level":"3.1.1","depth":2,"anchor":"#reloaded","path":"usage/README.md","ref":"usage/README.md#reloaded","articles":[]},"previous":{"title":"Deploy","level":"2.1.6.2","depth":3,"anchor":"#deploy","path":"setup/re-pack.md","ref":"setup/re-pack.md#deploy","articles":[]},"dir":"ltr"},"config":{"plugins":["editlink","github","highlight","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/re-ops/re-dock"},"editlink":{"label":"Edit This Page","multilingual":false,"base":"https://github.com/re-ops/re-dock/tree/master"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"usage/README.md","mtime":"2018-03-13T06:08:17.643Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-13T05:59:49.274Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Usage","level":"3.1","depth":1,"next":{"title":"Reloaded","level":"3.1.1","depth":2,"anchor":"#reloaded","path":"usage/README.md","ref":"usage/README.md#reloaded","articles":[]},"previous":{"title":"Deploy","level":"2.1.6.2","depth":3,"anchor":"#deploy","path":"setup/re-pack.md","ref":"setup/re-pack.md#deploy","articles":[]},"dir":"ltr"},"config":{"plugins":["editlink","github","highlight","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/re-ops/re-dock"},"editlink":{"label":"Edit This Page","multilingual":false,"base":"https://github.com/re-ops/re-dock/tree/master"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"usage/README.md","mtime":"2018-03-17T06:07:31.574Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-17T06:32:55.608Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
