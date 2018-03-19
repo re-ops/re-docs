@@ -234,6 +234,8 @@ link:http://www.linux-kvm.org/page/Main_Page[KVM] is supported with the followin
     :kvm  {
       :nodes {
          :remote {:username "ronen" :host "somehost" :port 22}
+         ; must use localhost key for localhost
+         :localhost {:username "ronen" :host "localhost" :port 22}
        }
       :ostemplates {
          :ubuntu-16.04 {:template "ubuntu-16.04" :flavor :debian}
@@ -256,7 +258,7 @@ Note: we used libvirt over SSH (using key based auth).
 
 | host
 | KVM node host
-|
+| link:kvm_localhost[KVM localhost]
 
 | port
 | SSH port
@@ -291,6 +293,7 @@ Note:
 
 * KVM uses the SSH binary, this means that .ssh/config have an effect on its connectivity, for example controlmaster (connections re-use) is discouraged it will cause connections issues.
 
+===== KVM localhost
 When using Re-core and KVM locally (same host) we must set the node key as localhost so Re-core KVM provider will use hosts NAT addresses and not bridge interface:
 
 ```clojure
