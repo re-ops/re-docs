@@ -1063,6 +1063,8 @@ nil</code></pre>
     <span class="hljs-symbol">:kvm</span>  {
       <span class="hljs-symbol">:nodes</span> {
          <span class="hljs-symbol">:remote</span> {<span class="hljs-symbol">:username</span> <span class="hljs-string">&quot;ronen&quot;</span> <span class="hljs-symbol">:host</span> <span class="hljs-string">&quot;somehost&quot;</span> <span class="hljs-symbol">:port</span> <span class="hljs-number">22</span>}
+         <span class="hljs-comment">; must use localhost key for localhost</span>
+         <span class="hljs-symbol">:localhost</span> {<span class="hljs-symbol">:username</span> <span class="hljs-string">&quot;ronen&quot;</span> <span class="hljs-symbol">:host</span> <span class="hljs-string">&quot;localhost&quot;</span> <span class="hljs-symbol">:port</span> <span class="hljs-number">22</span>}
        }
       <span class="hljs-symbol">:ostemplates</span> {
          <span class="hljs-symbol">:ubuntu-16.04</span> {<span class="hljs-symbol">:template</span> <span class="hljs-string">&quot;ubuntu-16.04&quot;</span> <span class="hljs-symbol">:flavor</span> <span class="hljs-symbol">:debian</span>}
@@ -1101,7 +1103,7 @@ nil</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">host</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">KVM node host</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="kvm_localhost">KVM localhost</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">port</p></td>
@@ -1147,6 +1149,8 @@ nil</code></pre>
 </li>
 </ul>
 </div>
+<div class="sect4">
+<h5 id="_kvm_localhost">KVM localhost</h5>
 <div class="paragraph">
 <p>When using Re-core and KVM locally (same host) we must set the node key as localhost so Re-core KVM provider will use hosts NAT addresses and not bridge interface:</p>
 </div>
@@ -1159,6 +1163,7 @@ nil</code></pre>
            }
          }
      }</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1251,7 +1256,7 @@ nil</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Re-core","level":"2.1.2","depth":2,"next":{"title":"Setup","level":"2.1.2.1","depth":3,"anchor":"#_setup","path":"setup/re-core.adoc","ref":"setup/re-core.adoc#_setup","articles":[]},"previous":{"title":"Perquisites","level":"2.1.1","depth":2,"anchor":"#prerequisites","path":"setup/README.md","ref":"setup/README.md#prerequisites","articles":[]},"dir":"ltr"},"config":{"plugins":["editlink","github","highlight","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/re-ops/re-dock"},"editlink":{"label":"Edit This Page","multilingual":false,"base":"https://github.com/re-ops/re-dock/tree/master"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"setup/re-core.adoc","mtime":"2018-03-17T13:59:50.321Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-03-17T14:01:43.169Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Re-core","level":"2.1.2","depth":2,"next":{"title":"Setup","level":"2.1.2.1","depth":3,"anchor":"#_setup","path":"setup/re-core.adoc","ref":"setup/re-core.adoc#_setup","articles":[]},"previous":{"title":"Perquisites","level":"2.1.1","depth":2,"anchor":"#prerequisites","path":"setup/README.md","ref":"setup/README.md#prerequisites","articles":[]},"dir":"ltr"},"config":{"plugins":["editlink","github","highlight","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/re-ops/re-dock"},"editlink":{"label":"Edit This Page","multilingual":false,"base":"https://github.com/re-ops/re-dock/tree/master"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"setup/re-core.adoc","mtime":"2018-03-18T23:53:16.238Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-03-19T06:11:21.020Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -722,15 +722,15 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="intro">Intro</h1>
-<p>In this section we will cover the basic workflows when using Re-mote and Re-core, you will find that there is a clear convention to both and they follow similar principles:</p>
+<p>In this section we will cover the basic workflows when using Re-mote and Re-core, there are a clear convention to both and they follow similar principles:</p>
 <ul>
 <li>Prefer the Use simple functions and protocols (also nice for auto completion and composability)</li>
-<li>Separate REPL instance for Re-mote and one for Re-core (tough Re-core uses Re-mote)</li>
-<li>Use an editor attached to each REPL, re-eval changing code if possible</li>
-<li>When making large changes use the <a href="operating/README.md#reloading">Reloaded</a> workflow</li>
+<li>Use Separate REPL instances for Re-mote and Re-core (tough Re-core uses Re-mote)</li>
+<li>Use an editor attached to each REPL and re eval changing code if possible</li>
+<li>When making large changes use the <a href="#reloaded">Reloaded</a> workflow</li>
 </ul>
 <h2 id="reloaded">Reloaded</h2>
-<p>One of the nicest things that the REPL provides is immediate feedback, the REPL is also a live environment that can change on the fly.</p>
+<p>One of the nicest things that the REPLs provides is immediate feedback, it is also a live environment that can change code on the fly without a lengthy restart.</p>
 <p>Each time we start our session we run:</p>
 <pre><code class="lang-bash">$ lein repl
 [re-mote]&#x3BB;: (go)
@@ -754,15 +754,15 @@ nil
 <p>resets runs both stop and start in once go:</p>
 <pre><code class="lang-clojure">[re-mote]&#x3BB;: (reset)
 </code></pre>
-<p>Note: </p>
+<p>Note:</p>
 <ul>
 <li>When changing a single function its better to re-eval.</li>
 <li>Resetting a broken ns will fail and you will need to restart the REPL so its a good idea to re-eval first.</li>
 </ul>
 <h2 id="re-core">Re-core</h2>
-<p>Re-core enables us create and manage systems (VMs, physical hosts, containers), in order to create them we use a fluent functional interface that includes presets like instance size, volumes and types:</p>
-<pre><code class="lang-clojure">
-[re-core]&#x3BB;: (create kvm-small vol-128G :redis 5) ; Create 5 small redis instances with a 128G Volume
+<p>Re-core enables us create and manage systems (VMs, physical hosts, containers) by using a fluent functional interface and presets like instance size, volumes and types: </p>
+<pre><code class="lang-clojure">; Create 5 small redis instances with a 128G Volumes
+[re-core]&#x3BB;: (create kvm-small vol-128G :redis 5)
 
 Running create summary:
 
@@ -780,7 +780,7 @@ Running create summary:
        redis-42bd6672e3  AWF_17asdVoDKuXB7mt4       redis     ubuntu-16.04  192.168.122.196
        redis-a9347f072f  AWF_17aCdVoDKuXB7mt0       redis     ubuntu-16.04  192.168.122.14
 </code></pre>
-<p>Note: the second column contains unique auto generated ids (AWF_17..).</p>
+<p>Note: the second column contains unique auto generated ids (AWF_17..) that we can use to directly reference an instance.</p>
 <p>The main workflows on VMs (systems in Re-core lingo) are found under src/re_core/repl.clj, we can operate on all running instances by running:</p>
 <pre><code class="lang-clojure">[re-core]&#x3BB;: (halt)
 
@@ -819,10 +819,14 @@ Running halt summary:
 
   &#x2714; redis-d55950759f
 </code></pre>
-<p>Note: The default filtering function is ip which selects all the running instances (assumed to have an active ip addresset).</p>
+<p>Note: </p>
+<ul>
+<li>The default filtering function is ip which selects all the running instances (assumed to have an active ip addresset).</li>
+<li>Check Re-core <a href="https://re-ops.github.io/re-core" target="_blank">API</a> for a detailed list of the available functions.</li>
+</ul>
 <h2 id="re-mote">Re-mote</h2>
 <p>One of Re-mote main abstraction is the Hosts type:</p>
-<pre><code class="lang-clojure">(<span class="hljs-name"><span class="hljs-builtin-name">def</span></span> sandbox (<span class="hljs-name">Hosts.</span> {<span class="hljs-symbol">:user</span> <span class="hljs-string">&quot;re-ops&quot;</span> <span class="hljs-symbol">:ssh-key</span> <span class="hljs-string">&quot;/home/foo/.ssh/id_rsa} [&quot;</span><span class="hljs-number">192.168</span>.2.28<span class="hljs-string">&quot; &quot;</span><span class="hljs-number">192.168</span>.2.26<span class="hljs-string">&quot; &quot;</span><span class="hljs-number">192.168</span>.2.27<span class="hljs-string">&quot;]))
+<pre><code class="lang-clojure">(<span class="hljs-name"><span class="hljs-builtin-name">def</span></span> sandbox (<span class="hljs-name">Hosts.</span> {<span class="hljs-symbol">:user</span> <span class="hljs-string">&quot;re-ops&quot;</span> <span class="hljs-symbol">:ssh-key</span> <span class="hljs-string">&quot;/home/foo/.ssh/id_rsa} [&quot;</span><span class="hljs-number">192.168</span>.2.28<span class="hljs-string">&quot; &quot;</span><span class="hljs-number">192.168</span>.2.27<span class="hljs-string">&quot;]))
 </span></code></pre>
 <p>It includes an authentication map (user and ssh key) and a list of hosts, protocols with different operations extend the Hosts type:</p>
 <pre><code class="lang-clojure"><span class="hljs-comment">; re-mote.repl.base</span>
@@ -845,7 +849,7 @@ Run summary:
    &#x2714; 192.168.2.27
    &#x2714; 192.168.2.26
 </code></pre>
-<p>For a complete listing of workflows check the <a href="">documentation</a>.</p>
+<p>For a complete listing of workflows check Re-mote <a href="https://re-ops.github.io/re-mote" target="_blank">API</a> documentation.</p>
 <h3 id="functions">Functions</h3>
 <p>Re-mote can invoke distributed Clojure functions using Re-gent processes across the cluster, the functions are defined under re_mote/zero/functions.clj:</p>
 <pre><code class="lang-clojure">(<span class="hljs-name"><span class="hljs-builtin-name">ns</span></span> re-mote.zero.functions
@@ -866,26 +870,38 @@ Run summary:
 <p>Functions may use any bundled Clojure and Java libraries like:</p>
 <ul>
 <li>me.raynes.fs for file system manipulation</li>
-<li>com.github.oshi for collecting OS/Hardware information.</li>
-<li>re-scan for running Nmap scanner.</li>
+<li>com.github.oshi for collecting OS/Hardware information</li>
+<li>re-scan for running Nmap scans</li>
 </ul>
 <p>Adding new libraries is pretty simple:</p>
 <ul>
 <li>Add the library to both re-gent/project.clj and re-mote/project.clj.</li>
-<li>Import the required ns/classes into re-mote.zero.functions and re-gent.zero.functions </li>
+<li>Import the required ns/classes into re-mote.zero.functions and re-gent.zero.functions</li>
 <li>Build the re-gent binary using bin/binary.sh</li>
 <li>Deploy re-gent to the machines using the deploy workflow</li>
 </ul>
 <h1 id="scheduling">Scheduling</h1>
-<p>Invoking tasks in the REPL is easy but in some cases we would like to set a task to be executed at repeated intervals (collecting metircs):</p>
-<pre><code class="lang-clojure">(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> stats-jobs [hs]
+<p>Invoking tasks in the REPL is easy but in some cases we would like to set a task to be executed at repeated short intervals (like collecting metrics):</p>
+<pre><code class="lang-clojure"><span class="hljs-comment">; collecting RAM, Network, Load anc Cpu usage</span>
+(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> stats-jobs [hs]
   (<span class="hljs-name">watch</span> <span class="hljs-symbol">:ram</span> (<span class="hljs-name">seconds</span> <span class="hljs-number">1</span>)(<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">ram-persist</span> hs)))
   (<span class="hljs-name">watch</span> <span class="hljs-symbol">:net</span> (<span class="hljs-name">seconds</span> <span class="hljs-number">2</span>) (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">net-persist</span> hs)))
   (<span class="hljs-name">watch</span> <span class="hljs-symbol">:cpu</span> (<span class="hljs-name">seconds</span> <span class="hljs-number">2</span>) (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">cpu-persist</span> hs)))
-  (<span class="hljs-name">watch</span> <span class="hljs-symbol">:temp</span> (<span class="hljs-name">seconds</span> <span class="hljs-number">2</span>) (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">temperature-persist</span> (<span class="hljs-name">pick</span> hs #{<span class="hljs-string">&quot;charon&quot;</span> <span class="hljs-string">&quot;venus&quot;</span> <span class="hljs-string">&quot;rosetta&quot;</span>} ))))
-  (<span class="hljs-name">watch</span> <span class="hljs-symbol">:load</span> (<span class="hljs-name">seconds</span> <span class="hljs-number">1</span>) (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">load-persist</span> hs)))
-  )
+  (<span class="hljs-name">watch</span> <span class="hljs-symbol">:load</span> (<span class="hljs-name">seconds</span> <span class="hljs-number">1</span>) (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">load-persist</span> hs))))
 </code></pre>
+<p>Another use case is executing long running tasks once a day:</p>
+<pre><code class="lang-clojure"><span class="hljs-comment">; running apt uprgrade on hosts every day at 4AM</span>
+(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> apt-jobs [hosts]
+  (<span class="hljs-name">watch</span> <span class="hljs-symbol">:upgrade</span> (<span class="hljs-name">every-day</span> <span class="hljs-number">4</span>) (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">upgrade</span> hosts))))
+</code></pre>
+<p>Or even once a week:</p>
+<pre><code class="lang-clojure"><span class="hljs-comment">; Running zfs scrub every Saturday at 4AM</span>
+(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> zfs-maintain [{<span class="hljs-symbol">:keys</span> [hosts] <span class="hljs-symbol">:as</span> hs}]
+  (<span class="hljs-name"><span class="hljs-builtin-name">let</span></span> [host (<span class="hljs-name"><span class="hljs-builtin-name">first</span></span> hosts)]
+    (<span class="hljs-name">watch</span> (<span class="hljs-name"><span class="hljs-builtin-name">keyword</span></span> (<span class="hljs-name"><span class="hljs-builtin-name">str</span></span> host <span class="hljs-string">&quot;-datastore-scrub&quot;</span>)) (<span class="hljs-name">at-day</span> DateTimeConstants/SATURDAY <span class="hljs-number">4</span>)
+      (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">run</span> (<span class="hljs-name">scrub</span> hs <span class="hljs-string">&quot;datastore&quot;</span>) | (<span class="hljs-name">email</span> (<span class="hljs-name">tofrom</span> (<span class="hljs-name">&lt;&lt;</span> <span class="hljs-string">&quot;scrubing ~{host}/datastore&quot;</span>))))))))
+</code></pre>
+<p>Its possible to automate any function call using the watch function including the creation of VMs or provisioning, check Re-share <a href="https://re-ops.github.io/re-share" target="_blank">docs</a> for full API documentation.</p>
 
                                 
                                 </section>
@@ -929,7 +945,7 @@ Run summary:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Usage","level":"3.1","depth":1,"next":{"title":"Reloaded","level":"3.1.1","depth":2,"anchor":"#reloaded","path":"usage/README.md","ref":"usage/README.md#reloaded","articles":[]},"previous":{"title":"Deploy","level":"2.1.6.2","depth":3,"anchor":"#deploy","path":"setup/re-pack.md","ref":"setup/re-pack.md#deploy","articles":[]},"dir":"ltr"},"config":{"plugins":["editlink","github","highlight","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/re-ops/re-dock"},"editlink":{"label":"Edit This Page","multilingual":false,"base":"https://github.com/re-ops/re-dock/tree/master"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"usage/README.md","mtime":"2018-03-17T13:59:50.321Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-17T14:01:43.169Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Usage","level":"3.1","depth":1,"next":{"title":"Reloaded","level":"3.1.1","depth":2,"anchor":"#reloaded","path":"usage/README.md","ref":"usage/README.md#reloaded","articles":[]},"previous":{"title":"Deploy","level":"2.1.6.2","depth":3,"anchor":"#deploy","path":"setup/re-pack.md","ref":"setup/re-pack.md#deploy","articles":[]},"dir":"ltr"},"config":{"plugins":["editlink","github","highlight","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/re-ops/re-dock"},"editlink":{"label":"Edit This Page","multilingual":false,"base":"https://github.com/re-ops/re-dock/tree/master"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"usage/README.md","mtime":"2018-03-19T06:30:11.810Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-19T06:11:21.020Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
