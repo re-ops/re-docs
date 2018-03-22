@@ -55,7 +55,7 @@ The configuration file is pretty much self explanatory:
 
 Note: email setup is required only when sending emails from pipelines the same applies to Elasticsearch (using persist in this case).
 
-## Keys
+## SSH
 
 Re-mote uses SSH as the base band for performing remote operations, deploying Re-gent and distributing CurveMQ keys.
 
@@ -66,3 +66,12 @@ $ ssh-copy-id user@host
 ```
 
 If you are using a configuration management tool (like Puppet) you can add your key to the /home/re-ops/.ssh/authorized_keys file or pre-bake your VM images to include the keys by using [Re-pack](re-pack.md).
+
+Another required setting is to disable to known_hosts file for the managed hosts subnet:
+
+```bash
+host 192.168.122.*
+    GSSAPIAuthentication no
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no
+```
