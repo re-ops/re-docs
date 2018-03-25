@@ -305,7 +305,7 @@
                 <a href="re-core.html#_support_matrix">
             
                     
-                    Support matix
+                    Support matrix
             
                 </a>
             
@@ -365,10 +365,10 @@
     
         <li class="chapter " data-level="2.1.3.3" data-path="re-mote.html">
             
-                <a href="re-mote.html#keys">
+                <a href="re-mote.html#ssh">
             
                     
-                    Keys
+                    SSH
             
                 </a>
             
@@ -762,12 +762,18 @@ Run listing summary:
 }
 </code></pre>
 <p>Note: email setup is required only when sending emails from pipelines the same applies to Elasticsearch (using persist in this case).</p>
-<h2 id="keys">Keys</h2>
+<h2 id="ssh">SSH</h2>
 <p>Re-mote uses SSH as the base band for performing remote operations, deploying Re-gent and distributing CurveMQ keys.</p>
 <p>In order to deploy the ssh-keys to a single machine:</p>
 <pre><code class="lang-bash">$ ssh-copy-id user@host
 </code></pre>
 <p>If you are using a configuration management tool (like Puppet) you can add your key to the /home/re-ops/.ssh/authorized_keys file or pre-bake your VM images to include the keys by using <a href="re-pack.html">Re-pack</a>.</p>
+<p>Another required setting is to disable to known_hosts file for the managed hosts subnet:</p>
+<pre><code class="lang-bash">host 192.168.122.*
+    GSSAPIAuthentication no
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no
+</code></pre>
 
                                 
                                 </section>
@@ -795,7 +801,7 @@ Run listing summary:
 
             
                 
-                <a href="re-core.html#_support_matrix" class="navigation navigation-prev " aria-label="Previous page: Support matix">
+                <a href="re-core.html#_support_matrix" class="navigation navigation-prev " aria-label="Previous page: Support matrix">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -811,7 +817,7 @@ Run listing summary:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Re-mote","level":"2.1.3","depth":2,"next":{"title":"Setup","level":"2.1.3.1","depth":3,"anchor":"#setup","path":"setup/re-mote.md","ref":"setup/re-mote.md#setup","articles":[]},"previous":{"title":"Support matix","level":"2.1.2.4.5","depth":4,"anchor":"#_support_matrix","path":"setup/re-core.adoc","ref":"setup/re-core.adoc#_support_matrix","articles":[]},"dir":"ltr"},"config":{"plugins":["editlink","github","highlight","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/re-ops/re-dock"},"editlink":{"label":"Edit This Page","multilingual":false,"base":"https://github.com/re-ops/re-dock/tree/master"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"setup/re-mote.md","mtime":"2018-03-13T12:20:30.722Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-19T06:11:21.020Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Re-mote","level":"2.1.3","depth":2,"next":{"title":"Setup","level":"2.1.3.1","depth":3,"anchor":"#setup","path":"setup/re-mote.md","ref":"setup/re-mote.md#setup","articles":[]},"previous":{"title":"Support matrix","level":"2.1.2.4.5","depth":4,"anchor":"#_support_matrix","path":"setup/re-core.adoc","ref":"setup/re-core.adoc#_support_matrix","articles":[]},"dir":"ltr"},"config":{"plugins":["editlink","github","highlight","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/re-ops/re-dock"},"editlink":{"label":"Edit This Page","multilingual":false,"base":"https://github.com/re-ops/re-dock/tree/master"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"setup/re-mote.md","mtime":"2018-03-25T11:08:57.311Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-25T11:09:02.343Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
