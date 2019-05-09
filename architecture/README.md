@@ -1,10 +1,9 @@
-
 # Components
 
 Just like the abstractions that we use the components that Re-ops is made out of are composable and detachable, you can use Re-core or Re-mote or both, you can add Re-gent or not, depending on your requirements.
 
 
-# Networking
+## Networking
 
 Re-mote and Re-gent use two network protocols:
 
