@@ -1,996 +1,129 @@
-
-<!DOCTYPE HTML>
-<html lang="" >
-    <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Usage · GitBook</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        
-        
-        
-    
-    <link rel="stylesheet" href="../gitbook/style.css">
-
-    
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-        
-
-    
-
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
-
-    
-    <link rel="next" href="./" />
-    
-    
-    <link rel="prev" href="../setup/re-pack.html" />
-    
-
-    </head>
-    <body>
-        
-<div class="book">
-    <div class="book-summary">
-        
-            
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
-
-            
-                <nav role="navigation">
-                
-
-
-<ul class="summary">
-    
-    
-
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="../">
-            
-                <a href="../">
-            
-                    
-                    Introduction
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.1.1" data-path="../">
-            
-                <a href="../#motivation">
-            
-                    
-                    Motivation
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.2" data-path="../">
-            
-                <a href="../#why-clojure">
-            
-                    
-                    Why Clojure
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.3" data-path="../">
-            
-                <a href="../#abstractions">
-            
-                    
-                    Abstractions
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-    
-        
-        <li class="divider"></li>
-        
-        
-    
-        <li class="chapter " data-level="2.1" data-path="../setup/">
-            
-                <a href="../setup/">
-            
-                    
-                    Setup
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="2.1.1" data-path="../setup/">
-            
-                <a href="../setup/#prerequisites">
-            
-                    
-                    Perquisites
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.2" data-path="../setup/re-core.html">
-            
-                <a href="../setup/re-core.html#intro">
-            
-                    
-                    Re-core
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="2.1.2.1" data-path="../setup/re-core.html">
-            
-                <a href="../setup/re-core.html#_setup">
-            
-                    
-                    Setup
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.2.2" data-path="../setup/re-core.html">
-            
-                <a href="../setup/re-core.html#_templates">
-            
-                    
-                    Templates
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.2.3" data-path="../setup/re-core.html">
-            
-                <a href="../setup/re-core.html#_configuration">
-            
-                    
-                    Configuration
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.2.4" data-path="../setup/re-core.html">
-            
-                <a href="../setup/re-core.html#_hypervisors">
-            
-                    
-                    Hypervisors
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="2.1.2.4.1" data-path="../setup/re-core.html">
-            
-                <a href="../setup/re-core.html#_aws">
-            
-                    
-                    AWS
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.2.4.2" data-path="../setup/re-core.html">
-            
-                <a href="../setup/re-core.html#_digitalocean">
-            
-                    
-                    Digitalocean
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.2.4.3" data-path="../setup/re-core.html">
-            
-                <a href="../setup/re-core.html#_kvm">
-            
-                    
-                    KVM
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.2.4.4" data-path="../setup/re-core.html">
-            
-                <a href="../setup/re-core.html#_kvm_libvirt">
-            
-                    
-                    Libvirt
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.2.4.5" data-path="../setup/re-core.html">
-            
-                <a href="../setup/re-core.html#_support_matrix">
-            
-                    
-                    Support matrix
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.3" data-path="../setup/re-mote.html">
-            
-                <a href="../setup/re-mote.html#intro">
-            
-                    
-                    Re-mote
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="2.1.3.1" data-path="../setup/re-mote.html">
-            
-                <a href="../setup/re-mote.html#setup">
-            
-                    
-                    Setup
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.3.2" data-path="../setup/re-mote.html">
-            
-                <a href="../setup/re-mote.html#configuration">
-            
-                    
-                    Configuration
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.3.3" data-path="../setup/re-mote.html">
-            
-                <a href="../setup/re-mote.html#ssh">
-            
-                    
-                    SSH
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.4" data-path="../setup/re-gent.html">
-            
-                <a href="../setup/re-gent.html#intro">
-            
-                    
-                    Re-gent
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="2.1.4.1" data-path="../setup/re-gent.html">
-            
-                <a href="../setup/re-gent.html#build">
-            
-                    
-                    Build
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.4.2" data-path="../setup/re-gent.html">
-            
-                <a href="../setup/re-gent.html#deploy">
-            
-                    
-                    Deploy
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.5" data-path="../setup/re-dock.html">
-            
-                <a href="../setup/re-dock.html#intro">
-            
-                    
-                    Re-dock
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="2.1.5.1" data-path="../setup/re-dock.html">
-            
-                <a href="../setup/re-dock.html#run">
-            
-                    
-                    Run
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.5.2" data-path="../setup/re-dock.html">
-            
-                <a href="../setup/re-dock.html#dashboards">
-            
-                    
-                    Dashboards
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.6" data-path="../setup/re-pack.html">
-            
-                <a href="../setup/re-pack.html#intro">
-            
-                    
-                    Re-pack
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="2.1.6.1" data-path="../setup/re-pack.html">
-            
-                <a href="../setup/re-pack.html#build">
-            
-                    
-                    Build
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.6.2" data-path="../setup/re-pack.html">
-            
-                <a href="../setup/re-pack.html#deploy">
-            
-                    
-                    Deploy
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-    
-        
-        <li class="divider"></li>
-        
-        
-    
-        <li class="chapter active" data-level="3.1" data-path="./">
-            
-                <a href="./">
-            
-                    
-                    Usage
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="3.1.1" data-path="./">
-            
-                <a href="./#reloaded">
-            
-                    
-                    Reloaded
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.1.2" data-path="./">
-            
-                <a href="./#re-core">
-            
-                    
-                    Re-core
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.1.3" data-path="./">
-            
-                <a href="./#re-mote">
-            
-                    
-                    Re-mote
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="3.1.3.1" data-path="./">
-            
-                <a href="./#functions">
-            
-                    
-                    Functions
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="3.1.4" data-path="./">
-            
-                <a href="./#scheduling">
-            
-                    
-                    Scheduling
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="3.2" data-path="../architecture/">
-            
-                <a href="../architecture/">
-            
-                    
-                    Architecture
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="3.2.1" data-path="../architecture/">
-            
-                <a href="../architecture/#components">
-            
-                    
-                    Components
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.2.2" data-path="../architecture/">
-            
-                <a href="../architecture/#networking">
-            
-                    
-                    Networking
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.2.3" data-path="../architecture/">
-            
-                <a href="../architecture/#security">
-            
-                    
-                    Security
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
-        </a>
-    </li>
-</ul>
-
-
-                </nav>
-            
-        
-    </div>
-
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
-    
-
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Usage</a>
-    </h1>
-</div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
-                            
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <h1 id="intro">Intro</h1>
-<p>In this section we will cover the basic workflows when using Re-mote and Re-core, there are a clear convention to both and they follow similar principles:</p>
-<ul>
-<li>Prefer the Use simple functions and protocols (also nice for auto completion and composability)</li>
-<li>Use Separate REPL instances for Re-mote and Re-core (tough Re-core uses Re-mote)</li>
-<li>Use an editor attached to each REPL and re eval changing code if possible</li>
-<li>When making large changes use the <a href="#reloaded">Reloaded</a> workflow</li>
-</ul>
-<h2 id="reloaded">Reloaded</h2>
-<p>One of the nicest things that the REPLs provides is immediate feedback, it is also a live environment that can change code on the fly without a lengthy restart.</p>
-<p>Each time we start our session we run:</p>
-<pre><code class="lang-bash">$ lein repl
-[re-mote]&#x3BB;: (go)
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Intro</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/re-docs/assets/css/0.styles.6ddbcd86.css" as="style"><link rel="preload" href="/re-docs/assets/js/app.7b34dd23.js" as="script"><link rel="preload" href="/re-docs/assets/js/12.2d1bab7b.js" as="script"><link rel="prefetch" href="/re-docs/assets/js/10.20b13f25.js"><link rel="prefetch" href="/re-docs/assets/js/11.fd5057e5.js"><link rel="prefetch" href="/re-docs/assets/js/13.4cbe9aee.js"><link rel="prefetch" href="/re-docs/assets/js/2.693828b8.js"><link rel="prefetch" href="/re-docs/assets/js/3.71ef1331.js"><link rel="prefetch" href="/re-docs/assets/js/4.96a5365c.js"><link rel="prefetch" href="/re-docs/assets/js/5.c6efc52e.js"><link rel="prefetch" href="/re-docs/assets/js/6.2aa43f67.js"><link rel="prefetch" href="/re-docs/assets/js/7.b81c5f7f.js"><link rel="prefetch" href="/re-docs/assets/js/8.fd95fba3.js"><link rel="prefetch" href="/re-docs/assets/js/9.3eafe1f9.js">
+    <link rel="stylesheet" href="/re-docs/assets/css/0.styles.6ddbcd86.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/re-docs/" class="home-link router-link-active"></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>Basics</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/re-docs/" class="sidebar-link">Introduction</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/re-docs/#motivation" class="sidebar-link">Motivation</a></li><li class="sidebar-sub-header"><a href="/re-docs/#why-clojure" class="sidebar-link">Why Clojure</a></li><li class="sidebar-sub-header"><a href="/re-docs/#abstractions" class="sidebar-link">Abstractions</a></li></ul></li></ul></div></li><li><div class="sidebar-group"><p class="sidebar-heading"><span>Setup</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/re-docs/setup/" class="sidebar-link">Intro</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/re-docs/setup/#prerequisites" class="sidebar-link">Prerequisites</a></li></ul></li><li><a href="/re-docs/setup/re-core.html" class="sidebar-link">Re-core</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/re-docs/setup/re-core.html#setup" class="sidebar-link">Setup</a></li><li class="sidebar-sub-header"><a href="/re-docs/setup/re-core.html#templates" class="sidebar-link">Templates</a></li><li class="sidebar-sub-header"><a href="/re-docs/setup/re-core.html#configuration" class="sidebar-link">Configuration</a></li><li class="sidebar-sub-header"><a href="/re-docs/setup/re-core.html#hypervisors" class="sidebar-link">Hypervisors</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/re-docs/setup/re-core.html#aws" class="sidebar-link">AWS</a></li><li class="sidebar-sub-header"><a href="/re-docs/setup/re-core.html#digitalocean" class="sidebar-link">Digitalocean</a></li><li class="sidebar-sub-header"><a href="/re-docs/setup/re-core.html#kvm" class="sidebar-link">KVM</a></li></ul></li></ul></li><li><a href="/re-docs/setup/re-mote.html" class="sidebar-link">Re-mote</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/re-docs/setup/re-mote.html#setup" class="sidebar-link">Setup</a></li><li class="sidebar-sub-header"><a href="/re-docs/setup/re-mote.html#configuration" class="sidebar-link">Configuration</a></li><li class="sidebar-sub-header"><a href="/re-docs/setup/re-mote.html#ssh" class="sidebar-link">SSH</a></li></ul></li><li><a href="/re-docs/setup/re-gent.html" class="sidebar-link">Re-gent</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/re-docs/setup/re-gent.html#build" class="sidebar-link">Build</a></li><li class="sidebar-sub-header"><a href="/re-docs/setup/re-gent.html#deploy" class="sidebar-link">Deploy</a></li></ul></li><li><a href="/re-docs/setup/re-dock.html" class="sidebar-link">Re-dock</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/re-docs/setup/re-dock.html#run" class="sidebar-link">Run</a></li><li class="sidebar-sub-header"><a href="/re-docs/setup/re-dock.html#dashboards" class="sidebar-link">Dashboards</a></li></ul></li><li><a href="/re-docs/setup/re-pack.html" class="sidebar-link">Re-pack</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/re-docs/setup/re-pack.html#build" class="sidebar-link">Build</a></li><li class="sidebar-sub-header"><a href="/re-docs/setup/re-pack.html#deploy" class="sidebar-link">Deploy</a></li></ul></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="intro"><a href="#intro" aria-hidden="true" class="header-anchor">#</a> Intro</h1> <p>In this section we will cover the basic workflows when using Re-mote and Re-core, there are a clear convention to both and they follow similar principles:</p> <ul><li>Prefer the Use simple functions and protocols (also nice for auto completion and composability)</li> <li>Use Separate REPL instances for Re-mote and Re-core (tough Re-core uses Re-mote)</li> <li>Use an editor attached to each REPL and re eval changing code if possible</li> <li>When making large changes use the <a href="#reloaded">Reloaded</a> workflow</li></ul> <h2 id="reloaded"><a href="#reloaded" aria-hidden="true" class="header-anchor">#</a> Reloaded</h2> <p>One of the nicest things that the REPLs provides is immediate feedback, it is also a live environment that can change code on the fly without a lengthy restart.</p> <p>Each time we start our session we run:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ lein repl
+<span class="token punctuation">[</span>re-mote<span class="token punctuation">]</span>λ: <span class="token punctuation">(</span>go<span class="token punctuation">)</span>
 nil
-</code></pre>
-<p>The go function is defined in dev/user.clj file, it starts up all of our components by running setup and start:</p>
-<pre><code class="lang-clojure"><span class="hljs-comment">; Re-mote setup and start procedure</span>
-(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> setup []
-  (<span class="hljs-name">k/create-server-keys</span> <span class="hljs-string">&quot;.curve&quot;</span>)
-  (<span class="hljs-name">repl/setup</span>)
-  (<span class="hljs-name">es/setup</span>))
+</code></pre></div><p>The go function is defined in dev/user.clj file, it starts up all of our components by running setup and start:</p> <div class="language-clojure extra-class"><pre class="language-clojure"><code><span class="token comment">; Re-mote setup and start procedure</span>
+<span class="token punctuation">(</span><span class="token keyword">defn</span> setup <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">(</span>k/create-server-keys <span class="token string">&quot;.curve&quot;</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span>repl/setup<span class="token punctuation">)</span>
+  <span class="token punctuation">(</span>es/setup<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> start [_]
-  (<span class="hljs-name">es/start</span>)
-  (<span class="hljs-name">web/start</span>)
-  (<span class="hljs-name">zero/start</span>))
-</code></pre>
-<p>stop components by running:</p>
-<pre><code class="lang-clojure">[re-mote]&#x3BB;: (stop)
-</code></pre>
-<p>resets runs both stop and start in once go:</p>
-<pre><code class="lang-clojure">[re-mote]&#x3BB;: (reset)
-</code></pre>
-<p>Note:</p>
-<ul>
-<li>When changing a single function its better to re-eval.</li>
-<li>Resetting a broken ns will fail and you will need to restart the REPL so its a good idea to re-eval first.</li>
-</ul>
-<h2 id="re-core">Re-core</h2>
-<p>Re-core enables us create and manage systems (VMs, physical hosts, containers) by using a fluent functional interface and presets like instance size, volumes and types: </p>
-<pre><code class="lang-clojure">; Create 5 small redis instances with a 128G Volumes
-[re-core]&#x3BB;: (create kvm-small vol-128G :redis 5)
+<span class="token punctuation">(</span><span class="token keyword">defn</span> start <span class="token punctuation">[</span>_<span class="token punctuation">]</span>
+  <span class="token punctuation">(</span>es/start<span class="token punctuation">)</span>
+  <span class="token punctuation">(</span>web/start<span class="token punctuation">)</span>
+  <span class="token punctuation">(</span>zero/start<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+</code></pre></div><p>stop components by running:</p> <div class="language-clojure extra-class"><pre class="language-clojure"><code><span class="token punctuation">[</span>re-mote<span class="token punctuation">]</span>λ: <span class="token punctuation">(</span>stop<span class="token punctuation">)</span>
+</code></pre></div><p>resets runs both stop and start in once go:</p> <div class="language-clojure extra-class"><pre class="language-clojure"><code><span class="token punctuation">[</span>re-mote<span class="token punctuation">]</span>λ: <span class="token punctuation">(</span>reset<span class="token punctuation">)</span>
+</code></pre></div><p>Note:</p> <ul><li>When changing a single function its better to re-eval.</li> <li>Resetting a broken ns will fail and you will need to restart the REPL so its a good idea to re-eval first.</li></ul> <h2 id="re-core"><a href="#re-core" aria-hidden="true" class="header-anchor">#</a> Re-core</h2> <p>Re-core enables us create and manage systems (VMs, physical hosts, containers) by using a fluent functional interface and presets like instance size, volumes and types:</p> <div class="language-clojure extra-class"><pre class="language-clojure"><code><span class="token comment">; Create 5 small redis instances with a 128G Volumes</span>
+<span class="token punctuation">[</span>re-core<span class="token punctuation">]</span>λ: <span class="token punctuation">(</span>create kvm-small vol-128G <span class="token operator">:redis</span> <span class="token number">5</span><span class="token punctuation">)</span>
 
 Running create summary:
 
-  &#x2714; redis-a12af7a0d2
-  &#x2714; redis-d55950759f
-  &#x2714; redis-a9347f072f
-  &#x2714; redis-42bd6672e3
-  &#x2714; redis-7165e5c87b
-</code></pre>
-<p>Once we have instances running we can list them:</p>
-<pre><code class="lang-clojure">[re-core]&#x3BB;: (list)
-       redis-d55950759f  AWF_17ZSdVoDKuXB7mtt       redis     ubuntu-16.04  192.168.122.142
-       redis-7165e5c87b  AWF_17bgdVoDKuXB7mt9       redis     ubuntu-16.04  192.168.122.209
-       redis-a12af7a0d2  AWF_17X2dVoDKuXB7mtl       redis     ubuntu-16.04  192.168.122.147
-       redis-42bd6672e3  AWF_17asdVoDKuXB7mt4       redis     ubuntu-16.04  192.168.122.196
-       redis-a9347f072f  AWF_17aCdVoDKuXB7mt0       redis     ubuntu-16.04  192.168.122.14
-</code></pre>
-<p>Note: the second column contains unique auto generated ids (AWF_17..) that we can use to directly reference an instance.</p>
-<p>The main workflows on VMs (systems in Re-core lingo) are found under src/re_core/repl.clj, we can operate on all running instances by running:</p>
-<pre><code class="lang-clojure">[re-core]&#x3BB;: (halt)
+  ✔ redis-<span class="token number">a12af7a0d2</span>
+  ✔ redis-<span class="token number">d55950759f</span>
+  ✔ redis-<span class="token number">a9347f072f</span>
+  ✔ redis-<span class="token number">42bd6672e3</span>
+  ✔ redis-<span class="token number">7165e5c87b</span>
+</code></pre></div><p>Once we have instances running we can list them:</p> <div class="language-clojure extra-class"><pre class="language-clojure"><code><span class="token punctuation">[</span>re-core<span class="token punctuation">]</span>λ: <span class="token punctuation">(</span><span class="token keyword">list</span><span class="token punctuation">)</span>
+       redis-<span class="token number">d55950759f</span>  AWF_17ZSdVoDKuXB7mtt       redis     ubuntu-<span class="token number">16</span>.<span class="token number">04</span>  <span class="token number">192</span>.<span class="token number">168</span>.<span class="token number">122</span>.<span class="token number">142</span>
+       redis-<span class="token number">7165e5c87b</span>  AWF_17bgdVoDKuXB7mt9       redis     ubuntu-<span class="token number">16</span>.<span class="token number">04</span>  <span class="token number">192</span>.<span class="token number">168</span>.<span class="token number">122</span>.<span class="token number">209</span>
+       redis-<span class="token number">a12af7a0d2</span>  AWF_17X2dVoDKuXB7mtl       redis     ubuntu-<span class="token number">16</span>.<span class="token number">04</span>  <span class="token number">192</span>.<span class="token number">168</span>.<span class="token number">122</span>.<span class="token number">147</span>
+       redis-<span class="token number">42bd6672e3</span>  AWF_17asdVoDKuXB7mt4       redis     ubuntu-<span class="token number">16</span>.<span class="token number">04</span>  <span class="token number">192</span>.<span class="token number">168</span>.<span class="token number">122</span>.<span class="token number">196</span>
+       redis-<span class="token number">a9347f072f</span>  AWF_17aCdVoDKuXB7mt0       redis     ubuntu-<span class="token number">16</span>.<span class="token number">04</span>  <span class="token number">192</span>.<span class="token number">168</span>.<span class="token number">122</span>.<span class="token number">14</span>
+</code></pre></div><p>Note: the second column contains unique auto generated ids (AWF_17..) that we can use to directly reference an instance.</p> <p>The main workflows on VMs (systems in Re-core lingo) are found under src/re_core/repl.clj, we can operate on all running instances by running:</p> <div class="language-clojure extra-class"><pre class="language-clojure"><code><span class="token punctuation">[</span>re-core<span class="token punctuation">]</span>λ: <span class="token punctuation">(</span>halt<span class="token punctuation">)</span>
 
 Running halt summary:
 
-  &#x2714; redis-d55950759f
-  &#x2714; redis-7165e5c87b
-  &#x2714; redis-a12af7a0d2
-  &#x2714; redis-42bd6672e3
-  &#x2714; redis-a9347f072f
+  ✔ redis-<span class="token number">d55950759f</span>
+  ✔ redis-<span class="token number">7165e5c87b</span>
+  ✔ redis-<span class="token number">a12af7a0d2</span>
+  ✔ redis-<span class="token number">42bd6672e3</span>
+  ✔ redis-<span class="token number">a9347f072f</span>
 
-[re-core]&#x3BB;: (start) ; start all
+<span class="token punctuation">[</span>re-core<span class="token punctuation">]</span>λ: <span class="token punctuation">(</span>start<span class="token punctuation">)</span> <span class="token comment">; start all</span>
 
 Running start summary:
 
-  &#x2714; redis-d55950759f
-  &#x2714; redis-7165e5c87b
-  &#x2714; redis-a12af7a0d2
-  &#x2714; redis-42bd6672e3
-  &#x2714; redis-a9347f072f
-</code></pre>
-<p>All workflows take a filtering function, making it real easy to select the instances we operate on:</p>
-<pre><code class="lang-clojure">[re-core]&#x3BB;: (halt (by-type :redis))
+  ✔ redis-<span class="token number">d55950759f</span>
+  ✔ redis-<span class="token number">7165e5c87b</span>
+  ✔ redis-<span class="token number">a12af7a0d2</span>
+  ✔ redis-<span class="token number">42bd6672e3</span>
+  ✔ redis-<span class="token number">a9347f072f</span>
+</code></pre></div><p>All workflows take a filtering function, making it real easy to select the instances we operate on:</p> <div class="language-clojure extra-class"><pre class="language-clojure"><code><span class="token punctuation">[</span>re-core<span class="token punctuation">]</span>λ: <span class="token punctuation">(</span>halt <span class="token punctuation">(</span>by-type <span class="token operator">:redis</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 Running halt summary:
 
-  &#x2714; redis-d55950759f
-  &#x2714; redis-7165e5c87b
-  &#x2714; redis-a12af7a0d2
-  &#x2714; redis-42bd6672e3
-  &#x2714; redis-a9347f072f
+  ✔ redis-<span class="token number">d55950759f</span>
+  ✔ redis-<span class="token number">7165e5c87b</span>
+  ✔ redis-<span class="token number">a12af7a0d2</span>
+  ✔ redis-<span class="token number">42bd6672e3</span>
+  ✔ redis-<span class="token number">a9347f072f</span>
 
-[re-core]&#x3BB;: (start (matching &quot;B7mtt&quot;)) ; select instance by partial id matching (git style)
+<span class="token punctuation">[</span>re-core<span class="token punctuation">]</span>λ: <span class="token punctuation">(</span>start <span class="token punctuation">(</span>matching <span class="token string">&quot;B7mtt&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">; select instance by partial id matching (git style)</span>
 
 Running halt summary:
 
-  &#x2714; redis-d55950759f
-</code></pre>
-<p>Note: </p>
-<ul>
-<li>The default filtering function is ip which selects all the running instances (assumed to have an active ip addresset).</li>
-<li>Check Re-core <a href="https://re-ops.github.io/re-core" target="_blank">API</a> for a detailed list of the available functions.</li>
-</ul>
-<h2 id="re-mote">Re-mote</h2>
-<p>One of Re-mote main abstraction is the Hosts type:</p>
-<pre><code class="lang-clojure">(<span class="hljs-name"><span class="hljs-builtin-name">def</span></span> sandbox (<span class="hljs-name">Hosts.</span> {<span class="hljs-symbol">:user</span> <span class="hljs-string">&quot;re-ops&quot;</span> <span class="hljs-symbol">:ssh-key</span> <span class="hljs-string">&quot;/home/foo/.ssh/id_rsa} [&quot;</span><span class="hljs-number">192.168</span>.2.28<span class="hljs-string">&quot; &quot;</span><span class="hljs-number">192.168</span>.2.27<span class="hljs-string">&quot;]))
-</span></code></pre>
-<p>It includes an authentication map (user and ssh key) and a list of hosts, protocols with different operations extend the Hosts type:</p>
-<pre><code class="lang-clojure"><span class="hljs-comment">; re-mote.repl.base</span>
-(<span class="hljs-name"><span class="hljs-builtin-name">defrecord</span></span> Hosts [auth hosts]
+  ✔ redis-<span class="token number">d55950759f</span>
+
+</code></pre></div><p>Note:</p> <ul><li>The default filtering function is ip which selects all the running instances (assumed to have an active ip addresset).</li> <li>Check Re-core <a href="https://re-ops.github.io/re-core" target="_blank" rel="noopener noreferrer">API<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> for a detailed list of the available functions.</li></ul> <h2 id="re-mote"><a href="#re-mote" aria-hidden="true" class="header-anchor">#</a> Re-mote</h2> <p>One of Re-mote main abstraction is the Hosts type:</p> <div class="language-clojure extra-class"><pre class="language-clojure"><code><span class="token punctuation">(</span><span class="token keyword">def</span> sandbox <span class="token punctuation">(</span>Hosts. <span class="token punctuation">{</span><span class="token operator">:user</span> <span class="token string">&quot;re-ops&quot;</span> <span class="token operator">:ssh-key</span> <span class="token string">&quot;/home/foo/.ssh/id_rsa} [&quot;</span><span class="token number">192</span>.<span class="token number">168</span>.<span class="token number">2</span>.<span class="token number">28</span><span class="token string">&quot; &quot;</span><span class="token number">192</span>.<span class="token number">168</span>.<span class="token number">2</span>.<span class="token number">27</span>&quot;<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>It includes an authentication map (user and ssh key) and a list of hosts, protocols with different operations extend the Hosts type:</p> <div class="language-clojure extra-class"><pre class="language-clojure"><code><span class="token comment">; re-mote.repl.base</span>
+<span class="token punctuation">(</span><span class="token keyword">defrecord</span> Hosts <span class="token punctuation">[</span>auth hosts<span class="token punctuation">]</span>
   Shell
-  (<span class="hljs-name">ls</span> [this target flags]
-    [this (<span class="hljs-name">run-hosts</span> this (<span class="hljs-name">script</span> (<span class="hljs-string">&quot;ls&quot;</span> ~target ~flags)))])
-</code></pre>
-<p>Bundled operations range from package management to zfs operations like scrub and even nmap port scanning.</p>
-<p>Operations are used within pipelines:</p>
-<pre><code class="lang-clojure">(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> listing [hs]
-  (<span class="hljs-name">run</span> (<span class="hljs-name">ls</span> hs <span class="hljs-string">&quot;/&quot;</span> <span class="hljs-string">&quot;-la&quot;</span>) | (<span class="hljs-name">pretty</span>)))
-</code></pre>
-<p>Running a workflow is simple as calling a function:</p>
-<pre><code class="lang-clojure">[re-mote]&#x3BB;: (listing sandbox)
+  <span class="token punctuation">(</span>ls <span class="token punctuation">[</span>this target flags<span class="token punctuation">]</span>
+    <span class="token punctuation">[</span>this <span class="token punctuation">(</span>run-hosts this <span class="token punctuation">(</span>script <span class="token punctuation">(</span><span class="token string">&quot;ls&quot;</span> ~target ~flags<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre></div><p>Bundled operations range from package management to zfs operations like scrub and even nmap port scanning.</p> <p>Operations are used within pipelines:</p> <div class="language-clojure extra-class"><pre class="language-clojure"><code><span class="token punctuation">(</span><span class="token keyword">defn</span> listing <span class="token punctuation">[</span>hs<span class="token punctuation">]</span>
+  <span class="token punctuation">(</span>run <span class="token punctuation">(</span>ls hs <span class="token string">&quot;/&quot;</span> <span class="token string">&quot;-la&quot;</span><span class="token punctuation">)</span> | <span class="token punctuation">(</span>pretty<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>Running a workflow is simple as calling a function:</p> <div class="language-clojure extra-class"><pre class="language-clojure"><code><span class="token punctuation">[</span>re-mote<span class="token punctuation">]</span>λ: <span class="token punctuation">(</span>listing sandbox<span class="token punctuation">)</span>
 
 Run summary:
 
-   &#x2714; 192.168.2.28
-   &#x2714; 192.168.2.27
-   &#x2714; 192.168.2.26
-</code></pre>
-<p>For a complete listing of workflows check Re-mote <a href="https://re-ops.github.io/re-mote" target="_blank">API</a> documentation.</p>
-<h3 id="functions">Functions</h3>
-<p>Re-mote can invoke distributed Clojure functions using Re-gent processes across the cluster, the functions are defined under re_mote/zero/functions.clj:</p>
-<pre><code class="lang-clojure">(<span class="hljs-name"><span class="hljs-builtin-name">ns</span></span> re-mote.zero.functions
-  (<span class="hljs-symbol">:require</span>
-   [clojure.java.shell <span class="hljs-symbol">:refer</span> [sh]]
-   [serializable.fn <span class="hljs-symbol">:as</span> s]
-   [me.raynes.fs <span class="hljs-symbol">:refer</span> (<span class="hljs-name">list-dir</span> tmpdir exists? file)]))
+   ✔ <span class="token number">192</span>.<span class="token number">168</span>.<span class="token number">2</span>.<span class="token number">28</span>
+   ✔ <span class="token number">192</span>.<span class="token number">168</span>.<span class="token number">2</span>.<span class="token number">27</span>
+   ✔ <span class="token number">192</span>.<span class="token number">168</span>.<span class="token number">2</span>.<span class="token number">26</span>
+
+</code></pre></div><p>For a complete listing of workflows check Re-mote <a href="https://re-ops.github.io/re-mote" target="_blank" rel="noopener noreferrer">API<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> documentation.</p> <h3 id="functions"><a href="#functions" aria-hidden="true" class="header-anchor">#</a> Functions</h3> <p>Re-mote can invoke distributed Clojure functions using Re-gent processes across the cluster, the functions are defined under re_mote/zero/functions.clj:</p> <div class="language-clojure extra-class"><pre class="language-clojure"><code><span class="token punctuation">(</span><span class="token keyword">ns</span> re-mote.zero.functions
+  <span class="token punctuation">(</span><span class="token operator">:require</span>
+   <span class="token punctuation">[</span>clojure.java.shell <span class="token operator">:refer</span> <span class="token punctuation">[</span>sh<span class="token punctuation">]</span><span class="token punctuation">]</span>
+   <span class="token punctuation">[</span>serializable.<span class="token keyword">fn</span> <span class="token operator">:as</span> s<span class="token punctuation">]</span>
+   <span class="token punctuation">[</span>me.raynes.fs <span class="token operator">:refer</span> <span class="token punctuation">(</span>list-dir tmpdir exists? file<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 
-<span class="hljs-comment">; Package manager</span>
-(<span class="hljs-name"><span class="hljs-builtin-name">def</span></span> <span class="hljs-comment">^{:doc &quot;update package manager&quot;}</span> pkg-update
-  (<span class="hljs-name">s/fn</span> []
-    (<span class="hljs-name"><span class="hljs-builtin-name">case</span></span> (<span class="hljs-name">os</span>)
-      <span class="hljs-symbol">:Ubuntu</span> (<span class="hljs-name">sh</span> <span class="hljs-string">&quot;sudo&quot;</span> <span class="hljs-string">&quot;apt&quot;</span> <span class="hljs-string">&quot;update&quot;</span>)
-      <span class="hljs-symbol">:FreeBSD</span> (<span class="hljs-name">sh</span> <span class="hljs-string">&quot;sudo&quot;</span> <span class="hljs-string">&quot;pkg&quot;</span> <span class="hljs-string">&quot;update&quot;</span>)
-      (<span class="hljs-name"><span class="hljs-builtin-name">throw</span></span> (<span class="hljs-name">ex-info</span> <span class="hljs-string">&quot;not supported&quot;</span> {<span class="hljs-symbol">:os</span> (<span class="hljs-name">os</span>)})))))
-</code></pre>
-<p>Functions may use any bundled Clojure and Java libraries like:</p>
-<ul>
-<li>me.raynes.fs for file system manipulation</li>
-<li>com.github.oshi for collecting OS/Hardware information</li>
-<li>re-scan for running Nmap scans</li>
-</ul>
-<p>Adding new libraries is pretty simple:</p>
-<ul>
-<li>Add the library to both re-gent/project.clj and re-mote/project.clj.</li>
-<li>Import the required ns/classes into re-mote.zero.functions and re-gent.zero.functions</li>
-<li>Build the re-gent binary using bin/binary.sh</li>
-<li>Deploy re-gent to the machines using the deploy workflow</li>
-</ul>
-<h1 id="scheduling">Scheduling</h1>
-<p>Invoking tasks in the REPL is easy but in some cases we would like to set a task to be executed at repeated short intervals (like collecting metrics):</p>
-<pre><code class="lang-clojure"><span class="hljs-comment">; collecting RAM, Network, Load anc Cpu usage</span>
-(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> stats-jobs [hs]
-  (<span class="hljs-name">watch</span> <span class="hljs-symbol">:ram</span> (<span class="hljs-name">seconds</span> <span class="hljs-number">1</span>)(<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">ram-persist</span> hs)))
-  (<span class="hljs-name">watch</span> <span class="hljs-symbol">:net</span> (<span class="hljs-name">seconds</span> <span class="hljs-number">2</span>) (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">net-persist</span> hs)))
-  (<span class="hljs-name">watch</span> <span class="hljs-symbol">:cpu</span> (<span class="hljs-name">seconds</span> <span class="hljs-number">2</span>) (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">cpu-persist</span> hs)))
-  (<span class="hljs-name">watch</span> <span class="hljs-symbol">:load</span> (<span class="hljs-name">seconds</span> <span class="hljs-number">1</span>) (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">load-persist</span> hs))))
-</code></pre>
-<p>Another use case is executing long running tasks once a day:</p>
-<pre><code class="lang-clojure"><span class="hljs-comment">; running apt uprgrade on hosts every day at 4AM</span>
-(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> apt-jobs [hosts]
-  (<span class="hljs-name">watch</span> <span class="hljs-symbol">:upgrade</span> (<span class="hljs-name">every-day</span> <span class="hljs-number">4</span>) (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">upgrade</span> hosts))))
-</code></pre>
-<p>Or even once a week:</p>
-<pre><code class="lang-clojure"><span class="hljs-comment">; Running zfs scrub every Saturday at 4AM</span>
-(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> zfs-maintain [{<span class="hljs-symbol">:keys</span> [hosts] <span class="hljs-symbol">:as</span> hs}]
-  (<span class="hljs-name"><span class="hljs-builtin-name">let</span></span> [host (<span class="hljs-name"><span class="hljs-builtin-name">first</span></span> hosts)]
-    (<span class="hljs-name">watch</span> (<span class="hljs-name"><span class="hljs-builtin-name">keyword</span></span> (<span class="hljs-name"><span class="hljs-builtin-name">str</span></span> host <span class="hljs-string">&quot;-datastore-scrub&quot;</span>)) (<span class="hljs-name">at-day</span> DateTimeConstants/SATURDAY <span class="hljs-number">4</span>)
-      (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] (<span class="hljs-name">run</span> (<span class="hljs-name">scrub</span> hs <span class="hljs-string">&quot;datastore&quot;</span>) | (<span class="hljs-name">email</span> (<span class="hljs-name">tofrom</span> (<span class="hljs-name">&lt;&lt;</span> <span class="hljs-string">&quot;scrubing ~{host}/datastore&quot;</span>))))))))
-</code></pre>
-<p>Its possible to automate any function call using the watch function including the creation of VMs or provisioning, check Re-share <a href="https://re-ops.github.io/re-share" target="_blank">docs</a> for full API documentation.</p>
+<span class="token comment">; Package manager</span>
+<span class="token punctuation">(</span><span class="token keyword">def</span> ^<span class="token punctuation">{</span><span class="token operator">:doc</span> <span class="token string">&quot;update package manager&quot;</span><span class="token punctuation">}</span> pkg-update
+  <span class="token punctuation">(</span>s/<span class="token keyword">fn</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">(</span>case <span class="token punctuation">(</span>os<span class="token punctuation">)</span>
+      <span class="token operator">:Ubuntu</span> <span class="token punctuation">(</span>sh <span class="token string">&quot;sudo&quot;</span> <span class="token string">&quot;apt&quot;</span> <span class="token string">&quot;update&quot;</span><span class="token punctuation">)</span>
+      <span class="token operator">:FreeBSD</span> <span class="token punctuation">(</span>sh <span class="token string">&quot;sudo&quot;</span> <span class="token string">&quot;pkg&quot;</span> <span class="token string">&quot;update&quot;</span><span class="token punctuation">)</span>
+      <span class="token punctuation">(</span><span class="token keyword">throw</span> <span class="token punctuation">(</span>ex-info <span class="token string">&quot;not supported&quot;</span> <span class="token punctuation">{</span><span class="token operator">:os</span> <span class="token punctuation">(</span>os<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>Functions may use any bundled Clojure and Java libraries like:</p> <ul><li>me.raynes.fs for file system manipulation</li> <li>com.github.oshi for collecting OS/Hardware information</li> <li>re-scan for running Nmap scans</li></ul> <p>Adding new libraries is pretty simple:</p> <ul><li>Add the library to both re-gent/project.clj and re-mote/project.clj.</li> <li>Import the required ns/classes into re-mote.zero.functions and re-gent.zero.functions</li> <li>Build the re-gent binary using bin/binary.sh</li> <li>Deploy re-gent to the machines using the deploy workflow</li></ul> <h1 id="scheduling"><a href="#scheduling" aria-hidden="true" class="header-anchor">#</a> Scheduling</h1> <p>Invoking tasks in the REPL is easy but in some cases we would like to set a task to be executed at repeated short intervals (like collecting metrics):</p> <div class="language-clojure extra-class"><pre class="language-clojure"><code><span class="token comment">; collecting RAM, Network, Load anc Cpu usage</span>
+<span class="token punctuation">(</span><span class="token keyword">defn</span> stats-jobs <span class="token punctuation">[</span>hs<span class="token punctuation">]</span>
+  <span class="token punctuation">(</span>watch <span class="token operator">:ram</span> <span class="token punctuation">(</span>seconds <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">fn</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">(</span>ram-persist hs<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span>watch <span class="token operator">:net</span> <span class="token punctuation">(</span>seconds <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">fn</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">(</span>net-persist hs<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span>watch <span class="token operator">:cpu</span> <span class="token punctuation">(</span>seconds <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">fn</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">(</span>cpu-persist hs<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span>watch <span class="token operator">:load</span> <span class="token punctuation">(</span>seconds <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">fn</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">(</span>load-persist hs<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>Another use case is executing long running tasks once a day:</p> <div class="language-clojure extra-class"><pre class="language-clojure"><code><span class="token comment">; running apt uprgrade on hosts every day at 4AM</span>
+<span class="token punctuation">(</span><span class="token keyword">defn</span> apt-jobs <span class="token punctuation">[</span>hosts<span class="token punctuation">]</span>
+  <span class="token punctuation">(</span>watch <span class="token operator">:upgrade</span> <span class="token punctuation">(</span>every-day <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">fn</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">(</span>upgrade hosts<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
-                        </div>
-                    </div>
-                
-            </div>
-
-            
-                
-                <a href="../setup/re-pack.html#deploy" class="navigation navigation-prev " aria-label="Previous page: Deploy">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-                <a href="./#reloaded" class="navigation navigation-next " aria-label="Next page: Reloaded">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
-        
-    </div>
-
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Usage","level":"3.1","depth":1,"next":{"title":"Reloaded","level":"3.1.1","depth":2,"anchor":"#reloaded","path":"usage/README.md","ref":"usage/README.md#reloaded","articles":[]},"previous":{"title":"Deploy","level":"2.1.6.2","depth":3,"anchor":"#deploy","path":"setup/re-pack.md","ref":"setup/re-pack.md#deploy","articles":[]},"dir":"ltr"},"config":{"plugins":["editlink","github","highlight","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/re-ops/re-dock"},"editlink":{"label":"Edit This Page","multilingual":false,"base":"https://github.com/re-ops/re-dock/tree/master"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"usage/README.md","mtime":"2018-03-25T11:08:57.315Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-25T11:09:02.343Z"},"basePath":"..","book":{"language":""}});
-        });
-    </script>
-</div>
-
-        
-    <script src="../gitbook/gitbook.js"></script>
-    <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-editlink/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
-
-    </body>
+</code></pre></div><p>Or even once a week:</p> <div class="language-clojure extra-class"><pre class="language-clojure"><code><span class="token comment">; Running zfs scrub every Saturday at 4AM</span>
+<span class="token punctuation">(</span><span class="token keyword">defn</span> zfs-maintain <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token operator">:keys</span> <span class="token punctuation">[</span>hosts<span class="token punctuation">]</span> <span class="token operator">:as</span> hs<span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">(</span><span class="token keyword">let</span> <span class="token punctuation">[</span>host <span class="token punctuation">(</span><span class="token keyword">first</span> hosts<span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token punctuation">(</span>watch <span class="token punctuation">(</span><span class="token keyword">keyword</span> <span class="token punctuation">(</span><span class="token keyword">str</span> host <span class="token string">&quot;-datastore-scrub&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>at-day DateTimeConstants/SATURDAY <span class="token number">4</span><span class="token punctuation">)</span>
+      <span class="token punctuation">(</span><span class="token keyword">fn</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">(</span>run <span class="token punctuation">(</span>scrub hs <span class="token string">&quot;datastore&quot;</span><span class="token punctuation">)</span> | <span class="token punctuation">(</span>email <span class="token punctuation">(</span>tofrom <span class="token punctuation">(</span><span class="token keyword">&lt;</span>&lt; <span class="token string">&quot;scrubing ~{host}/datastore&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>Its possible to automate any function call using the watch function including the creation of VMs or provisioning, check Re-share <a href="https://re-ops.github.io/re-share" target="_blank" rel="noopener noreferrer">docs<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> for full API documentation.</p></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/re-docs/assets/js/app.7b34dd23.js" defer></script><script src="/re-docs/assets/js/12.2d1bab7b.js" defer></script>
+  </body>
 </html>
-
