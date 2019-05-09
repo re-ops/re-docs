@@ -1,4 +1,4 @@
-# Intro
+# Re-pack
 
 Re-pack contains a collection of packer templates for creating Re-core ready images for AWS, Digitalocean and KVM hypervisors/services.
 

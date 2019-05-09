@@ -1,4 +1,4 @@
-#Intro
+# Re-gent
 
 Re-gent is a self encapsulated binary file (an uberjar embedded in a shell script), we use Re-mote do deploy Re-gent instances on machines that we want to manage.
 

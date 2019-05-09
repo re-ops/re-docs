@@ -1,4 +1,4 @@
-# Intro
+# Re-mote
 
 Setting up Re-mote does not take much, most of the work is making sure that an SSH key is deployed to your remote machines (you can pre-package the key using [Re-pack](re-pack.md) for your managed VMs).
 

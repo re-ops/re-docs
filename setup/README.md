@@ -1,8 +1,8 @@
-# Setup
+# Intro
 
 In this section we will cover the requirements and setup procedures for each components of Re-ops.
 
-Re-ops was designed with deployment simplicity in mind and should be easy to get running, for the most part you need to clone the source repos and start the REPL.
+Re-ops was designed with deployment simplicity in mind and should be easy to get running, for the most part you only need to clone the source repos and start the REPL to get it running.
 
 Follow the [Re-mote](re-mote.html), [Re-core](re-core.html) sections to learn more.
 
@@ -11,7 +11,7 @@ Follow the [Re-mote](re-mote.html), [Re-core](re-core.html) sections to learn mo
 Re-ops is pretty easy to get started with (its main requirements are OpenJDK and Lein) still for the full feature set make sure to have:
 
 * OpenJDK 8 with JCE enabled
-* Clojure build tool [lein](https://leiningen.org/)
+* Clojure build tool [Lein](https://leiningen.org/)
 * rng-tools package for increased entropy under Linux (Ubuntu)
 * Good understanding of Clojure
 
