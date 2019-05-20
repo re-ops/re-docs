@@ -349,3 +349,106 @@ Note: we used libvirt over SSH (using key based auth).
     </tr>
   </tbody>
 </table>
+
+### LXC
+
+[LXC](https://linuxcontainers.org/) containers are supported using LXD with the following configuration:
+
+```clojure
+:hypervisor {
+  :dev {
+    :lxc {
+      :auth {
+        :path #join [#env HOME "/.config/lxc"]
+        :p12 "certificate.p12"
+        :password ""
+        :crt "127.0.0.1.crt"
+      }
+
+      :nodes {
+        :localhost {
+           :host "127.0.0.1" :port 8443
+        }
+      }
+
+      :ostemplates {
+        :ubuntu-18.04.2 {:template "ubuntu-18.04.2_node-8.x" :flavor :debian}
+      }
+    }
+  }
+}
+```
+
+Note: check how to add a remote LXD server following this [guide](https://linuxcontainers.org/lxd/getting-started-cli/).
+
+<table class="tableblock frame-all grid-all spread">
+  <caption class="title">Table 4. KVM configuration</caption>
+  <colgroup>
+    <col style="width: 25%;">
+    <col style="width: 25%;">
+    <col style="width: 25%;">
+    <col style="width: 25%;">
+  </colgroup>
+  <thead>
+    <tr>
+	<th class="tableblock halign-left valign-top">Section</th>
+	<th class="tableblock halign-left valign-top">Property</th>
+	<th class="tableblock halign-left valign-top">Description</th>
+	<th class="tableblock halign-left valign-top">Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+	<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock">auth</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">path</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">LXC client certificates path</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">Usually defaults to ~/.config/lxc</p></td>
+    </tr>
+    <tr>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">p12</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">Generated p12 client certificate</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">Check <a href="#p12_generate">p12</a> generate</p></td>
+    </tr>
+    <tr>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">password</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">p12 certificate password</p></td>
+	<td class="tableblock halign-left valign-top"></td>
+    </tr>
+    <tr>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">crt</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">The remote server crt file</p></td>
+	<td class="tableblock halign-left valign-top">Created when adding a remote LXD node</td>
+    </tr>
+    <tr>
+	<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">nodes</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">host</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">Remote LXD node address</p></td>
+	<td class="tableblock halign-left valign-top"></td>
+    </tr>
+    <tr>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">port</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">Remote LXD host port</p></td>
+	<td class="tableblock halign-left valign-top"></td>
+    </tr>
+    <tr>
+	<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">ostemplates</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">template</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">Container image name</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">check <a href="re-pack.html#deploy">Deploy</a></p></td>
+    </tr>
+    <tr>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">flavor</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">OS flavor of the template</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">currently only :debian supported</p></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h5 id="p12_generate"> Generating p12 certificate</h5>
+
+The p12 certificate is generated from the client.crt and host.crt files (created when a remote node is added):
+
+```bash
+$ openssl pkcs12 -export -out certificate.p12 -inkey client.key -in client.crt -certfile servercerts/127.0.0.1.crt
+```
