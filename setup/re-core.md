@@ -434,7 +434,7 @@ Note: check how to add a remote LXD server following this [guide](https://linuxc
 	<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">ostemplates</p></td>
 	<td class="tableblock halign-left valign-top"><p class="tableblock">template</p></td>
 	<td class="tableblock halign-left valign-top"><p class="tableblock">Container image name</p></td>
-	<td class="tableblock halign-left valign-top"><p class="tableblock">check <a href="re-pack.html#deploy">Deploy</a></p></td>
+	<td class="tableblock halign-left valign-top"></td>
     </tr>
     <tr>
 	<td class="tableblock halign-left valign-top"><p class="tableblock">flavor</p></td>
