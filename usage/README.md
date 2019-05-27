@@ -14,7 +14,7 @@ Each time we start our session we run:
 
 ```bash
 $ lein repl
-[re-mote]λ: (go)
+[re-core]λ: (go)
 nil
 ```
 
@@ -22,115 +22,189 @@ The go function is defined in dev/user.clj file, it starts up all of our compone
 
 
 ```clojure
-; Re-mote setup and start procedure
-(defn setup []
-  (k/create-server-keys ".curve")
-  (repl/setup)
-  (es/setup))
+; Re-core setup and start functions
+(defn start-
+   "Starts the current development system."
+   []
+   (load-secrets "secrets" "/tmp/secrets.edn" "keys/secret.gpg")
+   (conf/load-config)
+   (setup-logging)
+   (k/create-server-keys ".curve")
+   (mount/start #'elastic #'zero #'queue #'workers #'riemann)
+   (mote-es/initialize)
+   (core-es/initialize))
 
-(defn start [_]
-  (es/start)
-  (web/start)
-  (zero/start))
+(defn stop
+   "Shuts down and destroys the current development system."
+   []
+   (sc/halt!)
+   (mount/stop))
 
 ```
 
 stop components by running:
 
 ```clojure
-[re-mote]λ: (stop)
+[re-core]λ: (stop)
 ```
 
 resets runs both stop and start in once go:
 
 ```clojure
-[re-mote]λ: (reset)
+[re-core]λ: (reset)
 ```
 
+An alternative to reset is refresh which reloads changed functions (and mount state):
+
+
+```clojure
+[re-core]λ: (refresh) ; or (refresh-all)
+```
+
+
 Note:
- * When changing a single function its better to re-eval.
- * Resetting a broken ns will fail and you will need to restart the REPL so its a good idea to re-eval first.
+ * When changing a single function its better to re-eval it.
+ * when changeing multiple functions use refresh/refresh-all.
+ * Reset when you want to reload everthing and have a clean system state.
+ * A compilation error can be fixed by running refresh (reset will not be available in that case).
 
 ## Re-core
 
-Re-core enables us create and manage systems (VMs, physical hosts, containers) by using a fluent functional interface and presets like instance size, volumes and types: 
+Re-core enables us create and manage systems (VMs, physical hosts, containers) by using a fluent functional interface and presets like instance size, volumes and types:
 
 ```clojure
-; Create 5 small redis instances with a 128G Volumes
-[re-core]λ: (create kvm-small vol-128G :redis 5)
+; create 5 c1-medium lxc instances using local node and defaults (user domain and os) using basic provisioning type
+[re-core]λ: (create lxc local defaults c1-medium :basic 5)
 
 Running create summary:
 
-  ✔ redis-a12af7a0d2
-  ✔ redis-d55950759f
-  ✔ redis-a9347f072f
-  ✔ redis-42bd6672e3
-  ✔ redis-7165e5c87b
+  ✔ basic-db1afab199
+  ✔ basic-5024861c63
+  ✔ basic-2a35a70112
+  ✔ basic-5c4a9e91e4
+  ✔ basic-03df18b640
+
 ```
 
 Once we have instances running we can list them:
 
 ```clojure
 [re-core]λ: (list)
-       redis-d55950759f  AWF_17ZSdVoDKuXB7mtt       redis     ubuntu-16.04  192.168.122.142
-       redis-7165e5c87b  AWF_17bgdVoDKuXB7mt9       redis     ubuntu-16.04  192.168.122.209
-       redis-a12af7a0d2  AWF_17X2dVoDKuXB7mtl       redis     ubuntu-16.04  192.168.122.147
-       redis-42bd6672e3  AWF_17asdVoDKuXB7mt4       redis     ubuntu-16.04  192.168.122.196
-       redis-a9347f072f  AWF_17aCdVoDKuXB7mt0       redis     ubuntu-16.04  192.168.122.14
+
+id                    hostname          type    os               hypervisor  ip          
+-----------------------------------------------------------------------------------------
+_-1Y9moBhnW7y7Uhb5JD  basic-db1afab199  :basic  :ubuntu-18.04.2  :lxc        10.63.95.159
+_u1Y9moBhnW7y7UhbpLo  basic-5024861c63  :basic  :ubuntu-18.04.2  :lxc        10.63.95.50 
+AO1Y9moBhnW7y7Uhb5Nm  basic-2a35a70112  :basic  :ubuntu-18.04.2  :lxc        10.63.95.102
+Ae1Y9moBhnW7y7Uhb5OE  basic-5c4a9e91e4  :basic  :ubuntu-18.04.2  :lxc        10.63.95.155
+Au1Y9moBhnW7y7Uhb5Ob  basic-03df18b640  :basic  :ubuntu-18.04.2  :lxc        10.63.95.30 
+
 ```
 
-Note: the second column contains unique auto generated ids (AWF_17..) that we can use to directly reference an instance.
+Note: the first column contains unique auto generated ids (the elasticsearch system document id) that we can use to directly reference an instance.
 
 
-The main workflows on VMs (systems in Re-core lingo) are found under src/re_core/repl.clj, we can operate on all running instances by running:
+The main workflows on systems (in Re-core lingo) are found under src/re_core/repl.clj, we can operate on all running instances by running:
 
 ```clojure
 [re-core]λ: (halt)
+#<Future@319b7be4 pending>
+
+[re-core]λ:
 
 Running halt summary:
 
-  ✔ redis-d55950759f
-  ✔ redis-7165e5c87b
-  ✔ redis-a12af7a0d2
-  ✔ redis-42bd6672e3
-  ✔ redis-a9347f072f
+  ✔ basic-db1afab199
+  ✔ basic-5024861c63
+  ✔ basic-2a35a70112
+  ✔ basic-5c4a9e91e4
+  ✔ basic-03df18b640
 
-[re-core]λ: (start) ; start all
+[re-core]λ: (start)
+#<Future@36feaf62 pending>
+
+[re-core]λ:
 
 Running start summary:
 
-  ✔ redis-d55950759f
-  ✔ redis-7165e5c87b
-  ✔ redis-a12af7a0d2
-  ✔ redis-42bd6672e3
-  ✔ redis-a9347f072f
+  ✔ basic-db1afab199
+  ✔ basic-5024861c63
+  ✔ basic-5c4a9e91e4
+  ✔ basic-2a35a70112
+  ✔ basic-03df18b640
+
 ```
 
 All workflows take a filtering function, making it real easy to select the instances we operate on:
 
 ```clojure
-[re-core]λ: (halt (by-type :redis))
+[re-core]λ: (halt (by-type :basic))
+
+  ✔ basic-db1afab199
+  ✔ basic-5024861c63
+  ✔ basic-5c4a9e91e4
+  ✔ basic-2a35a70112
+  ✔ basic-03df18b640
 
 Running halt summary:
 
-  ✔ redis-d55950759f
-  ✔ redis-7165e5c87b
-  ✔ redis-a12af7a0d2
-  ✔ redis-42bd6672e3
-  ✔ redis-a9347f072f
-
-[re-core]λ: (start (matching "B7mtt")) ; select instance by partial id matching (git style)
+[re-core]λ: (start (matching "5Nm")) ; select instance by partial id matching (ala git style)
 
 Running halt summary:
 
-  ✔ redis-d55950759f
+  ✔ basic-2a35a70112
 
 ```
 
 
-Note: 
+Note:
 * The default filtering function is ip which selects all the running instances (assumed to have an active ip addresset).
 * Check Re-core [API](https://re-ops.github.io/re-core) for a detailed list of the available functions.
+
+### presets
+
+Presets are functions that are used to speed up the creation process of new systems, they do that by reducing the boilerplate we have to type and by being easy to memorize, when we use the create function we pass in a number of preset functions that create the system structure for us:
+
+```clojure
+[re-core]λ: (create lxc local defaults c1-medium :basic 5)
+```
+
+The lxc var holds an empty system stub:
+
+```
+(def lxc {:lxc {} :machine {}})
+
+```
+
+Each preset function adds in more information to our stub for example local sets the system node to be localhost for both KVM and LXC instances:
+
+```clojure
+(defn node [n]
+  (fn [instance] (assoc-in instance [(figure-virt instance) :node] n)))
+
+(def local (node :localhost))
+
+```
+
+Last is c1-medium which is a member of a generated list of functions in the re-core.presets.instance-types namespace, these functions represents a collection of possible RAM and CPU size combinations (matching similar machine types in AWS):
+
+```clojure
+(def simple {:tiny {:cpu 1 :ram 0.5}
+               :small {:cpu 2 :ram 1}
+               :large {:cpu 4 :ram 4}
+               :xlarge {:cpu 8 :ram 8}})
+
+  ; based on https://github.com/dustinkirkland/instance-type/blob/master/yaml/aws.yaml
+  (def aws {:c1-medium {:cpu 2 :ram 1.7}
+            :c1-xlarge  {:cpu 8 :ram 7}
+            :c3-2xlarge  {:cpu 8 :ram 15}
+            :c3-4xlarge  {:cpu 16 :ram 30}
+            ...
+            )
+
+```
+
+For more please check the matching re-core [docs](https://re-ops.github.io/re-core/re-core.presets.common.html) section and the [source code](https://github.com/re-ops/re-core/tree/master/src/re_core/presets ).
 
 ## Re-mote
 
@@ -150,7 +224,7 @@ It includes an authentication map (user and ssh key) and a list of hosts, protoc
     [this (run-hosts this (script ("ls" ~target ~flags)))])
 ```
 
-Bundled operations range from package management to zfs operations like scrub and even nmap port scanning.
+Bundled operations range from package management to ZFS operations like scrub and even nmap port scanning.
 
 Operations are used within pipelines:
 
