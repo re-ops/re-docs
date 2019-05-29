@@ -15,7 +15,7 @@ module.exports = {
         title: 'Setup',
         collapsable: false,
         children: [
-         "/setup/", "/setup/re-core", "/setup/re-mote",
+         "/setup/", "/setup/configuration", "/setup/re-core", "/setup/re-mote",
          "/setup/re-gent", "/setup/re-dock" , "/setup/re-pack"
         ]
       }, {

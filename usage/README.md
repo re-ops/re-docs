@@ -161,7 +161,7 @@ Note:
 * The default filtering function is ip which selects all the running instances (assumed to have an active ip addresset).
 * Check Re-core [API](https://re-ops.github.io/re-core) for a detailed list of the available functions.
 
-### presets
+### Presets
 
 Presets are functions that are used to speed up the creation process of new systems, they do that by reducing the boilerplate we have to type and by being easy to memorize, when we use the create function we pass in a number of preset functions that create the system structure for us:
 

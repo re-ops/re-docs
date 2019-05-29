@@ -20,7 +20,7 @@ Note: Using Re-ops will require you to use Clojure, check out [why](/#why-clojur
 
 Re-ops uses the ELK stack for persistent storage and visualization of data:
 
-* Elasticsearch 5.6.x for persisting results and metrics
+* Elasticsearch 6.x for persisting results and metrics
 * Grafana for viewing metrics
 * Kibana for viewing results and failures
 

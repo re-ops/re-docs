@@ -33,10 +33,10 @@ Not all templates require the same setup so check the matching hypervisors secti
 The configuration holds the information on how to connect to different hypervisors, you can start by copying:
 
 ```bash
-$ cp data/resources/re-core.edn ~/.re-core.edn
+$ cp resources/re-ops.edn ~/.re-ops.edn
 ```
 
-Any configuration change can be reflected immediately by:
+Any configuration change can be made available by:
 
 ```clojure
 [re-core]λ: (reset)
@@ -146,7 +146,7 @@ The Re-core section (situated on top) contains the configuration options of the 
 
 ### AWS
 
-AWS configuration goes under the hypervisor/aws section in the link:re-core.html/_configuration[configuration] file:
+AWS configuration goes under the hypervisor/aws section in the [configuration](re-core.html/_configuration) file:
 
 ```clojure
 {
