@@ -30,51 +30,33 @@ Not all templates require the same setup so check the matching hypervisors secti
 
 ## Configuration
 
-The configuration holds the information on how to connect to different hypervisors, you can start by copying:
+The Re-core section contains the configuration options for Re-core hypervisors, Elasticsearch index, logging and queue path:
 
-```bash
-$ cp resources/re-ops.edn ~/.re-ops.edn
-```
-
-Any configuration change can be made available by:
-
-```clojure
-[re-core]λ: (reset)
-```
-The configuration file is divided to the following sections:
-
-*   Re-core properties like: ports, log settings
-*   Hypervisors like AWS, KVM and Digitalocean
-*   Elasticsearch settings
-*   SSH settings (key used to connect to remote instances)
-
-The Re-core section (situated on top) contains the configuration options of the server itself:
 ```clojure
 {
  :re-core {
+
+   :queue-dir "/tmp/re-core-queue/"
+
    :port 8082
+   :https-port 8443
+
    :log {
      :level :info
      :path "re-core.log"
    }
- }
-
- :elasticsearch {
-   :host "localhost"
-   :port 9200
-   :user "elastic"
-   :pass "changeme"
-   :index "re-core"
- }
-
- :ssh {
-   :private-key-path "/home/foo/.ssh/id_rsa"
- }
-
+   :hypervisor #profile {
+     :dev {
+       ; check the Hypervisors section
+     }
+   }
+  }
 }
+
 ```
+
 <table class="tableblock frame-all grid-all spread">
-  <caption class="title">Table 1. Mandatory Settings</caption>
+  <caption class="title">Table 1. Re-core settings</caption>
   <colgroup>
     <col style="width: 25%;">
     <col style="width: 25%;">
@@ -142,11 +124,16 @@ The Re-core section (situated on top) contains the configuration options of the 
   </tbody>
   </table>
 
+
+
+
 ## Hypervisors
+
+Hypervisor configuration is located under the re-core section of re-ops.edn.
 
 ### AWS
 
-AWS configuration goes under the hypervisor/aws section in the [configuration](re-core.html/_configuration) file:
+AWS requires the following information under the re-conf/hypervisor/aws section in the configuration file:
 
 ```clojure
 {
@@ -156,7 +143,7 @@ AWS configuration goes under the hypervisor/aws section in the [configuration](r
        :access-key ""
        :secret-key ""
        :ostemplates {
-         :ubuntu-16.04 {:ami "" :flavor :debian}
+         :ubuntu-18.04 {:ami "" :flavor :debian}
        }
        :default-vpc {
           :vpc-id "vpc-123456" :subnet-id "subnet-123456" :assign-public true
@@ -225,8 +212,7 @@ AWS configuration goes under the hypervisor/aws section in the [configuration](r
 
 ### Digitalocean
 
-[Digitalocean](https://www.digitalocean.com/) is supported with the following configuration:
-
+[Digitalocean](https://www.digitalocean.com/) requires the following configuration under the re-conf/hypervisor/digital-ocean section in the configuration file:
 
 ```clojure
 :hypervisor {
@@ -235,7 +221,7 @@ AWS configuration goes under the hypervisor/aws section in the [configuration](r
       :token ""
       :ssh-key ""
       :ostemplates {
-         :ubuntu-16.04  {:image "ubuntu-16-04 :flavor :debian}
+         :ubuntu-18.04  {:image "ubuntu-18-04 :flavor :debian}
       }
      }
    }
@@ -282,7 +268,7 @@ AWS configuration goes under the hypervisor/aws section in the [configuration](r
 
 ### KVM
 
-[KVM](http://www.linux-kvm.org/page/Main_Page) is supported with the following configuration:
+[KVM](http://www.linux-kvm.org/page/Main_Page) requires the following information under the re-conf/hypervisor/kvm section in the configuration file:
 
 ```clojure
 :hypervisor {
@@ -352,8 +338,7 @@ Note: we used libvirt over SSH (using key based auth).
 
 ### LXC
 
-[LXC](https://linuxcontainers.org/) containers are supported using LXD with the following configuration:
-
+[LXC](https://linuxcontainers.org/) require the following information under the re-conf/hypervisor/lxc section in the configuration file:
 ```clojure
 :hypervisor {
   :dev {
@@ -447,8 +432,14 @@ Note: check how to add a remote LXD server following this [guide](https://linuxc
 
 <h5 id="p12_generate"> Generating p12 certificate</h5>
 
-The p12 certificate is generated from the client.crt and host.crt files (created when a remote node is added):
+The p12 certificate is generated from the client.crt and host.crt files: 
 
 ```bash
 $ openssl pkcs12 -export -out certificate.p12 -inkey client.key -in client.crt -certfile servercerts/127.0.0.1.crt
+```
+
+Both files are generated after a new remote is added to our local LXC client:
+
+```bash
+$ lxc remote add 127.0.0.1
 ```
