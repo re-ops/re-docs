@@ -27,33 +27,19 @@ Run listing summary:
 
 ## Configuration
 
-
-```bash
-$ cp config/re-mote.edn ~/.re-mote.edn
-```
-
-The configuration file is pretty much self explanatory:
+Re-mote configuration is located within the [re-ops.edn](configuration.html#configuration) file:
 
 ```clojure
 {
-  :smtp {
-     :host "smtp.gmail.com"
-     :user ""
-     :pass ""
-     :ssl :yes!!!11
-  }
-
-  :elasticsearch {
-    :host "localhost"
-    :port 9200
-    :index "re-mote"
-    :user "elastic"
-    :pass "changeme"
+  :re-mote {
+    :elasticsearch {
+      :index "re-mote"
+    }
   }
 }
 ```
 
-Note: email setup is required only when sending emails from pipelines the same applies to Elasticsearch (using persist in this case).
+Note: some of configuration is [shared](configuration.html#shared)
 
 ## SSH
 
@@ -75,3 +61,42 @@ host 192.168.122.*
     UserKnownHostsFile /dev/null
     StrictHostKeyChecking no
 ```
+
+## Publishing
+
+Re-mote has support for publishing data into remote systems include metrics, security scan results and reports:
+
+ * Collected metrics can be persisted into Elasticsearch for visualization in Kibana/Grafana.
+ * Publishing metrics to Riemann in order to monitor for issues.
+ * Sending reports emails when pipelines are finished with the results.
+
+Note: check the [publish](https://re-ops.github.io/re-mote/re-mote.repl.publish.html) and  [persist](https://re-ops.github.io/re-mote/re-mote.persist.es.html) namespaces.
+
+### Riemann
+
+Riemann is configured under the re-ops.edn file:
+
+
+```clojure
+ {
+  :riemann {
+   :host "127.0.0.1"
+   :port 5555
+   :to ""
+  }
+ }
+
+```
+
+Publishing to Riemann is easy as:
+
+```clojure
+(defn ^{:category :stats} du-persist
+    "Collect disk usage with persist (metrics collection):
+       (du-persist hs)"
+    [hs]
+    (run> (du hs) | (enrich "du") | (persist) | (riemann)))
+
+```
+
+In the above snippet we run du on our hosts collect the result save it to Elasticsearch after which we publish the metrics to Riemann (check [riemann.config](https://github.com/re-ops/re-mote/blob/master/riemann.config) for an example configuration).
