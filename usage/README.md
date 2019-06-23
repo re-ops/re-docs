@@ -3,8 +3,8 @@
 In this section we will cover the basic workflows when using Re-mote and Re-core, there are a clear convention to both and they follow similar principles:
 
 * Prefer the Use simple functions and protocols (also nice for auto completion and composability)
-* Use Separate REPL instances for Re-mote and Re-core (tough Re-core uses Re-mote)
-* Use an editor attached to each REPL and re eval changing code if possible
+* Use a single REPL for Re-core and Re-mote (both integrate nicely using the [hosts](https://re-ops.github.io/re-core/re-core.repl.html#var-hosts) function)
+* Use an editor attached to the REPL and re eval changing code if possible
 * When making large changes use the [Reloaded](#reloaded) workflow
 
 ## Reloaded
