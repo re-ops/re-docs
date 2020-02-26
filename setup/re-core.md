@@ -1,32 +1,32 @@
 # Re-core
 
-Setting up Re-core is pretty easy, most of the work is making sure you have VM templates that it can use, check link:re-pack.html[Re-pack] on how to do just that.
+Setting up Re-core is pretty easy, most of the work is making sure you have VM templates that it can use, check [Re-pack](re-pack.md) on how to do just that.
 
 ## Setup
 
 Its easy to get going just clone the repo and launch the REPL:
 
 ```clojure
+
 $ git clone git@github.com:re-ops/re-core.git
 $ cd re-core
+# tmux is required for password input
+$ tmux new-session re-core
 # Now start the REPL environment
 $ lein repl
 [re-core]λ: (go)
 nil
 ```
 
-Now head on to configuration and create VM templates.
+Note: Re-core currently requires jdk-8
 
 ## Templates
 
-Re-core clones templates in order to create new VM instances, we use link:re-pack.html[Re-pack] to create our templates, which contain the minimal setup for required for Re-core to manage the instance:
+Re-core clones templates in order to create new VM instances, we use [Re-pack](re-pack.md) to create our templates which contain the minimal setup required for Re-ops to manage the instance:
 
 * re-ops user for remote access management.
 * authorized ssh-key (for automated access) under /home/re-ops/.ssh/authorized_keys
-* Configuration management tools (like Puppet 4.x) etc..
-
-Not all templates require the same setup so check the matching hypervisors section for more info.
-
+* Java 8 (for re-gent)
 
 ## Configuration
 
