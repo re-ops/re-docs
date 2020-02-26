@@ -130,7 +130,7 @@ The shared configuration options include parts which are common to both Re-mote 
     <tr>
 	<td class="tableblock halign-left valign-top"><p class="tableblock">pass</p></td>
 	<td class="tableblock halign-left valign-top"><p class="tableblock">private key password</p></td>
-	<td class="tableblock halign-left valign-top"><p class="tableblock">used during sync operations</p></td>
+	<td class="tableblock halign-left valign-top"><p class="tableblock">keeps the password available between <a href="/usage/#reloaded">reset</a> operations.</p></td>
     </tr>
   </tbody>
   </table>
