@@ -8,7 +8,7 @@
     <meta name="generator" content="VuePress 1.3.1">
     
     
-    <link rel="preload" href="/re-docs/assets/css/0.styles.d8bc962b.css" as="style"><link rel="preload" href="/re-docs/assets/js/app.e474495f.js" as="script"><link rel="preload" href="/re-docs/assets/js/2.235fb44f.js" as="script"><link rel="preload" href="/re-docs/assets/js/4.75c46886.js" as="script"><link rel="prefetch" href="/re-docs/assets/js/10.3a5e41bf.js"><link rel="prefetch" href="/re-docs/assets/js/11.ce0fe546.js"><link rel="prefetch" href="/re-docs/assets/js/12.85f38833.js"><link rel="prefetch" href="/re-docs/assets/js/13.08138f94.js"><link rel="prefetch" href="/re-docs/assets/js/14.87d735d7.js"><link rel="prefetch" href="/re-docs/assets/js/15.7940c943.js"><link rel="prefetch" href="/re-docs/assets/js/3.b90f3ce2.js"><link rel="prefetch" href="/re-docs/assets/js/5.4885d8ad.js"><link rel="prefetch" href="/re-docs/assets/js/6.05f191c1.js"><link rel="prefetch" href="/re-docs/assets/js/7.367ebb66.js"><link rel="prefetch" href="/re-docs/assets/js/8.5c07edac.js"><link rel="prefetch" href="/re-docs/assets/js/9.fae52dab.js">
+    <link rel="preload" href="/re-docs/assets/css/0.styles.d8bc962b.css" as="style"><link rel="preload" href="/re-docs/assets/js/app.ba7a9443.js" as="script"><link rel="preload" href="/re-docs/assets/js/2.235fb44f.js" as="script"><link rel="preload" href="/re-docs/assets/js/4.af924cb5.js" as="script"><link rel="prefetch" href="/re-docs/assets/js/10.3a5e41bf.js"><link rel="prefetch" href="/re-docs/assets/js/11.ce0fe546.js"><link rel="prefetch" href="/re-docs/assets/js/12.85f38833.js"><link rel="prefetch" href="/re-docs/assets/js/13.9c2bc3b3.js"><link rel="prefetch" href="/re-docs/assets/js/14.87d735d7.js"><link rel="prefetch" href="/re-docs/assets/js/15.7940c943.js"><link rel="prefetch" href="/re-docs/assets/js/3.b90f3ce2.js"><link rel="prefetch" href="/re-docs/assets/js/5.4885d8ad.js"><link rel="prefetch" href="/re-docs/assets/js/6.05f191c1.js"><link rel="prefetch" href="/re-docs/assets/js/7.367ebb66.js"><link rel="prefetch" href="/re-docs/assets/js/8.5c07edac.js"><link rel="prefetch" href="/re-docs/assets/js/9.fae52dab.js">
     <link rel="stylesheet" href="/re-docs/assets/css/0.styles.d8bc962b.css">
   </head>
   <body>
@@ -34,9 +34,9 @@ $ packer build -var <span class="token string">'user=&lt;your user&gt;'</span> -
 <span class="token comment"># Build an Ubutnu Mate desktop varient</span>
 $ <span class="token builtin class-name">read</span> -s password
 $ packer build -var <span class="token string">'user=&lt;your user&gt;'</span> -var <span class="token string">&quot;password=<span class="token variable">${password}</span>&quot;</span> src/kvm/ubuntu-19.10/ubuntu-19.10-desktop-amd64.json
-</code></pre></div><h2 id="deploy"><a href="#deploy" class="header-anchor">#</a> Deploy</h2> <p>When creating KVM images deploy our images to a local volume, for example:</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># copying into the local default volume</span>
+</code></pre></div><h2 id="deploy"><a href="#deploy" class="header-anchor">#</a> Deploy</h2> <p>When creating KVM images we need to deploy our images to a local/remote volume, for example:</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># copying into the local default volume</span>
 $ <span class="token function">cp</span> output/*.img /var/lib/libvirt/images/
-</code></pre></div><p>Once that done create a new VM instance from the IMG file that we just copied:</p> <p><img src="/re-docs/assets/img/template.ef2d2d1f.png" alt="kvm-template"></p> <p>This VM instance will be used as the source template from which new VM instances are created.</p> <p>Note:</p> <ul><li>Make sure to add a bridged networking interface in addition to the NAT interface it already has.</li> <li>Re-core uses the following naming convention for images/templates {os-name}-{os-version}_name-{version}.</li> <li>AWS, LXC and DigitalOcean don't require this step</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre></div><p>Now we create a new VM instance from the .img file that we just copied:</p> <p><img src="/re-docs/assets/img/template.ef2d2d1f.png" alt="kvm-template"></p> <p>This VM instance will be used as the source template from which new VM instances are created.</p> <p>In order to use this template:</p> <ul><li>Make sure to add a bridged networking interface in addition to the NAT interface it already has.</li> <li>Re-core uses the following naming convention for images/templates {os-name}-{os-version}_name-{version}.</li></ul> <p>Note: AWS, LXC and Digitalocean don't require this step</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/re-docs/setup/re-dock.html" class="prev">
         Re-dock
@@ -45,6 +45,6 @@ $ <span class="token function">cp</span> output/*.img /var/lib/libvirt/images/
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/re-docs/assets/js/app.e474495f.js" defer></script><script src="/re-docs/assets/js/2.235fb44f.js" defer></script><script src="/re-docs/assets/js/4.75c46886.js" defer></script>
+    <script src="/re-docs/assets/js/app.ba7a9443.js" defer></script><script src="/re-docs/assets/js/2.235fb44f.js" defer></script><script src="/re-docs/assets/js/4.af924cb5.js" defer></script>
   </body>
 </html>
