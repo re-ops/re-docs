@@ -4,17 +4,12 @@ Setting up Re-mote does not take much, most of the work is making sure that an S
 
 ## Setup
 
-Cloning the git repo and launching the REPL gets us done with the setup part:
+Re-mote is now a part of the re-core repo, so need to clone it again
 
 ```clojure
-$ git clone git@github.com:re-ops/re-mote.git
-$ cd re-mote
-$ lein repl
-[re-mote]λ: (go)
-nil
-[re-mote]λ: (def sandbox (Hosts. {:user "vagrant"} ["192.168.2.28" "192.168.2.26" "192.168.2.27"]))
+[re-core]λ: (create kvm defaults local c1-medium :basic "base instances" 3)
 
-[re-mote]λ: (listing sandbox)
+[re-core]λ: (install (hosts ip :ip) "sysstat")
 
 Run listing summary:
 
@@ -24,10 +19,9 @@ Run listing summary:
 
 ```
 
-
 ## Configuration
 
-Re-mote configuration is located within the [re-ops.edn](configuration.html#configuration) file:
+Re-mote uses the same configuration file [re-ops.edn](configuration.html#configuration) file:
 
 ```clojure
 {
@@ -39,7 +33,7 @@ Re-mote configuration is located within the [re-ops.edn](configuration.html#conf
 }
 ```
 
-Note: some of configuration is [shared](configuration.html#shared)
+Most of configuration is [shared](configuration.html#shared) with Re-core.
 
 ## SSH
 
@@ -51,7 +45,7 @@ In order to deploy the ssh-keys to a single machine:
 $ ssh-copy-id user@host
 ```
 
-If you are using a configuration management tool (like Puppet) you can add your key to the /home/re-ops/.ssh/authorized_keys file or pre-bake your VM images to include the keys by using [Re-pack](re-pack.md).
+Its recommend to  use pre-baked VM images to include the keys by using [Re-pack](re-pack.md).
 
 Another required setting is to disable to known_hosts file for the managed hosts subnet:
 
