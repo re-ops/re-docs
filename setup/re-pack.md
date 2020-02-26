@@ -32,20 +32,21 @@ $ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubunt
 ```
 ## Deploy
 
-When creating KVM images deploy our images to a local volume, for example:
+When creating KVM images we need to deploy our images to a local/remote volume, for example:
 
 ```bash
 # copying into the local default volume
 $ cp output/*.img /var/lib/libvirt/images/
 ```
 
-Once that done create a new VM instance from the IMG file that we just copied:
+Now we create a new VM instance from the .img file that we just copied:
 
  ![kvm-template](../img/template.png)
 
 This VM instance will be used as the source template from which new VM instances are created.
 
-Note:
+In order to use this template:
 * Make sure to add a bridged networking interface in addition to the NAT interface it already has.
 * Re-core uses the following naming convention for images/templates {os-name}-{os-version}_name-{version}.
-* AWS, LXC and DigitalOcean don't require this step
+
+Note: AWS, LXC and Digitalocean don't require this step
