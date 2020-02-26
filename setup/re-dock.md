@@ -1,6 +1,6 @@
 # Re-dock
 
-Re-dock is a fast and easy way to get Elasticsearch, Kibana and Grafana running under docker by using docker-compose, in production you would probably use docker swarm or Kubernatis to achieve higher output and availability.
+Re-dock is a fast and easy way to get Elasticsearch, Kibana and Grafana running under docker by using docker-compose.
 
 ## Run
 
