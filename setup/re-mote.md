@@ -1,14 +1,16 @@
 # Re-mote
 
-Setting up Re-mote does not take much, most of the work is making sure that an SSH key is deployed to your remote machines (you can pre-package the key using [Re-pack](re-pack.md) for your managed VMs).
+Setting up Re-mote does not take much, most of the work is making sure that an SSH key is deployed to your remote machines (using pre-packaged keys in [Re-pack](re-pack.md) for your managed VMs is the way to go).
 
 ## Setup
 
-Re-mote is now a part of the re-core repo, so need to clone it again
+Re-mote is now a part of the re-core repo so all you need is to set re-core first:
 
 ```clojure
+; creating 3 vms
 [re-core]λ: (create kvm defaults local c1-medium :basic "base instances" 3)
 
+; using ssh to install sysstat
 [re-core]λ: (install (hosts ip :ip) "sysstat")
 
 Run listing summary:
@@ -58,7 +60,7 @@ host 192.168.122.*
 
 ## Publishing
 
-Re-mote has support for publishing data into remote systems include metrics, security scan results and reports:
+Re-mote has support for publishing metrics, security scan results and reports into monitoring/database systems:
 
  * Collected metrics can be persisted into Elasticsearch for visualization in Kibana/Grafana.
  * Publishing metrics to Riemann in order to monitor for issues.
