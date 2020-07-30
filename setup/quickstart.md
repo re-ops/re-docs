@@ -9,7 +9,7 @@ In this section we will cover how to get up and running a Re-core instance on a 
   * Gain good understanding on the core capabilities of Re-ops
 
 
-Note: 
+Note:
 
   * The docs contain other configuration options and more in depth documentation, make sure to check those out.
   * Before moving forward please make sure to have all the [perquisites](/setup/#prerequisites) ready.
@@ -24,7 +24,7 @@ git clone https://github.com/re-ops/re-cipes.git
 git clone https://github.com/re-ops/re-gent.git
 ```
 
-### LXD 
+## LXD 
 
 Next we will setup LXD locally so we can connect to it and manage containers on top of it, starting with our base image:
 
@@ -64,17 +64,17 @@ lxc remote add 127.0.0.1
 openssl pkcs12 -export -out certificate.p12 -inkey client.key -in client.crt -certfile servercerts/127.0.0.1.crt
 ```
 
-### Re-core
+## Re-core
 Now we are ready to configure Re-core:
 
 ```bash
 # Re-core requires tmux first
 cd re-core
 cp resources/re-ops.edn ~
+cp resources/secrets.edn /tmp/
 ```
 
-Next is setting up the /tmp/secrets.edn file:
-
+Make sure to setup the LXC and Elasticsearch passwords:
 ```bash
 cat /tmp/secrets.edn
 {
