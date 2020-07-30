@@ -8,19 +8,20 @@ Follow the [Re-mote](re-mote.html), [Re-core](re-core.html) sections to learn mo
 
 ## Prerequisites
 
-Re-ops is pretty easy to get started with (its main requirements are OpenJDK and Lein) still for the full feature set make sure to have:
-
-* OpenJDK 8 with JCE enabled
-* Clojure build tool [Lein](https://leiningen.org/)
-* rng-tools package for increased entropy under Linux (Ubuntu)
-* Good understanding of Clojure
+* [Amazon correto 8](https://docs.aws.amazon.com/corretto/index.html) jdk.
+* [Lein](https://leiningen.org/) Clojure build tool.
+* Ubuntu 20.04 either on a physical host or a VM.
+* LXC/KVM or a Digitialocean account.
+* Elasticsearch 7.8 (see [Re-dock](re-dock.md) for quick docker setup).
+* [Packer](https://www.packer.io/) for building VM/container images.
+* Tmux for running Re-core
+* Good understanding of Clojure :)
 
 Note: Using Re-ops will require you to use Clojure, check out [why](/#why-clojure).
 
-
 Re-ops uses the ELK stack for persistent storage and visualization of data:
 
-* Elasticsearch 6.x for persisting results and metrics
+* Elasticsearch 7.8 for persisting results and metrics
 * Grafana for viewing metrics
 * Kibana for viewing results and failures
 
