@@ -14,7 +14,7 @@ Follow the [Re-mote](re-mote.html), [Re-core](re-core.html) sections to learn mo
 * LXC/KVM or a Digitialocean account.
 * Elasticsearch 7.8 (see [Re-dock](re-dock.md) for quick docker setup).
 * [Packer](https://www.packer.io/) for building VM/container images.
-* Tmux for running Re-core
+* Tmux for running Re-core REPL
 * Good understanding of Clojure :)
 
 Note: Using Re-ops will require you to use Clojure, check out [why](/#why-clojure).
