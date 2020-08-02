@@ -1,8 +1,10 @@
-# Quickstart
+# Intro
 
-In this section we will cover how to get up and running a Re-core instance on a local machine and manage LXC container instances locally.
+This quickstart guide is meant to provide as a quick way to get a feel and learn about how to run Re-ops, more in-depth coverage is provided under the [setup](http://192.168.122.71:8080/re-docs/setup/) section.
 
-By the end of it you should be able to:
+In this section we will cover how to get up and running a Re-core instance on a local machine and manage LXC containers locally.
+
+By the end of it we should be able to:
 
   * Quickly create LXC instances using Re-core creation DSL
   * Run distributed Clojure functions on your local cluster
@@ -18,9 +20,10 @@ Setup prerequisites:
 
 
 Note:
-  * The automated setup process will install LXD and additional tooling, run the following on a machine you are comfortable with making those changes to (like a disposable VM).
 
-We will use [Re-cipes](https://github.com/re-ops/re-cipes) in order to setup LXC and Re-ops and all the required tooling.
+  * The automated setup process will install LXD and additional tooling, make sure to run the following on a machine you are comfortable with making those changes to (like a disposable VM).
+
+[Re-cipes](https://github.com/re-ops/re-cipes) is used here in order to setup LXD, Re-ops and all the required additional tooling:
 
 ```bash
 wget https://github.com/re-ops/re-cipes/releases/download/1.27/re-cipes -P /tmp
@@ -31,7 +34,7 @@ sudo /tmp/re-cipes provision --profile re-cipes.profiles.re-ops-standalone
 
 ## Image
 
-In this configuration Re-ops will use a local LXD server to run containers, we will now create a base image for Re-ops to create new instances from:
+For this setup we will use a local LXD server to run containers which requires a base container image:
 
 ```bash
 cd ~/re-ops/re-pack
@@ -52,7 +55,7 @@ Now we are ready to configure Re-core:
 cd ~/code/re-core
 cp resources/re-ops.edn ~
 cp resources/secrets.edn /tmp/
-# changing Elasticsearh protocol to plain http
+# changing Elasticsearch to use plain http
 sed -i 's#https://localhost:9200#http://localhost:9200#' ~/.re-ops.edn
 ```
 

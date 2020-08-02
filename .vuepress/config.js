@@ -10,12 +10,17 @@ module.exports = {
 	 title: 'Basics',
 	 collapsable:false,
    	 children  : ["/"]
-	},
-	{
+	}, {
+	title: 'Quickstart',
+        collapsable: false,
+        children: [
+         "/quickstart/"
+        ]
+	}, {
         title: 'Setup',
         collapsable: false,
         children: [
-         "/setup/", "/setup/quickstart", "/setup/configuration", "/setup/re-core", "/setup/re-mote",
+         "/setup/", "/setup/configuration", "/setup/re-core", "/setup/re-mote",
          "/setup/re-gent", "/setup/re-dock" , "/setup/re-pack"
         ]
       }, {
