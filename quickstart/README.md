@@ -1,15 +1,13 @@
 # Intro
 
-This quickstart guide is meant to provide as a quick way to get a feel and learn about how to run Re-ops, more in-depth coverage is provided under the [setup](http://192.168.122.71:8080/re-docs/setup/) section.
+This guide is meant to provide a quick way to learn about Re-ops and its capabilities, a more in-depth coverage is provided under the [setup](http://192.168.122.71:8080/re-docs/setup/) guide.
 
-In this section we will cover how to get up and running a Re-core instance on a local machine and manage LXC containers locally.
-
-By the end of it we should be able to:
+By the end of it you should be able to:
 
   * Quickly create LXC instances using Re-core creation DSL
-  * Run distributed Clojure functions on your local cluster
-  * Monitor, query and analyse the state of the instance.
-  * Gain good understanding on the core capabilities of Re-ops
+  * Run distributed Clojure functions on your local container cluster.
+  * Monitor, query and analyse the state of the container instances.
+  * Gain good understanding of the core capabilities of Re-ops.
 
 ## Installation
 
@@ -21,9 +19,9 @@ Setup prerequisites:
 
 Note:
 
-  * The automated setup process will install LXD and additional tooling, make sure to run the following on a machine you are comfortable with making those changes to (like a disposable VM).
+  * The automated setup process will install LXD and additional tooling, make sure to run the following on a machine you are comfortable with making those changes to (a VM).
 
-[Re-cipes](https://github.com/re-ops/re-cipes) is used here in order to setup LXD, Re-ops and all the required additional tooling:
+We will use [Re-cipes](https://github.com/re-ops/re-cipes) here in provision and setup the tooling and repositories required to run Re-ops:
 
 ```bash
 wget https://github.com/re-ops/re-cipes/releases/download/1.27/re-cipes -P /tmp
@@ -34,10 +32,10 @@ sudo /tmp/re-cipes provision --profile re-cipes.profiles.re-ops-standalone
 
 ## Image
 
-For this setup we will use a local LXD server to run containers which requires a base container image:
+For this setup we will use a local LXD server to run containers, a container image is used as a base from which they are created:
 
 ```bash
-cd ~/re-ops/re-pack
+cd ~/code/re-ops/re-pack
 # We need ssh keys first
 ssh-keygen
 cat ~/.ssh/id_rsa.pub > http/authorized_keys
@@ -46,27 +44,14 @@ packer build -var 'user=re-ops' src/lxd/ubuntu-20.04/ubuntu-20.04-server-amd64.j
 
 Check [Re-pack](setup/re-pack.html#build) more detailed information on creating Re-ops ready images on multiple hypervisors.
 
-## Configuration
-
-Now we are ready to configure Re-core:
-
-```bash
-# Re-core requires tmux first
-cd ~/code/re-core
-cp resources/re-ops.edn ~
-cp resources/secrets.edn /tmp/
-# changing Elasticsearch to use plain http
-sed -i 's#https://localhost:9200#http://localhost:9200#' ~/.re-ops.edn
-```
-
-For more detailed configuration options please check Re-ops [configuration](setup/configuration.html) section.
-
 ## Elasticsearch
 
 We will use a local docker container in order to spin up Elasticsearch quickly:
 
 ```bash
-cd ~/re-ops/re-dock
+# changing Elasticsearch configuration to use plain http
+sed -i 's#https://localhost:9200#http://localhost:9200#' ~/.re-ops.edn
+cd ~/code/re-ops/re-dock
 cp elasticsearch.yml docker-compose.yml
 # our local persistent volume
 sudo mkdir /var/data
@@ -76,12 +61,12 @@ docker-compose up
 
 Check [Re-dock](setup/re-dock.html) for more advanced options.
 
-## Ready to role!
+## Launch
 
 We will launch the REPL:
 
 ```bash
-cd ~/re-ops/re-core
+cd ~/code/re-ops/re-core
 tmux
 # going to take a while as dependencies and Lein are downloaded
 lein repl
@@ -91,6 +76,8 @@ Now we will start the system and create our first instance!:
 
 ```clojure
 (go)
-(create cog 're-cipes.profiles/core default-src :core "Re-core instances")
-(create lxc defaults c1-medium local :core "Our first running instance!")
+; creating a type for the system that we will create next
+(create cog 're-cipes.profiles/lean default-src :lean "")
+; our first container based system
+(create lxc defaults c1-medium local :lean "Our first running instance!")
 ```
