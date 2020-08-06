@@ -26,7 +26,7 @@ We will use [Re-cipes](https://github.com/re-ops/re-cipes) here in provision and
 ```bash
 wget https://github.com/re-ops/re-cipes/releases/download/1.27/re-cipes -P /tmp
 git clone https://github.com/re-ops/re-cipes.git /tmp/
-mv /tmp/re-cipes/resources /tmp
+cp -r /tmp/re-cipes/resources /tmp
 sudo /tmp/re-cipes provision --profile re-cipes.profiles.re-ops-standalone
 ```
 
@@ -36,8 +36,6 @@ For this setup we will use a local LXD server to run containers, a container ima
 
 ```bash
 cd ~/code/re-ops/re-pack
-# We need ssh keys first
-ssh-keygen
 cat ~/.ssh/id_rsa.pub > http/authorized_keys
 packer build -var 'user=re-ops' src/lxd/ubuntu-20.04/ubuntu-20.04-server-amd64.json
 ```
@@ -51,15 +49,10 @@ We will use a local docker container in order to spin up Elasticsearch quickly:
 ```bash
 # changing Elasticsearch configuration to use plain http
 sed -i 's#https://localhost:9200#http://localhost:9200#' ~/.re-ops.edn
-cd ~/code/re-ops/re-dock
-cp elasticsearch.yml docker-compose.yml
-# our local persistent volume
-sudo mkdir /var/data
-sudo chmod a+rwx /var/data -R
-docker-compose up
+sudo systemctl start docker-compose@elasticsearch.service
 ```
 
-Check [Re-dock](setup/re-dock.html) for more advanced options.
+Check [Re-dock](setup/re-dock.html) for running ELK + Grafana.
 
 ## Launch
 
