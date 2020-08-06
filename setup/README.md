@@ -18,6 +18,8 @@ Follow the [Re-mote](re-mote.html), [Re-core](re-core.html) sections to learn mo
 
 Note: Using Re-ops will require you to use Clojure, check out [why](/#why-clojure).
 
+## ELK
+
 Re-ops uses the ELK stack for persistent storage and visualization of data:
 
 * Elasticsearch 7.8 for persisting results and metrics
