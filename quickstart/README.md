@@ -82,3 +82,26 @@ Now we will start the system and create our first instance!:
 ; our first container based system
 (create lxc defaults c1-medium local :lean "Our first running instance!")
 ```
+
+
+## Run
+
+Once the instance is running we can deploy Re-gent into it, we start with building it:
+
+```bash
+cd ~/code/re-ops/re-gent
+./bin/binary.sh
+# allow ZeroMQ traffic
+sudo ufw allow 9000
+```
+
+Back in the REPL we deploy the agent and run a function once the host is registered:
+
+```clojure
+; assumes change your home path to match
+(deploy (hosts (matching (*1)) :ip) "/home/re-ops/code/re-ops/re-gent/target/re-gent")
+; wait couple of seconds to see the registered host
+(registered-hosts)
+; run a distributed datalog query on the hosts grabbing jvm version
+(run-hosts (hosts (matching (*1)) :hostname) re-cog.facts.datalog/run-query ['[:find ?v :where [_ :java/version ?v]]] [10 :second])
+```
