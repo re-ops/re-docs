@@ -1,6 +1,6 @@
 # Intro
 
-This guide is meant to provide a quick way to learn about Re-ops and its capabilities, a more in-depth coverage is provided under the [setup](http://192.168.122.71:8080/re-docs/setup/) guide.
+This guide is meant to provide a quick way to learn about Re-ops and its capabilities, a more in-depth coverage is provided under the [configuration](/configuration/) guide.
 
 By the end of it you should be able to:
 
@@ -13,14 +13,12 @@ By the end of it you should be able to:
 
 Setup prerequisites:
 
- * Ubuntu 20.04 with 4 core and 8GB of RAM.
+ * [Ubuntu 20.04](https://releases.ubuntu.com/20.04/) (on either visualized or physical hardware) with 4 cores and 8GB of RAM.
  * [Amazon correto 8](https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/downloads-list.html) JDK (installable from a DEB file).
 
-Note:
+Note: The automated setup process will install LXD and additional tooling, make sure to run the following on a machine you are comfortable with making those changes to. 
 
-  * The automated setup process will install LXD and additional tooling, make sure to run the following on a machine you are comfortable with making those changes to (a VM).
-
-If you have already make sure to install Amazon corretto JDK 8:
+If you haven't already make sure to install Amazon corretto JDK 8:
 
 ```bash
 wget https://corretto.aws/downloads/latest/amazon-corretto-8-x64-linux-jdk.deb
@@ -28,7 +26,7 @@ sudo dpkg -i amazon-corretto-8-x64-linux-jdk.deb
 sudo apt-get -f install
 ```
 
-We will use [Re-cipes](https://github.com/re-ops/re-cipes) here in provision and setup the tooling and repositories required to run Re-ops:
+We will use [Re-cipes](https://github.com/re-ops/re-cipes) in order to run Re-ops and LXD:
 
 ```bash
 wget https://github.com/re-ops/re-cipes/releases/download/0.1.27/re-cipes -P /tmp
@@ -57,7 +55,7 @@ sudo /tmp/re-cipes provision --plan re-cipes.profiles/re-ops-standalone
 
 ## Image
 
-For this setup we will use a local LXD server to run containers, a container image is used as a base from which they are created:
+Next we will create a base container image on which our Re-core containers will be based upon:
 
 ```bash
 cd ~/code/re-ops/re-pack
@@ -65,7 +63,7 @@ cat ~/.ssh/id_rsa.pub > http/authorized_keys
 packer build -var 'user=re-ops' src/lxd/ubuntu-20.04/ubuntu-20.04-server-amd64.json
 ```
 
-Check [Re-pack](setup/re-pack.html#build) more detailed information on creating Re-ops ready images on multiple hypervisors.
+Check [Re-pack](/configuration/re-pack.html#build) more detailed information on creating Re-ops ready images on multiple hypervisors.
 
 ## Elasticsearch
 
@@ -75,7 +73,7 @@ We will use a local docker container in order to spin up Elasticsearch quickly:
 sudo systemctl start docker-compose@elasticsearch.service
 ```
 
-Check [Re-dock](setup/re-dock.html) for running ELK + Grafana.
+Check [Re-dock](/configuration/re-dock.html) for running ELK + Grafana in addition to Elasticsearch.
 
 ## Launch
 
@@ -100,7 +98,7 @@ Now we will start the system and create our first instance!:
 
 ## Run
 
-Once the instance is running we can deploy Re-gent into it, we start with building it:
+Once the container is running we can deploy Re-gent into it, we start with building it:
 
 ```bash
 cd ~/code/re-ops/re-gent

@@ -17,11 +17,11 @@ module.exports = {
          "/quickstart/"
         ]
 	}, {
-        title: 'Setup',
+        title: 'Configuration',
         collapsable: false,
         children: [
-         "/setup/", "/setup/configuration", "/setup/re-core", "/setup/re-mote",
-         "/setup/re-gent", "/setup/re-dock" , "/setup/re-pack"
+         "/configuration/", "/configuration/common", "/configuration/re-core", "/configuration/re-mote",
+         "/configuration/re-gent", "/configuration/re-dock" , "/configuration/re-pack"
         ]
       }, {
         title: 'Usage',

@@ -18,7 +18,7 @@ $ lein repl
 nil
 ```
 
-Note: Re-core currently requires jdk-8
+Note: Re-core currently requires [Amazon correto 8](https://docs.aws.amazon.com/corretto/index.html) JDK.
 
 ## Templates
 
@@ -26,7 +26,7 @@ Re-core clones templates in order to create new VM instances, we use [Re-pack](r
 
 * re-ops user for remote access management.
 * authorized ssh-key (for automated access) under /home/re-ops/.ssh/authorized_keys
-* Java 8 (for re-gent)
+* JRE 8 (for re-gent)
 
 ## Configuration
 

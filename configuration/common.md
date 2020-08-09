@@ -1,4 +1,4 @@
-# Configuration
+# Common
 
 Re-ops uses re-ops.edn and secrets.edn for its configuration, example templates can be found under re-core/resources folder:
 
@@ -18,7 +18,7 @@ The configuration file is divided to the following sections:
 
 Any configuration change made in the file can be made available by running:
 ```clojure
-[re-core]λ: (reset)
+(reset)
 ```
 
 ## Secret management
