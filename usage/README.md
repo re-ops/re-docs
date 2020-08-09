@@ -249,6 +249,7 @@ Run summary:
 For a complete listing of workflows check Re-mote [API](https://re-ops.github.io/re-mote) documentation.
 
 ### Functions
+
 Re-mote can invoke distributed Clojure functions using Re-gent processes across the cluster, the functions are defined under re_mote/zero/functions.clj:
 
 ```clojure
@@ -281,7 +282,8 @@ Adding new libraries is pretty simple:
 * Build the re-gent binary using bin/binary.sh
 * Deploy re-gent to the machines using the deploy workflow
 
-# Scheduling
+
+## Scheduling
 
 Invoking tasks in the REPL is easy but in some cases we would like to set a task to be executed at repeated short intervals (like collecting metrics):
 
