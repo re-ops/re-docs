@@ -117,3 +117,22 @@ Back in the REPL we deploy the agent and run a function once the host is registe
 ; run a distributed datalog query on the hosts grabbing jvm version
 (run-hosts (hosts (matching (*1)) :hostname) re-cog.facts.datalog/run-query ['[:find ?v :where [_ :java/version ?v]]] [10 :second])
 ```
+
+Next we will monitoring our instance cpu and ram usage:
+
+```clojure
+; installing sysstat in order to measure cpu performance
+(install (hosts identity :hostname) "sysstat")
+; cpu usage stats
+(cpu-persist (hosts identity :hostname))
+; RAM usage stats
+(ram-persist (hosts identity :hostname))
+```
+
+Both ram-persist and cpu-persist are a part of [Re-mote](/usage/#re-mote):
+
+ * Save the information into Elasticsearch where we can use Grafana and Kibana [dashboards](/configuration/re-dock.html#dashboards) to visualize them.
+ * Ship events to [Riemann](/configuration/re-mote.html#riemann) where we can define alerts on.
+
+Check the [scheduling](/usage/#scheduling) section on how to enable on going monitoring tasks.
+
