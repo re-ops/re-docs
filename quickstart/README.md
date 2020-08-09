@@ -26,8 +26,6 @@ If you have already make sure to install Amazon corretto JDK 8:
 wget https://corretto.aws/downloads/latest/amazon-corretto-8-x64-linux-jdk.deb
 sudo dpkg -i amazon-corretto-8-x64-linux-jdk.deb
 sudo apt-get -f install
-# and git we will need it next
-sudo apt-get install git -y
 ```
 
 We will use [Re-cipes](https://github.com/re-ops/re-cipes) here in provision and setup the tooling and repositories required to run Re-ops:
@@ -37,6 +35,23 @@ wget https://github.com/re-ops/re-cipes/releases/download/0.1.27/re-cipes -P /tm
 chmod +x /tmp/re-cipes
 git clone https://github.com/re-ops/re-cipes.git ~/re-cipes
 cp -r ~/re-cipes/resources /tmp
+```
+
+Make sure to adjust the user and home settings in /tmp/resources/config.edn:
+
+```bash
+# default user is re-ops
+cat /tmp/resources/config.edn
+{
+ :user "re-ops"
+ :home "/home/re-ops"
+ ...
+}
+```
+
+Now launch Re-cipes and let it run through:
+
+```bash
 sudo /tmp/re-cipes provision --plan re-cipes.profiles/re-ops-standalone
 ```
 
@@ -82,7 +97,6 @@ Now we will start the system and create our first instance!:
 ; our first container based system
 (create lxc defaults c1-medium local :lean "Our first running instance!")
 ```
-
 
 ## Run
 
