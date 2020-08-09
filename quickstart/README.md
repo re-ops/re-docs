@@ -29,13 +29,13 @@ sudo apt-get -f install
 We will use [Re-cipes](https://github.com/re-ops/re-cipes) in order to setup Re-ops and LXD:
 
 ```bash
-wget https://github.com/re-ops/re-cipes/releases/download/0.1.27/re-cipes -P /tmp
+wget https://github.com/re-ops/re-cipes/releases/download/0.1.28/re-cipes -P /tmp
 chmod +x /tmp/re-cipes
 git clone https://github.com/re-ops/re-cipes.git ~/re-cipes
 cp -r ~/re-cipes/resources /tmp
 ```
 
-Make sure to adjust the user and home settings in /tmp/resources/config.edn:
+Make sure to adjust the user and home settings in /tmp/resources/config.edn to match your user:
 
 ```bash
 # default user is re-ops
