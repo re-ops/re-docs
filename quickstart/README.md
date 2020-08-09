@@ -26,7 +26,7 @@ sudo dpkg -i amazon-corretto-8-x64-linux-jdk.deb
 sudo apt-get -f install
 ```
 
-We will use [Re-cipes](https://github.com/re-ops/re-cipes) in order to run Re-ops and LXD:
+We will use [Re-cipes](https://github.com/re-ops/re-cipes) in order to setup Re-ops and LXD:
 
 ```bash
 wget https://github.com/re-ops/re-cipes/releases/download/0.1.27/re-cipes -P /tmp

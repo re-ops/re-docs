@@ -23,7 +23,7 @@ Run listing summary:
 
 ## Configuration
 
-Re-mote uses the same configuration file [re-ops.edn](configuration.html#configuration) file:
+Re-mote uses the same configuration file [re-ops.edn](common.html#common) file:
 
 ```clojure
 {
@@ -35,7 +35,7 @@ Re-mote uses the same configuration file [re-ops.edn](configuration.html#configu
 }
 ```
 
-Most of configuration is [shared](configuration.html#shared) with Re-core.
+Most of configuration is [shared](common.html#shared) with Re-core.
 
 ## SSH
 
