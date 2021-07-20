@@ -14,22 +14,22 @@ By the end of it you should be able to:
 Setup prerequisites:
 
  * [Ubuntu 20.04](https://releases.ubuntu.com/20.04/) (on either visualized or physical hardware) with 4 cores and 8GB of RAM.
- * [Amazon correto 8](https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/downloads-list.html) JDK (installable from a DEB file).
+ * [Amazon correto 11](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html) JDK (installable from a DEB file).
 
 Note: The automated setup process will install LXD and additional tooling, make sure to run the following on a machine you are comfortable with making those changes to. 
 
-If you haven't already make sure to install Amazon corretto JDK 8:
+If you haven't already make sure to install Amazon corretto JDK 11:
 
 ```bash
-wget https://corretto.aws/downloads/latest/amazon-corretto-8-x64-linux-jdk.deb
-sudo dpkg -i amazon-corretto-8-x64-linux-jdk.deb
+wget https://corretto.aws/downloads/latest/amazon-corretto-11-x64-linux-jdk.deb
+sudo dpkg -i amazon-corretto-11-x64-linux-jdk.deb
 sudo apt-get -f install
 ```
 
 We will use [Re-cipes](https://github.com/re-ops/re-cipes) in order to setup Re-ops and LXD:
 
 ```bash
-wget https://github.com/re-ops/re-cipes/releases/download/0.1.28/re-cipes -P /tmp
+wget https://github.com/re-ops/re-cipes/releases/download/0.3.11/re-cipes -P /tmp
 chmod +x /tmp/re-cipes
 git clone https://github.com/re-ops/re-cipes.git ~/re-cipes
 cp -r ~/re-cipes/resources /tmp
